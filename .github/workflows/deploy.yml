@@ -1,0 +1,83 @@
+# Uitrollen naar ZAD (Operations Manager) via RijksICTGilde/zad-actions, zoals bij moza-mock.
+#
+# Elke push/merge naar main bouwt het image en zet het in GHCR. Daarna rolt hij uit naar ZAD,
+# maar alleen als de ZAD-gegevens zijn ingesteld; tot die tijd wordt alleen het image gebouwd.
+#
+# Instellen in de repository (Settings → Secrets and variables → Actions):
+#   Secret   ZAD_API_KEY         API-sleutel van ZAD Operations Manager
+#   Variable ZAD_PROJECT_ID      project in ZAD, bijvoorbeeld het MOZa-project
+#   Variable ZAD_DEPLOYMENT      naam van de deployment (standaard: dev)
+#   Variable ZAD_COMPONENT       naam van de component (standaard: fundament-dienstverlener)
+#
+# Instellen op de component in ZAD Operations Manager (omgevingsvariabelen):
+#   WACHTWOORD (verplicht op ZAD) en eventueel GEBRUIKER (standaard: fieldlab): inlog voor de app.
+#   MAGAZIJN_URL, BLD_MAGAZIJN_URL, NMC_URL: adressen van de diensten (zie README).
+#   TERUGMELDADRES: het adres van de app op ZAD, zodat de NMC statusmeldingen kan sturen.
+# De container luistert op poort 8080.
+
+name: ZAD Deploy
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: zad-deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  REGISTRY: ghcr.io
+  # GHCR vereist kleine letters.
+  IMAGE_NAME: minbzk/fundament-dienstverlener
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write # image publiceren in GHCR
+    outputs:
+      digest: ${{ steps.build.outputs.digest }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/setup-buildx-action@v4
+      - name: Image bouwen en publiceren
+        id: build
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main-${{ github.sha }}
+
+  deploy:
+    needs: build
+    # Pas uitrollen als ZAD is ingericht (variabele ZAD_PROJECT_ID gezet).
+    if: vars.ZAD_PROJECT_ID != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    environment:
+      name: ${{ vars.ZAD_DEPLOYMENT || 'dev' }}
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - name: Uitrollen naar ZAD
+        id: deploy
+        uses: RijksICTGilde/zad-actions/deploy@v4
+        with:
+          api-key: ${{ secrets.ZAD_API_KEY }}
+          project-id: ${{ vars.ZAD_PROJECT_ID }}
+          deployment-name: ${{ vars.ZAD_DEPLOYMENT || 'dev' }}
+          component: ${{ vars.ZAD_COMPONENT || 'fundament-dienstverlener' }}
+          # Op digest uitrollen, zodat ZAD altijd het net gebouwde image ophaalt.
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}@${{ needs.build.outputs.digest }}
+          wait-for-ready: 'true'
+          # Met inlog geeft de app 401; de actie telt dat standaard als "draait".
+          health-endpoint: /

@@ -8,7 +8,7 @@
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import { readFile, writeFile } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
-import { randomBytes, randomUUID } from 'node:crypto';
+import { randomBytes, randomUUID, timingSafeEqual } from 'node:crypto';
 import { maakTestbijlage } from './bijlage.ts';
 import { maakBeschikking, type Aangifte } from './beschikking.ts';
 
@@ -438,8 +438,28 @@ if (isDev) {
   vite = await maakViteServer({ server: { middlewareMode: true }, appType: 'mpa' });
 }
 
+// Afscherming met een inlog (HTTP Basic), alleen als WACHTWOORD is gezet, bijvoorbeeld op ZAD.
+// Zonder inlog kan iedereen met het adres berichten plaatsen en notificaties laten versturen.
+// POST /events blijft open: daar meldt de NMC de bezorgstatus, en die kan niet inloggen.
+const inlogGebruiker = process.env.GEBRUIKER ?? 'fieldlab';
+const inlogWachtwoord = process.env.WACHTWOORD ?? '';
+
+function magErin(req: IncomingMessage, pad: string): boolean {
+  if (!inlogWachtwoord) return true;
+  if (pad === '/events' && req.method === 'POST') return true;
+  const [soort, waarde] = (req.headers.authorization ?? '').split(' ');
+  if (soort !== 'Basic' || !waarde) return false;
+  const verwacht = Buffer.from(`${inlogGebruiker}:${inlogWachtwoord}`);
+  const gekregen = Buffer.from(Buffer.from(waarde, 'base64').toString('utf8'));
+  return gekregen.length === verwacht.length && timingSafeEqual(gekregen, verwacht);
+}
+
 createServer(async (req, res) => {
   const pad = new URL(req.url ?? '/', 'http://localhost').pathname;
+  if (!magErin(req, pad)) {
+    res.writeHead(401, { 'www-authenticate': 'Basic realm="Fundament Dienstverlener", charset="UTF-8"' }).end('Inloggen nodig.');
+    return;
+  }
   try {
     if (await verwerkApi(req, res, pad)) return;
     if (vite) {
@@ -451,5 +471,5 @@ createServer(async (req, res) => {
     stuurJson(res, 500, { fout: e instanceof Error ? e.message : String(e) });
   }
 }).listen(poort, host, () => {
-  console.log(`Mock-dienstverlener draait op http://${host === '0.0.0.0' ? 'localhost' : host}:${poort}${isDev ? ' (ontwikkelmodus)' : ''}`);
+  console.log(`Fundament Dienstverlener draait op http://${host === '0.0.0.0' ? 'localhost' : host}:${poort}${isDev ? ' (ontwikkelmodus)' : ''}`);
 });

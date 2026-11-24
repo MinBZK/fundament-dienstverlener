@@ -1,0 +1,36 @@
+# Controle bij elke pull request: typecontrole, bouwen, nldd lint en het container-image bouwen
+# (zonder het te publiceren), zodat een fout al vóór het samenvoegen zichtbaar is.
+
+name: Controle
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Typecontrole en bouwen
+        run: npm run build
+      - name: nldd lint
+        run: npm run lint
+
+  image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: docker/setup-buildx-action@v4
+      - name: Image bouwen (niet publiceren)
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          push: false

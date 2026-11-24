@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Gemaakt met ondersteuning van AI (concept). Nagebootste procesapplicatie voor het Fieldlab Soevereine basis: scherm van de ondernemer. -->
+<title>Btw-aangifte doen · Mijn Belastingdienst Zakelijk (fieldlab-demo)</title>
+<link rel="icon" href="/favicon.svg">
+<link rel="stylesheet" href="stijl.css">
+</head>
+<body>
+<a class="vh" href="#hoofdinhoud">Naar de hoofdinhoud</a>
+
+<div class="demo-strook" role="note"><div class="wrap"><b>FIELDLAB-DEMO</b><span>Nagebootste procesapplicatie van de Belastingdienst voor het Fieldlab Soevereine basis. Geen echte omgeving.</span></div></div>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="Belastingdienst (nagebootst), naar het overzicht">
+      <img src="beeldmerk-rijksoverheid.svg" alt="">
+      <span>Belastingdienst<small>Nagebootst voor het fieldlab</small></span>
+    </a>
+    <div class="gebruiker">
+      <div><strong>Fieldlab Testbedrijf B.V.</strong><span>KVK 90000013</span></div>
+      <button type="button" class="knop-link">Uitloggen</button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Mijn Belastingdienst Zakelijk">
+  <div class="wrap">
+    <span class="titel">Mijn Belastingdienst Zakelijk</span>
+    <ul>
+      <li><a href="#">Overzicht</a></li>
+      <li><a href="#" aria-current="page">Aangiften</a></li>
+      <li><a href="#">Berichten</a></li>
+      <li><a href="#">Betalen</a></li>
+      <li><a href="#">Gegevens</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap">
+  <nav class="kruimel" aria-label="Kruimelpad"><ol><li><a href="#">Mijn Belastingdienst Zakelijk</a></li><li><a href="#">Aangiften</a></li><li aria-current="page">Btw-aangifte doen</li></ol></nav>
+
+  <div class="pagina">
+    <main id="hoofdinhoud">
+      <h1>Btw-aangifte doen</h1>
+      <p class="inleiding">Doe aangifte omzetbelasting over het tijdvak. Na het verzenden verwerken wij uw aangifte. Het besluit zetten wij klaar in MijnOverheid Zakelijk; u krijgt daarover een e-mail.</p>
+
+      <section class="kaart" id="stap-aangifte" aria-labelledby="kop-aangifte">
+        <div class="kaart__kop"><h2 id="kop-aangifte">Aangifte omzetbelasting</h2></div>
+        <div class="kaart__inhoud">
+          <form id="form-aangifte" name="aangifte" novalidate>
+            <div class="veld">
+              <label for="kvk">KVK-nummer</label>
+              <span class="hint" id="kvk-hint">8 cijfers. Testwaarde: 90000013</span>
+              <input id="kvk" name="kvk" inputmode="numeric" autocomplete="off" aria-describedby="kvk-hint" value="90000013">
+            </div>
+            <div class="veld">
+              <label for="tijdvak">Tijdvak</label>
+              <select id="tijdvak" name="tijdvak">
+                <option>1e kwartaal 2026</option>
+                <option>2e kwartaal 2026</option>
+                <option selected>3e kwartaal 2026</option>
+                <option>4e kwartaal 2026</option>
+              </select>
+            </div>
+            <div class="veld veld--bedrag">
+              <label for="bedrag">Aangegeven btw</label>
+              <span class="hint" id="bedrag-hint">In euro, bijvoorbeeld 1.250,00</span>
+              <span class="euro" aria-hidden="true">&euro;</span>
+              <input id="bedrag" name="bedrag" inputmode="decimal" autocomplete="off" aria-describedby="bedrag-hint" value="1.250,00">
+            </div>
+            <div class="melding melding--fout" id="fout-aangifte" role="alert" hidden><span class="melding__ic">!</span><div><strong>Controleer uw aangifte</strong><p id="fout-tekst"></p></div></div>
+            <div class="knoppen"><button type="submit" class="knop" id="knop-verzenden">Aangifte verzenden</button></div>
+          </form>
+        </div>
+      </section>
+
+      <section class="kaart" id="bevestiging" aria-labelledby="kop-bevestiging" hidden tabindex="-1">
+        <div class="kaart__kop"><h2 id="kop-bevestiging">Uw aangifte is verzonden</h2></div>
+        <div class="kaart__inhoud">
+          <div class="melding melding--goed" style="margin-top:0"><span class="melding__ic">&#10003;</span><div><strong>Wij hebben uw aangifte ontvangen</strong><p id="bev-kenmerk"></p></div></div>
+          <dl class="gegevens" style="margin-top:1rem">
+            <dt>KVK-nummer</dt><dd id="bev-kvk"></dd>
+            <dt>Tijdvak</dt><dd id="bev-tijdvak"></dd>
+            <dt>Aangegeven btw</dt><dd id="bev-bedrag"></dd>
+            <dt>Ontvangen op</dt><dd id="bev-datum"></dd>
+          </dl>
+          <h3>Wat gebeurt er nu?</h3>
+          <p style="margin-top:0">Wij verwerken uw aangifte. Zodra het besluit klaarstaat, vindt u het in de Berichtenbox van MijnOverheid Zakelijk. U krijgt daarover een e-mail.</p>
+          <div class="knoppen"><button type="button" class="knop knop--secundair" id="knop-opnieuw">Nieuwe aangifte doen</button></div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="zij" aria-label="Aanvullende informatie">
+      <section class="kaart">
+        <div class="kaart__kop"><h2>Uw onderneming</h2></div>
+        <div class="kaart__inhoud"><dl><dt>Naam</dt><dd>Fieldlab Testbedrijf B.V.</dd><dt>KVK-nummer</dt><dd>90000013</dd></dl></div>
+      </section>
+      <section class="kaart">
+        <div class="kaart__kop"><h2>Hulp bij uw aangifte</h2></div>
+        <div class="kaart__inhoud"><p style="margin:0">Twijfelt u over een bedrag? Bekijk de uitleg over de btw-aangifte of neem contact op.</p></div>
+      </section>
+    </aside>
+  </div>
+</div>
+
+<footer class="voet">
+  <div class="wrap">
+    <div><h2>Over deze demo</h2><ul><li>Fieldlab Soevereine basis</li><li>MijnOverheid Zakelijk</li><li><a href="/">Startpagina van de demo</a></li></ul></div>
+    <div><h2>Hulp</h2><ul><li><a href="#">Veelgestelde vragen</a></li><li><a href="#">Contact</a></li></ul></div>
+    <div><h2>Demo</h2><ul><li><a href="werklijst.html">Werklijst medewerker</a></li><li><a href="/moza-portaal/index.html">Berichtenbox MijnOverheid Zakelijk</a></li></ul></div>
+    <p class="onder">Fieldlab-demo, nagebootst. Geen echte omgeving van de Belastingdienst. Concept, gemaakt met ondersteuning van AI.</p>
+  </div>
+</footer>
+
+<script type="module">
+import { $, leesBedrag, euro, datumTijd, bewaarAangifte } from './gedeeld.js';
+
+$('form-aangifte').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const f = e.currentTarget;
+  const kvk = f.kvk.value.trim(), tijdvak = f.tijdvak.value.trim(), bedrag = leesBedrag(f.bedrag.value);
+  $('fout-aangifte').hidden = true;
+  if (!/^\d{8}$/.test(kvk) || !tijdvak || Number.isNaN(bedrag)) {
+    $('fout-tekst').textContent = !/^\d{8}$/.test(kvk) ? 'Een KVK-nummer heeft 8 cijfers.' : !tijdvak ? 'Kies een tijdvak.' : 'Vul een bedrag in, bijvoorbeeld 1.250,00.';
+    $('fout-aangifte').hidden = false;
+    return;
+  }
+  const ontvangenOp = new Date().toISOString();
+  const kenmerk = 'OB-' + kvk.slice(-4) + '-' + Date.now().toString().slice(-6);
+  bewaarAangifte({ kvk, tijdvak, bedrag, ontvangenOp, kenmerk });
+  $('bev-kvk').textContent = kvk; $('bev-tijdvak').textContent = tijdvak; $('bev-bedrag').textContent = euro(bedrag);
+  $('bev-datum').textContent = datumTijd(ontvangenOp); $('bev-kenmerk').textContent = `Kenmerk: ${kenmerk}`;
+  $('stap-aangifte').hidden = true;
+  $('bevestiging').hidden = false;
+  $('bevestiging').focus({ preventScroll: true });
+  window.scrollTo(0, 0);
+});
+$('knop-opnieuw').addEventListener('click', () => { $('bevestiging').hidden = true; $('stap-aangifte').hidden = false; });
+</script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Werkscherm · Fundament Dienstverlener</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/src/stijl.css">
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <nldd-shell>
+      <nldd-page>
+        <nldd-skip-link slot="header">
+          <nldd-top-navigation-bar
+            website-title="Werkscherm"
+            back-text="Start"
+            back-href="/"
+          ></nldd-top-navigation-bar>
+        </nldd-skip-link>
+
+        <nldd-simple-section>
+          <nldd-title slot="header">
+            <h1>Mock-dienstverlener</h1>
+          </nldd-title>
+          <nldd-rich-text>
+            <p>Nagebootste dienstverlener voor het Fieldlab Soevereine basis. Plaatst berichten in het berichtenmagazijn en stuurt notificaties naar de NMC, direct of via een FSC-Outway.</p>
+          </nldd-rich-text>
+          <nldd-spacer size="16"></nldd-spacer>
+          <nldd-rich-text>
+            <p><a href="/presentatie/index.html">Presentatie</a> · <a href="/instellingen.html">Instellingen wijzigen</a> · <a href="/portaal.html">Portaal-mock: berichten bekijken zoals de ontvanger</a> · <a href="/scenario.html">Scenario: btw-aangifte</a></p>
+          </nldd-rich-text>
+          <nldd-spacer size="16"></nldd-spacer>
+          <nldd-banner
+            id="melding-instellingen"
+            variant="warning"
+            text="Nog niet alles is ingesteld"
+            hidden
+          >
+            <nldd-rich-text>
+              <p>Vul de ontbrekende gegevens aan op de pagina <a href="/instellingen.html">Instellingen</a>.</p>
+            </nldd-rich-text>
+          </nldd-banner>
+        </nldd-simple-section>
+
+        <nldd-one-half-one-half-section>
+          <nldd-container slot="left">
+            <nldd-title
+              text="Bericht plaatsen"
+              heading-level="2"
+            ></nldd-title>
+            <nldd-rich-text>
+              <p><span id="verbinding-magazijn-modus">…</span> · <a href="/instellingen.html">wijzig</a><br><span id="verbinding-magazijn-adres">…</span></p>
+            </nldd-rich-text>
+            <nldd-spacer size="16"></nldd-spacer>
+            <nldd-form
+              id="form-bericht"
+              name="bericht"
+            >
+              <nldd-form-field label="Soort ontvanger">
+                <nldd-segmented-control
+                  name="ontvangerType"
+                  value="KVK"
+                >
+                  <nldd-segmented-control-item
+                    value="KVK"
+                    text="KVK-nummer"
+                  ></nldd-segmented-control-item>
+                  <nldd-segmented-control-item
+                    value="BSN"
+                    text="BSN"
+                  ></nldd-segmented-control-item>
+                </nldd-segmented-control>
+              </nldd-form-field>
+              <nldd-form-field label="Nummer van de ontvanger">
+                <nldd-text-field
+                  name="ontvangerWaarde"
+                  type="text"
+                  keyboard="numeric"
+                  value="12345678"
+                  required
+                ></nldd-text-field>
+                <nldd-validation-list>
+                  <nldd-validation-item
+                    id="ontvanger-verplicht"
+                    required
+                  >Een nummer is nodig om het bericht te bezorgen.</nldd-validation-item>
+                </nldd-validation-list>
+                <nldd-form-field-help-text>Testwaarden: KVK-nummer 12345678, BSN 999993653.</nldd-form-field-help-text>
+              </nldd-form-field>
+              <nldd-form-field label="Onderwerp">
+                <nldd-text-field
+                  name="onderwerp"
+                  type="text"
+                  required
+                ></nldd-text-field>
+                <nldd-validation-list>
+                  <nldd-validation-item
+                    id="onderwerp-verplicht"
+                    required
+                  >Een onderwerp is nodig.</nldd-validation-item>
+                </nldd-validation-list>
+              </nldd-form-field>
+              <nldd-form-field label="Inhoud">
+                <nldd-multi-line-text-field
+                  name="inhoud"
+                  rows="5"
+                  required
+                ></nldd-multi-line-text-field>
+                <nldd-validation-list>
+                  <nldd-validation-item
+                    id="inhoud-verplicht"
+                    required
+                  >De inhoud van het bericht is nodig.</nldd-validation-item>
+                </nldd-validation-list>
+              </nldd-form-field>
+              <nldd-form-field
+                label="Bijlage"
+                optional
+              >
+                <nldd-checkbox-field
+                  name="metBijlage"
+                  label="Testbijlage meesturen (PDF met de tijd van aanmaken)"
+                ></nldd-checkbox-field>
+                <nldd-link
+                  href="/api/testbijlage/voorbeeld"
+                  target="_blank"
+                  size="sm"
+                  start-icon="eye"
+                  text="Bekijk voorbeeld van de testbijlage"
+                ></nldd-link>
+              </nldd-form-field>
+              <nldd-form-actions>
+                <nldd-button-group>
+                  <nldd-button
+                    appearance="primary"
+                    type="submit"
+                    text="Plaats bericht"
+                    loading-text="Bezig met versturen"
+                  ></nldd-button>
+                </nldd-button-group>
+              </nldd-form-actions>
+            </nldd-form>
+            <nldd-spacer size="16"></nldd-spacer>
+            <nldd-banner
+              id="uitkomst-bericht"
+              dismissible
+              hidden
+            >
+              <nldd-button
+                slot="actions"
+                appearance="secondary"
+                text="Bekijk in logboek"
+                data-naar-logboek
+              ></nldd-button>
+            </nldd-banner>
+          </nldd-container>
+
+          <nldd-container slot="right">
+            <nldd-title
+              text="Notificatie sturen"
+              heading-level="2"
+            ></nldd-title>
+            <nldd-rich-text>
+              <p><span id="verbinding-nmc-modus">…</span> · <a href="/instellingen.html">wijzig</a><br><span id="verbinding-nmc-adres">…</span></p>
+            </nldd-rich-text>
+            <nldd-spacer size="16"></nldd-spacer>
+            <nldd-form
+              id="form-notificatie"
+              name="notificatie"
+            >
+              <nldd-form-field label="E-mail">
+                <nldd-text-field
+                  name="emailAdres"
+                  type="email"
+                  required
+                ></nldd-text-field>
+                <nldd-validation-list>
+                  <nldd-validation-item
+                    id="email-verplicht"
+                    required
+                  >Een e-mailadres is nodig.</nldd-validation-item>
+                </nldd-validation-list>
+              </nldd-form-field>
+              <nldd-form-field label="Berichttype">
+                <nldd-segmented-control
+                  name="berichtType"
+                  value="Demo template"
+                >
+                  <nldd-segmented-control-item
+                    value="Demo template"
+                    text="Demo template"
+                  ></nldd-segmented-control-item>
+                  <nldd-segmented-control-item
+                    value="Stuurgroep Agenda"
+                    text="Stuurgroep Agenda"
+                  ></nldd-segmented-control-item>
+                </nldd-segmented-control>
+                <nldd-form-field-help-text>Het berichttype bepaalt welk sjabloon de NMC gebruikt.</nldd-form-field-help-text>
+              </nldd-form-field>
+              <nldd-form-field
+                label="Voornaam"
+              >
+                <nldd-text-field
+                  name="voornaam"
+                  type="text"
+                  required
+                ></nldd-text-field>
+                <nldd-validation-list>
+                  <nldd-validation-item
+                    id="voornaam-verplicht"
+                    required
+                  >Een voornaam is nodig.</nldd-validation-item>
+                </nldd-validation-list>
+              </nldd-form-field>
+              <nldd-form-actions>
+                <nldd-button-group>
+                  <nldd-button
+                    appearance="primary"
+                    type="submit"
+                    text="Stuur notificatie"
+                    loading-text="Bezig met versturen"
+                  ></nldd-button>
+                </nldd-button-group>
+              </nldd-form-actions>
+            </nldd-form>
+            <nldd-spacer size="16"></nldd-spacer>
+            <nldd-banner
+              id="uitkomst-notificatie"
+              dismissible
+              hidden
+            >
+              <nldd-button
+                slot="actions"
+                appearance="secondary"
+                text="Bekijk in logboek"
+                data-naar-logboek
+              ></nldd-button>
+            </nldd-banner>
+          </nldd-container>
+        </nldd-one-half-one-half-section>
+
+        <nldd-simple-section background="tinted">
+          <nldd-title slot="header">
+            <h2 id="logboek-kop">Logboek</h2>
+          </nldd-title>
+          <nldd-rich-text>
+            <p>Wat de mock verstuurde en wat terugkwam, met de nieuwste bovenaan. Statusmeldingen van de NMC komen hier ook binnen.</p>
+          </nldd-rich-text>
+          <nldd-spacer size="16"></nldd-spacer>
+          <nldd-button-group>
+            <nldd-button
+              id="logboek-leegmaken"
+              appearance="secondary"
+              text="Maak logboek leeg"
+            ></nldd-button>
+          </nldd-button-group>
+          <nldd-spacer size="24"></nldd-spacer>
+          <nldd-container
+            id="logboek"
+            gap="32"
+          ></nldd-container>
+        </nldd-simple-section>
+
+      </nldd-page>
+    </nldd-shell>
+  </body>
+</html>

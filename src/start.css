@@ -1,0 +1,59 @@
+/* Startpagina in de MOZa-stijl: zelfde kleuren als de titeldia van de presentatie
+   (verloop lintblauw 750 → 850, accent donkergeel 200), alles uit het designsysteem. */
+
+body {
+  margin: 0;
+  font-family: var(--primitives-font-family-body);
+}
+
+.start {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, var(--primitives-color-lintblauw-750), var(--primitives-color-lintblauw-850));
+  color: var(--primitives-color-lintblauw-0);
+}
+
+.start-inhoud {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  margin-inline: auto;
+  padding: clamp(48px, 12vh, 140px) 48px 64px;
+}
+
+.start-overline {
+  margin: 0 0 16px;
+  color: var(--primitives-color-donkergeel-200);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.start-titel {
+  margin: 0;
+  font-family: var(--primitives-font-family-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  font-weight: 700;
+}
+
+.start-lead {
+  margin: 24px 0 56px;
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  max-width: 40em;
+}
+
+.start-voet {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 48px;
+  font-size: 0.875rem;
+}
+
+.start-voet a {
+  color: inherit;
+}

@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Scenario btw-aangifte · Mock-dienstverlener</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/src/stijl.css">
+    <script type="module" src="/src/scenario.ts"></script>
+  </head>
+  <body>
+    <nldd-shell>
+      <nldd-page>
+        <nldd-skip-link slot="header">
+          <nldd-top-navigation-bar
+            website-title="Scenario btw-aangifte"
+            back-text="Start"
+            back-href="/"
+          ></nldd-top-navigation-bar>
+        </nldd-skip-link>
+
+        <nldd-simple-section>
+          <nldd-title slot="header">
+            <h1>Scenario: btw-aangifte</h1>
+          </nldd-title>
+          <nldd-rich-text>
+            <p>Een ondernemer doet btw-aangifte in een nagebootst portaal van de Belastingdienst. De aangifte wordt automatisch verwerkt, er volgt een fieldlab-beschikking, en die komt in het berichtenmagazijn van de Belastingdienst.</p>
+            <p>Magazijn Belastingdienst: <span id="bld-modus">…</span> · <a href="/instellingen.html">wijzig</a><br><span id="bld-adres">…</span></p>
+          </nldd-rich-text>
+        </nldd-simple-section>
+
+        <nldd-simple-section>
+          <nldd-title slot="header">
+            <h2>1. Btw-aangifte doen</h2>
+          </nldd-title>
+          <nldd-rich-text>
+            <p>Portaal van de Belastingdienst (nagebootst).</p>
+          </nldd-rich-text>
+          <nldd-spacer size="16"></nldd-spacer>
+          <nldd-form
+            id="form-aangifte"
+            name="aangifte"
+          >
+            <nldd-form-field label="KVK-nummer">
+              <nldd-text-field
+                name="kvk"
+                type="text"
+                keyboard="numeric"
+                value="12345678"
+                required
+              ></nldd-text-field>
+              <nldd-validation-list>
+                <nldd-validation-item
+                  id="kvk-verplicht"
+                  required
+                >Een KVK-nummer is nodig.</nldd-validation-item>
+              </nldd-validation-list>
+            </nldd-form-field>
+            <nldd-form-field label="Tijdvak">
+              <nldd-text-field
+                name="tijdvak"
+                type="text"
+                required
+              ></nldd-text-field>
+              <nldd-validation-list>
+                <nldd-validation-item
+                  id="tijdvak-verplicht"
+                  required
+                >Een tijdvak is nodig, bijvoorbeeld 3e kwartaal 2026.</nldd-validation-item>
+              </nldd-validation-list>
+            </nldd-form-field>
+            <nldd-form-field label="Aangegeven btw (in euro)">
+              <nldd-text-field
+                name="bedrag"
+                type="text"
+                keyboard="decimal"
+                required
+              ></nldd-text-field>
+              <nldd-validation-list>
+                <nldd-validation-item
+                  id="bedrag-verplicht"
+                  required
+                >Een bedrag is nodig, bijvoorbeeld 1250,00.</nldd-validation-item>
+              </nldd-validation-list>
+            </nldd-form-field>
+            <nldd-form-actions>
+              <nldd-button-group>
+                <nldd-button
+                  appearance="primary"
+                  type="submit"
+                  text="Verstuur aangifte"
+                  loading-text="Bezig met versturen"
+                ></nldd-button>
+              </nldd-button-group>
+            </nldd-form-actions>
+          </nldd-form>
+          <nldd-spacer size="16"></nldd-spacer>
+          <nldd-banner
+            id="fout-aangifte"
+            variant="critical"
+            text="Aangifte niet verstuurd"
+            hidden
+          ></nldd-banner>
+        </nldd-simple-section>
+
+        <nldd-simple-section
+          id="stap-verwerking"
+          hidden
+        >
+          <nldd-title slot="header">
+            <h2>2. Automatische verwerking</h2>
+          </nldd-title>
+          <nldd-list
+            id="verwerking"
+            accessible-label="Stappen van de verwerking"
+          ></nldd-list>
+        </nldd-simple-section>
+
+        <nldd-simple-section
+          id="stap-beschikking"
+          hidden
+        >
+          <nldd-title slot="header">
+            <h2>3. Beschikking</h2>
+          </nldd-title>
+          <nldd-rich-text>
+            <p>De fieldlab-beschikking is gemaakt.</p>
+          </nldd-rich-text>
+          <nldd-spacer size="8"></nldd-spacer>
+          <nldd-link
+            id="link-beschikking"
+            href="/api/scenario/beschikking"
+            target="_blank"
+            start-icon="eye"
+            text="Bekijk beschikking (PDF)"
+          ></nldd-link>
+        </nldd-simple-section>
+
+        <nldd-simple-section
+          id="stap-plaatsen"
+          hidden
+        >
+          <nldd-title slot="header">
+            <h2>4. Plaatsen in het magazijn van de Belastingdienst</h2>
+          </nldd-title>
+          <nldd-rich-text>
+            <p>Als bericht aan KVK <span id="plaatsen-kvk">…</span>, met de beschikking als bijlage.</p>
+          </nldd-rich-text>
+          <nldd-spacer size="16"></nldd-spacer>
+          <nldd-button-group>
+            <nldd-button
+              id="knop-plaatsen"
+              appearance="primary"
+              text="Plaats beschikking"
+              loading-text="Bezig met plaatsen"
+            ></nldd-button>
+            <nldd-button
+              id="knop-portaal"
+              appearance="secondary"
+              text="Bekijk in de Portaal-mock"
+            ></nldd-button>
+          </nldd-button-group>
+          <nldd-spacer size="16"></nldd-spacer>
+          <nldd-banner
+            id="uitkomst-plaatsen"
+            dismissible
+            hidden
+          ></nldd-banner>
+        </nldd-simple-section>
+
+        <nldd-simple-section
+          id="notificatie"
+          background="tinted"
+        >
+          <nldd-title slot="header">
+            <h2>5. Notificatie sturen (los)</h2>
+          </nldd-title>
+          <nldd-rich-text>
+            <p>NMC: <span id="nmc-modus">…</span> · <a href="/instellingen.html">wijzig</a><br><span id="nmc-adres">…</span></p>
+          </nldd-rich-text>
+          <nldd-spacer size="16"></nldd-spacer>
+          <nldd-form
+            id="form-notificatie"
+            name="notificatie"
+          >
+            <nldd-form-field label="E-mail">
+              <nldd-text-field
+                name="emailAdres"
+                type="email"
+                required
+              ></nldd-text-field>
+              <nldd-validation-list>
+                <nldd-validation-item
+                  id="email-verplicht"
+                  required
+                >Een e-mailadres is nodig.</nldd-validation-item>
+              </nldd-validation-list>
+            </nldd-form-field>
+            <nldd-form-field label="Voornaam">
+              <nldd-text-field
+                name="voornaam"
+                type="text"
+                required
+              ></nldd-text-field>
+              <nldd-validation-list>
+                <nldd-validation-item
+                  id="voornaam-verplicht"
+                  required
+                >Een voornaam is nodig.</nldd-validation-item>
+              </nldd-validation-list>
+            </nldd-form-field>
+            <nldd-form-actions>
+              <nldd-button-group>
+                <nldd-button
+                  appearance="primary"
+                  type="submit"
+                  text="Stuur notificatie"
+                  loading-text="Bezig met versturen"
+                ></nldd-button>
+              </nldd-button-group>
+            </nldd-form-actions>
+          </nldd-form>
+          <nldd-spacer size="16"></nldd-spacer>
+          <nldd-banner
+            id="uitkomst-notificatie"
+            dismissible
+            hidden
+          ></nldd-banner>
+        </nldd-simple-section>
+      </nldd-page>
+    </nldd-shell>
+  </body>
+</html>

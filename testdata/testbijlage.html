@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="nl" data-scheme="light">
+  <head>
+    <meta charset="utf-8">
+    <title>Testbijlage · Mock-dienstverlener</title>
+    <script type="module" src="/src/testbijlage.ts"></script>
+    <style>
+      /* Alleen paginamaat voor afdrukken; de opmaak zelf komt uit het designsysteem. */
+      @page { size: A4; margin: 0; }
+      /* Zonder nldd-shell (die regelt scrollen op een scherm): de pagina zelf zonder marge. */
+      /* Schermbreedte gelijk aan A4, zodat de gemeten plek van de tijd ook in de PDF klopt. */
+      body { margin: 0; width: 210mm; }
+      /* Lege plek voor de tijd: de onderkant ligt op de basislijn van de regel. */
+      #tijd { display: inline-block; width: 0; height: 0; }
+      /* Het logo als lint bovenaan, op de maat van de Rijkshuisstijl-bovenbalk. */
+      #logo { width: 44px; margin-inline: auto; }
+      #logo svg { display: block; width: 100%; height: auto; }
+    </style>
+  </head>
+  <body>
+      <nldd-container>
+        <div id="logo" role="img" aria-label="Rijksoverheid"></div>
+        <nldd-container
+          padding="48"
+          max-width="640px"
+        >
+        <nldd-title>
+          <h1>Testbijlage</h1>
+        </nldd-title>
+        <nldd-spacer size="24"></nldd-spacer>
+        <nldd-rich-text>
+          <p>Dit document is een testbijlage van de mock-dienstverlener voor het Fieldlab Soevereine basis. Het is bedoeld om bijlagen in het berichtenmagazijn te testen. De inhoud heeft verder geen betekenis.</p>
+          <h2>Gegevens</h2>
+          <dl>
+            <dt>Afzender</dt>
+            <dd>Mock-dienstverlener (OIN 00000000000000100000)</dd>
+            <dt>Soort document</dt>
+            <dd>Testbijlage, PDF</dd>
+            <dt>Gemaakt op</dt>
+            <dd><span id="tijd"></span></dd>
+          </dl>
+        </nldd-rich-text>
+        </nldd-container>
+      </nldd-container>
+  </body>
+</html>

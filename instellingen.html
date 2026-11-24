@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Instellingen · Mock-dienstverlener</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/src/stijl.css">
+    <script type="module" src="/src/instellingen.ts"></script>
+  </head>
+  <body>
+    <nldd-shell>
+      <nldd-page>
+        <nldd-skip-link slot="header">
+          <nldd-top-navigation-bar
+            website-title="Mock-dienstverlener"
+            back-text="Start"
+            back-href="/"
+          ></nldd-top-navigation-bar>
+        </nldd-skip-link>
+
+        <nldd-simple-section>
+          <nldd-title slot="header">
+            <h1>Instellingen</h1>
+          </nldd-title>
+          <nldd-rich-text>
+            <p>Kies per dienst hoe de mock hem aanroept: zonder FSC, rechtstreeks naar de dienst, of met FSC, via de eigen Outway van de mock. De instellingen worden bewaard in instellingen.json in de projectmap.</p>
+          </nldd-rich-text>
+          <nldd-spacer size="16"></nldd-spacer>
+          <nldd-banner
+            id="bewaard"
+            variant="success"
+            text="Instellingen bewaard"
+            hidden
+          ></nldd-banner>
+        </nldd-simple-section>
+
+        <nldd-simple-section>
+          <nldd-form
+            id="form-instellingen"
+            name="instellingen"
+          >
+            <nldd-form-section
+              text="Berichtenmagazijn"
+              supporting-text="Voor het plaatsen van berichten."
+            >
+              <nldd-form-field label="Verbinding">
+                <nldd-segmented-control
+                  name="magazijnModus"
+                  value="direct"
+                >
+                  <nldd-segmented-control-item
+                    value="direct"
+                    text="Zonder FSC"
+                  ></nldd-segmented-control-item>
+                  <nldd-segmented-control-item
+                    value="fsc"
+                    text="Met FSC"
+                  ></nldd-segmented-control-item>
+                </nldd-segmented-control>
+              </nldd-form-field>
+              <nldd-form-field
+                label="Adres van het berichtenmagazijn"
+                data-modus="magazijn-direct"
+              >
+                <nldd-radio-button-group name="magazijnBron">
+                  <nldd-radio-button-field
+                    value="eigen"
+                    label="Eigen adres"
+                  ></nldd-radio-button-field>
+                </nldd-radio-button-group>
+              </nldd-form-field>
+              <nldd-form-field
+                label="Eigen adres"
+                data-modus="magazijn-direct"
+                data-eigen
+              >
+                <nldd-text-field
+                  name="magazijnDirectAdres"
+                  type="url"
+                ></nldd-text-field>
+                <nldd-form-field-help-text>Tot en met /api/v1, bijvoorbeeld http://localhost:8090/api/v1.</nldd-form-field-help-text>
+              </nldd-form-field>
+              <nldd-form-field
+                label="Grant-hash"
+                data-modus="magazijn-fsc"
+              >
+                <nldd-text-field
+                  name="magazijnGrantHash"
+                  type="text"
+                  no-spellcheck
+                ></nldd-text-field>
+                <nldd-form-field-help-text>Van het contract met het berichtenmagazijn. Gaat mee als header Fsc-Grant-Hash.</nldd-form-field-help-text>
+              </nldd-form-field>
+              <nldd-form-field
+                label="Pad achter de Outway"
+                data-modus="magazijn-fsc"
+                optional
+              >
+                <nldd-text-field
+                  name="magazijnFscPad"
+                  type="text"
+                  no-spellcheck
+                ></nldd-text-field>
+                <nldd-form-field-help-text>Komt tussen het adres van de Outway en /aanleveringen, bijvoorbeeld /api/v1.</nldd-form-field-help-text>
+              </nldd-form-field>
+            </nldd-form-section>
+
+            <nldd-form-section
+              text="NMC"
+              supporting-text="Voor het sturen van notificaties."
+            >
+              <nldd-form-field label="Verbinding">
+                <nldd-segmented-control
+                  name="nmcModus"
+                  value="direct"
+                >
+                  <nldd-segmented-control-item
+                    value="direct"
+                    text="Zonder FSC"
+                  ></nldd-segmented-control-item>
+                  <nldd-segmented-control-item
+                    value="fsc"
+                    text="Met FSC"
+                  ></nldd-segmented-control-item>
+                </nldd-segmented-control>
+              </nldd-form-field>
+              <nldd-form-field
+                label="Adres van de NMC"
+                data-modus="nmc-direct"
+              >
+                <nldd-radio-button-group name="nmcBron">
+                  <nldd-radio-button-field
+                    value="eigen"
+                    label="Eigen adres"
+                  ></nldd-radio-button-field>
+                </nldd-radio-button-group>
+              </nldd-form-field>
+              <nldd-form-field
+                label="Eigen adres"
+                data-modus="nmc-direct"
+                data-eigen
+              >
+                <nldd-text-field
+                  name="nmcDirectAdres"
+                  type="url"
+                ></nldd-text-field>
+                <nldd-form-field-help-text>Zonder pad; de mock zet er /api/nmc/v1/decentraal/notificaties achter.</nldd-form-field-help-text>
+              </nldd-form-field>
+              <nldd-form-field
+                label="Grant-hash"
+                data-modus="nmc-fsc"
+              >
+                <nldd-text-field
+                  name="nmcGrantHash"
+                  type="text"
+                  no-spellcheck
+                ></nldd-text-field>
+                <nldd-form-field-help-text>Van het contract met de NMC. Gaat mee als header Fsc-Grant-Hash.</nldd-form-field-help-text>
+              </nldd-form-field>
+              <nldd-form-field
+                label="Pad achter de Outway"
+                data-modus="nmc-fsc"
+                optional
+              >
+                <nldd-text-field
+                  name="nmcFscPad"
+                  type="text"
+                  no-spellcheck
+                ></nldd-text-field>
+              </nldd-form-field>
+            </nldd-form-section>
+
+            <nldd-form-section
+              text="Eigen Outway"
+              supporting-text="Voor elke dienst met FSC."
+            >
+              <nldd-form-field label="Adres van de Outway">
+                <nldd-text-field
+                  name="outwayAdres"
+                  type="url"
+                ></nldd-text-field>
+                <nldd-form-field-help-text>De Outway zoekt via het contract de Inway van de dienst op en legt de beveiligde verbinding.</nldd-form-field-help-text>
+              </nldd-form-field>
+            </nldd-form-section>
+
+            <nldd-form-section text="Deze dienstverlener">
+              <nldd-form-field label="OIN van de afzender">
+                <nldd-text-field
+                  name="afzender"
+                  type="text"
+                  keyboard="numeric"
+                ></nldd-text-field>
+              </nldd-form-field>
+              <nldd-form-field
+                label="Terugmeldadres"
+                optional
+              >
+                <nldd-text-field
+                  name="terugmeldadres"
+                  type="url"
+                ></nldd-text-field>
+                <nldd-form-field-help-text>Het adres waarop de NMC deze mock kan bereiken. De mock zet er /events achter en geeft het mee als callbackUrl. Leeg: geen statusmeldingen.</nldd-form-field-help-text>
+              </nldd-form-field>
+            </nldd-form-section>
+
+            <nldd-form-actions>
+              <nldd-button-group>
+                <nldd-button
+                  appearance="primary"
+                  type="submit"
+                  text="Bewaar instellingen"
+                ></nldd-button>
+              </nldd-button-group>
+            </nldd-form-actions>
+          </nldd-form>
+        </nldd-simple-section>
+      </nldd-page>
+    </nldd-shell>
+  </body>
+</html>

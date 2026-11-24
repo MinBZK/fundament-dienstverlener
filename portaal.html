@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portaal-mock · Mock-dienstverlener</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/src/stijl.css">
+    <script type="module" src="/src/portaal.ts"></script>
+  </head>
+  <body>
+    <nldd-shell>
+      <nldd-page>
+        <nldd-skip-link slot="header">
+          <nldd-top-navigation-bar
+            website-title="Portaal-mock"
+            back-text="Start"
+            back-href="/"
+          ></nldd-top-navigation-bar>
+        </nldd-skip-link>
+
+        <nldd-simple-section>
+          <nldd-title slot="header">
+            <h1>Portaal-mock</h1>
+          </nldd-title>
+          <nldd-rich-text>
+            <p>Zo ziet een ondernemer of burger de berichten in het berichtenmagazijn. De berichten komen uit het magazijn dat bij <a href="/instellingen.html">Instellingen</a> staat.</p>
+          </nldd-rich-text>
+          <nldd-spacer size="16"></nldd-spacer>
+          <nldd-rich-text>
+            <p id="verbinding-magazijn">Berichtenmagazijn: …</p>
+          </nldd-rich-text>
+        </nldd-simple-section>
+
+        <nldd-simple-section>
+          <nldd-form
+            id="form-inloggen"
+            name="inloggen"
+          >
+            <nldd-form-section text="Ingelogd als">
+              <nldd-form-field label="Soort ontvanger">
+                <nldd-segmented-control
+                  name="ontvangerType"
+                  value="KVK"
+                >
+                  <nldd-segmented-control-item
+                    value="KVK"
+                    text="KVK-nummer"
+                  ></nldd-segmented-control-item>
+                  <nldd-segmented-control-item
+                    value="BSN"
+                    text="BSN"
+                  ></nldd-segmented-control-item>
+                </nldd-segmented-control>
+              </nldd-form-field>
+              <nldd-form-field label="Nummer">
+                <nldd-text-field
+                  name="ontvangerWaarde"
+                  type="text"
+                  keyboard="numeric"
+                  value="12345678"
+                  required
+                ></nldd-text-field>
+                <nldd-validation-list>
+                  <nldd-validation-item
+                    id="nummer-verplicht"
+                    required
+                  >Een nummer is nodig om de berichten op te halen.</nldd-validation-item>
+                </nldd-validation-list>
+                <nldd-form-field-help-text>Testwaarden: KVK-nummer 12345678, BSN 999993653.</nldd-form-field-help-text>
+              </nldd-form-field>
+            </nldd-form-section>
+            <nldd-form-actions>
+              <nldd-button-group>
+                <nldd-button
+                  appearance="primary"
+                  type="submit"
+                  text="Toon berichten"
+                ></nldd-button>
+              </nldd-button-group>
+            </nldd-form-actions>
+          </nldd-form>
+        </nldd-simple-section>
+
+        <nldd-simple-section>
+          <nldd-title slot="header">
+            <h2 id="kop-berichten">Berichten</h2>
+          </nldd-title>
+          <nldd-banner
+            id="fout"
+            variant="critical"
+            text="Ophalen mislukt"
+            hidden
+          >
+            <nldd-rich-text>
+              <p id="fout-tekst"></p>
+            </nldd-rich-text>
+          </nldd-banner>
+          <nldd-list
+            id="berichten"
+            accessible-label="Berichten"
+          >
+            <nldd-text-cell
+              slot="empty"
+              text="Nog geen berichten. Kies hierboven als wie je bent ingelogd."
+            ></nldd-text-cell>
+          </nldd-list>
+          <nldd-spacer size="16"></nldd-spacer>
+          <nldd-pagination
+            id="paginering"
+            current="1"
+            total="1"
+            centered
+            hidden
+          ></nldd-pagination>
+        </nldd-simple-section>
+
+        <nldd-simple-section
+          id="bericht"
+          background="tinted"
+          hidden
+        >
+          <nldd-title slot="header">
+            <h2 id="bericht-onderwerp">Bericht</h2>
+          </nldd-title>
+          <nldd-rich-text>
+            <p id="bericht-gegevens"></p>
+          </nldd-rich-text>
+          <nldd-spacer size="16"></nldd-spacer>
+          <nldd-rich-text id="bericht-inhoud"></nldd-rich-text>
+          <nldd-spacer size="24"></nldd-spacer>
+          <nldd-container
+            id="bericht-bijlagen"
+            gap="8"
+          ></nldd-container>
+        </nldd-simple-section>
+      </nldd-page>
+    </nldd-shell>
+  </body>
+</html>

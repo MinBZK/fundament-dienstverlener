@@ -43,7 +43,7 @@
   <div class="pagina">
     <main id="hoofdinhoud">
       <h1>Werklijst btw-aangiften</h1>
-      <p class="uitleg-demo">Demo: in werkelijkheid verloopt dit automatisch. Hier keurt een medewerker elke stap goed, zodat je de stappen ziet.</p>
+      <p class="uitleg-demo">Demo: klik op Behandelen. Daarna loopt de afhandeling vanzelf door de drie stappen: verwerking, besluit en plaatsen in het berichtenmagazijn.</p>
 
       <section class="kaart" aria-labelledby="kop-werklijst">
         <div class="kaart__kop"><h2 id="kop-werklijst">Te behandelen</h2><span class="label-stap" id="aantal">1 aangifte</span></div>
@@ -146,7 +146,7 @@
 </footer>
 
 <script type="module">
-import { $, wacht, tijd, euro, datumTijd, post, melding, toonUitkomst, bezig, leesAangifte, ontbreekt } from './gedeeld.js';
+import { $, wacht, tijd, euro, datumTijd, post, melding, toonUitkomst, bezig, leesAangifte, bewaarAangifte, ontbreekt } from './gedeeld.js';
 
 // De aangifte: van de presentatie (zetAangifte), anders van het ondernemersscherm, anders de testwaarden
 let aangifte = leesAangifte() ?? { kvk: '90000013', tijdvak: '3e kwartaal 2026', bedrag: 1250, ontvangenOp: new Date().toISOString() };
@@ -161,8 +161,14 @@ function toonRij() {
 }
 function status(tekst, soort) { const s = $('r-status'); s.textContent = tekst; s.className = 'status status--' + soort; }
 window.zetAangifte = (a) => {
-  if (gestart) return;
-  aangifte = { ...aangifte, ...a, bedrag: naarGetal(a.bedrag ?? aangifte.bedrag), ontvangenOp: a.ontvangenOp ?? aangifte.ontvangenOp ?? new Date().toISOString() };
+  if (!a) return;
+  // Zonder moment (dia met de aangifte overgeslagen): nu, niet een oude aangifte
+  const nieuw = { ...aangifte, ...a, bedrag: naarGetal(a.bedrag ?? aangifte.bedrag), ontvangenOp: a.ontvangenOp || new Date().toISOString() };
+  const zelfde = a.ontvangenOp && a.ontvangenOp === aangifte.ontvangenOp && String(a.kvk) === String(aangifte.kvk);
+  if (zelfde) return;
+  if (gestart) { if (!a.ontvangenOp) return; bewaarAangifte(nieuw); location.reload(); return; }  // echte nieuwe aangifte: werklijst opnieuw
+  aangifte = nieuw;
+  bewaarAangifte(aangifte);
   toonRij();
 };
 toonRij();
@@ -170,10 +176,14 @@ toonRij();
 // Stap 1: verwerking, met controles
 function controle(titel) {
   const li = document.createElement('li');
-  li.innerHTML = '<span class="bol" aria-hidden="true"></span><span><strong></strong><br><small>Bezig…</small></span><span class="status">Bezig</span>';
+  li.dataset.wacht = '';
+  li.innerHTML = '<span class="bol" aria-hidden="true"></span><span><strong></strong><br><small>Wacht</small></span><span class="status">Wacht</span>';
   li.querySelector('strong').textContent = titel;
   $('verwerking').append(li);
-  return { klaar(m) { li.dataset.klaar = ''; li.querySelector('small').textContent = tijd(m); const s = li.querySelector('.status'); s.textContent = 'In orde'; s.className = 'status status--klaar'; } };
+  return {
+    start() { delete li.dataset.wacht; li.querySelector('small').textContent = 'Bezig…'; li.querySelector('.status').textContent = 'Bezig'; },
+    klaar(m) { delete li.dataset.wacht; li.dataset.klaar = ''; li.querySelector('small').textContent = tijd(m); const s = li.querySelector('.status'); s.textContent = 'In orde'; s.className = 'status status--klaar'; },
+  };
 }
 $('knop-behandelen').addEventListener('click', async () => {
   if (gestart) { $('behandeling').scrollIntoView({ behavior: 'smooth' }); return; }
@@ -186,12 +196,68 @@ $('knop-behandelen').addEventListener('click', async () => {
   $('behandeling').hidden = false;
   $('stap-verwerking').hidden = false;
   $('behandeling').focus({ preventScroll: true });
-  $('behandeling').scrollIntoView({ behavior: 'smooth' });
   $('verwerking').replaceChildren();
-  controle('Aangifte ontvangen').klaar(new Date(aangifte.ontvangenOp));
-  for (const t of ['Rekenkundige controle', 'Vergelijking met eerdere aangiften']) { const c = controle(t); await wacht(800); c.klaar(new Date()); }
+  // Daarna vanzelf door de drie stappen; de focus schuift rustig mee
+  const [ontvangen, ...rest] = ['Aangifte ontvangen', 'Rekenkundige controle', 'Vergelijking met eerdere aangiften'].map(controle);
+  await bezigMet('stap-verwerking');
+  await wacht(300);
+  ontvangen.klaar(new Date(aangifte.ontvangenOp));
+  for (const c of rest) { await wacht(400); c.start(); await wacht(850); c.klaar(new Date()); }
   $('knop-verwerking').disabled = false;
+  await autoKlik('knop-verwerking', 700);
+  await bezigMet('stap-beschikking');
+  await autoKlik('knop-besluit', 2000);
+  await bezigMet('stap-plaatsen');
+  await autoKlik('knop-plaatsen', 1000);
+  await wachtOp(() => !$('uitkomst-plaatsen').hidden, 20000);
+  zetBezig(null);
+  await naar($('uitkomst-plaatsen'));
 });
+
+// Rustig scrollen binnen de werklijst zelf (niet de presentatie eromheen)
+function naar(el, duur = 800) {
+  if (!el) return Promise.resolve();
+  const r = el.getBoundingClientRect();
+  const doel = Math.max(0, Math.min(document.documentElement.scrollHeight - innerHeight,
+    scrollY + r.top - Math.max(16, (innerHeight - r.height) / 2)));
+  const start = scrollY, afstand = doel - start;
+  if (Math.abs(afstand) < 4 || matchMedia('(prefers-reduced-motion: reduce)').matches) { scrollTo(0, doel); return Promise.resolve(); }
+  return new Promise((klaar) => {
+    const t0 = performance.now();
+    const stap = (nu) => {
+      const t = Math.min(1, (nu - t0) / duur);
+      const e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;  // rustig op gang, rustig stoppen
+      scrollTo(0, start + afstand * e);
+      t < 1 ? requestAnimationFrame(stap) : klaar();
+    };
+    requestAnimationFrame(stap);
+  });
+}
+function zetBezig(id) {
+  document.querySelectorAll('.taak.is-bezig').forEach((t) => t.classList.remove('is-bezig'));
+  if (id) $(id).classList.add('is-bezig');
+}
+async function bezigMet(id) {
+  await wachtOp(() => !$(id).hidden, 5000);
+  await wacht(250);
+  await naar($(id));
+  zetBezig(id);
+}
+function wachtOp(test, max) {
+  return new Promise((klaar) => {
+    const t0 = Date.now();
+    const kijk = () => (test() || Date.now() - t0 > max) ? klaar() : setTimeout(kijk, 100);
+    kijk();
+  });
+}
+async function autoKlik(id, pauze) {
+  const knop = $(id);
+  await wacht(pauze);
+  knop.classList.add('is-auto');
+  await wacht(700);
+  knop.classList.remove('is-auto');
+  knop.click();
+}
 
 $('knop-verwerking').addEventListener('click', () => {
   aangifte.beslotenOp = new Date().toISOString();

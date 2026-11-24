@@ -3307,9 +3307,9 @@ html:not(.js) {
   <ol class="route" aria-label="Route van het bericht"><li data-staat="straks">Attendering</li><li data-staat="straks">Aangifte</li><li data-staat="straks">Besluit</li><li data-staat="straks">Kennisgeving (melding)</li><li data-staat="straks">Besluit lezen</li><li class="route__concept">Concept</li></ol>
   <h2 class="title">Van besluit tot kennisgeving (melding)</h2>
   <figure class="plaat plaat-praktijk">
-    <svg viewBox="0 0 1100 480" role="img" aria-labelledby="praktijk-titel praktijk-uitleg" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 1100 515" role="img" aria-labelledby="praktijk-titel praktijk-uitleg" xmlns="http://www.w3.org/2000/svg">
       <title id="praktijk-titel">Van besluit tot kennisgeving (melding), in vier stappen, op het fieldlab</title>
-      <desc id="praktijk-uitleg">Fundament is verdeeld in twee delen: de plug-in per dienstverlener en de centrale diensten waarop je aansluit. Stap 1: in de procesapplicatie van de dienstverlener ontstaat een besluit. Stap 2: de procesapplicatie zet het bericht via FSC klaar in het eigen berichtenmagazijn, dat de dienstverlener als plug-in aanzet. In de demo is dat het magazijn van de Belastingdienst; het magazijn van RVO staat vervaagd, om te laten zien dat er meer magazijnen kunnen zijn. Stap 3: het berichtenmagazijn geeft de centrale NMC van de notificatiedienst een gebeurtenisbericht. De NMC geeft Notify, buiten Fundament, opdracht een e-mail te sturen: de kennisgeving (melding) komt binnen in de mailbox van de burger of ondernemer. De burger of ondernemer staat in een strook bovenaan. Stap 4: de ondernemer opent de e-mail en logt in op het portaal MijnOverheid Zakelijk, buiten Fundament. Het portaal vraagt de berichten op bij de berichtenuitvraag (BUS), centraal op Fundament; de BUS haalt ze op uit alle berichtenmagazijnen. De aangifte doet de ondernemer eerder in het portaal van de Belastingdienst, bij de dienstverlener.</desc>
+      <desc id="praktijk-uitleg">Fundament is verdeeld in twee delen: de plug-in per dienstverlener en de centrale diensten waarop je aansluit. Stap 1: in de procesapplicatie van de dienstverlener ontstaat een besluit. Stap 2: de procesapplicatie zet het bericht via FSC klaar in het eigen berichtenmagazijn, dat de dienstverlener als plug-in aanzet. In de demo is dat het magazijn van de Belastingdienst; het magazijn van RVO staat vervaagd, om te laten zien dat er meer magazijnen kunnen zijn. Stap 3: het berichtenmagazijn geeft de centrale NMC van de notificatiedienst een gebeurtenisbericht. De NMC geeft Notify, buiten Fundament, opdracht een e-mail te sturen: de kennisgeving (melding) komt binnen in de mailbox van de burger of ondernemer. De burger of ondernemer staat in een strook bovenaan. Stap 4: de ondernemer opent de e-mail en logt in op het portaal MijnOverheid Zakelijk, buiten Fundament. De ondernemer leest de berichten, via een portaal, rechtstreeks uit de berichtenmagazijnen. De aangifte doet de ondernemer eerder in het portaal van de Belastingdienst, bij de dienstverlener.</desc>
       <defs>
         <marker id="pr-pijl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker>
         <marker id="pr-pijl-fsc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a34f00"/></marker>
@@ -3326,117 +3326,108 @@ html:not(.js) {
         </style>
       </defs>
 
-      <!-- Zones -->
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
-
-      <rect x="20" y="140" width="290" height="300" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <text class="pr-zone-t" x="36" y="167">DIENSTVERLENER</text>
-      <text class="pr-zone-s" x="36" y="185">eigen omgeving</text>
-
-      <rect x="335" y="128" width="460" height="320" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="351" y="158" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
-      <rect x="350" y="185" width="200" height="245" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-sub-t" x="364" y="205">PLUG-IN</text>
-      <text class="pr-zone-s" x="364" y="221">per dienstverlener</text>
-      <rect x="565" y="185" width="215" height="245" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-sub-t" x="579" y="205">CENTRAAL</text>
-      <text class="pr-zone-s" x="579" y="221">je sluit aan</text>
-
-      <rect x="815" y="140" width="265" height="300" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
-      <text class="pr-zone-t" x="831" y="167">BUITEN</text>
-      <text class="pr-zone-t" x="831" y="185">FUNDAMENT</text>
-
-      <!-- Stap 1: besluit -->
+      <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
+      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
+      <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
+      <rect x="575" y="200" width="240" height="272" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-sub-t" x="589" y="220">CENTRAAL</text>
+      <text class="pr-zone-s" x="589" y="236">je sluit aan</text>
+      <rect x="850" y="160" width="230" height="325" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
+      <text class="pr-zone-t" x="862" y="187">BUITEN</text>
+      <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
       <g data-step="1">
-        <rect x="115" y="302" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="326">Procesapplicatie</text>
-        
-        <circle cx="115" cy="302" r="13" fill="#154273"/><text class="pr-nr" x="115" y="307">1</text>
+        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
+        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="239">Portaal</text>
+        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
+        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
-
-      <!-- Stap 2: bericht klaarzetten in het eigen magazijn (plug-in) -->
+      <g data-step="1">
+        <rect x="60" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="345">Procesapplicatie</text>
+        <circle cx="60" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="60" y="317">1</text>
+      </g>
       <g data-step="2">
-        <path d="M295,330 H365" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
-        <rect x="312" y="321" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
-        <text class="pr-fsc-t" x="330" y="334">FSC</text>
+        <path d="M240,340 H335" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="266" y="331" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="284" y="344">FSC</text>
       </g>
       <g data-step="2">
-        <rect x="365" y="232" width="170" height="118" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="450" y="287">Magazijn</text>
-        <text class="pr-mono" x="450" y="306">Belastingdienst</text>
-        <circle cx="535" cy="232" r="13" fill="#154273"/><text class="pr-nr" x="535" y="237">2</text>
-        <!-- Ander magazijn: kan, maar niet in de demo -->
-        <g>
-          <rect x="365" y="362" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9"/>
-          <text class="pr-naam" x="450" y="380">Magazijn</text>
-          <text class="pr-mono" x="450" y="395">RVO</text>
-        </g>
-        <text class="pr-zone-s" x="450" y="420" text-anchor="middle">meer magazijnen mogelijk</text>
+        <rect x="335" y="285" width="170" height="110" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="420" y="336">Magazijn</text>
+        <text class="pr-mono" x="420" y="355">Belastingdienst</text>
+        <circle cx="505" cy="285" r="13" fill="#154273"/><text class="pr-nr" x="505" y="290">2</text>
+        <rect x="335" y="415" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="420" y="433">Magazijn</text>
+        <text class="pr-mono" x="420" y="448">RVO</text>
+        <text class="pr-zone-s" x="420" y="468" text-anchor="middle">meer magazijnen mogelijk</text>
       </g>
-
-      <!-- Stap 3: kennisgeving (melding) per e-mail -->
       <g data-step="3">
-        <path d="M535,305 H672 V330" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+        <path d="M505,352 H543 A7,7 0 0 1 557,352 H605" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="580" y="300">gebeurtenisbericht</text>
-        <rect x="582" y="330" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="672" y="354">NMC</text>
-        <text class="pr-mono" x="672" y="373">notificatiedienst</text>
-        <circle cx="582" cy="330" r="13" fill="#154273"/><text class="pr-nr" x="582" y="335">3</text>
-        <line x1="762" y1="358" x2="860" y2="358" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="810" y="349" text-anchor="middle">opdracht</text>
-        <rect x="860" y="330" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="354">Notify</text>
-        <text class="pr-mono" x="960" y="373">verstuurt de e-mail</text>
-        <line x1="1040" y1="330" x2="1040" y2="101" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="1034" y="305" text-anchor="end">e-mail</text>
-        <rect x="860" y="45" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="69">Mailbox</text>
-        <text class="pr-mono" x="960" y="88">kennisgeving (melding)</text>
       </g>
-
-      <!-- Stap 4: terug naar de dienstverlener: inloggen op het portaal, bericht lezen -->
-      <g data-step="1">
-        <path d="M460,80 H250 V222" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="354" y="74" text-anchor="middle">inloggen</text>
-        <rect x="115" y="222" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="246">Portaal</text>
-        <text class="pr-mono" x="205" y="265">Belastingdienst</text>
-        <line x1="205" y1="278" x2="205" y2="302" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="213" y="294">aangifte</text>
+      <g data-step="3">
+        <rect x="605" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="695" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="695" y="355">NMC</text>
+        <circle cx="785" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="785" y="317">3</text>
       </g>
-      <g data-step="4">
-        <line x1="860" y1="73" x2="640" y2="73" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="751" y="66" text-anchor="middle">opent</text>
-        <rect x="460" y="45" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+      <g data-step="3">
+        <path d="M785,340 H905" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="845" y="333" text-anchor="middle">opdracht</text>
+        <rect x="905" y="312" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="985" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="985" y="355">Notify</text>
+      </g>
+      <g data-step="3">
+        <path d="M985,312 V73 H670" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="e-mail">
+          <rect x="972" y="214" width="26" height="18" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <path d="M973,215 L985,225 L997,215" fill="none" stroke="#334155" stroke-width="1.6"/>
+        </g>
+        <text class="pr-label" x="1004" y="228">e-mail</text>
+      </g>
+      <g>
+        <rect x="430" y="45" width="240" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
         <text class="pr-naam" x="550" y="69">Ondernemer</text>
         <text class="pr-mono" x="550" y="88">aangifte en berichten</text>
-        <path d="M640,94 H838 V130 H990 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="984" y="204" text-anchor="end">inloggen</text>
-        <rect x="860" y="215" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="940" y="239">Portaal</text>
-        <text class="pr-mono" x="940" y="258">MijnOverheid Zakelijk</text>
-        <circle cx="860" cy="215" r="13" fill="#154273"/><text class="pr-nr" x="860" y="220">4</text>
-        <path d="M860,253 H742" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="800" y="285" text-anchor="middle">uitvragen</text>
-        <rect x="582" y="230" width="160" height="46" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="662" y="250">BUS</text>
-        <text class="pr-mono" x="662" y="267">berichtenuitvraag</text>
-        <path d="M582,253 H535" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <path d="M558,253 V382 H535" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
       </g>
-
-      <text x="1070" y="432" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-
-      <!-- Legenda -->
-      <line x1="40" y1="465" x2="72" y2="465" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="470">FSC-verbinding</text>
-      <line x1="215" y1="465" x2="247" y2="465" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="470">Andere verbinding</text>
-      <rect x="415" y="458" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="470">Plug-in, per dienstverlener</text>
-      <rect x="640" y="458" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="470">Centraal, je sluit aan</text>
+      <g data-step="4">
+        <path d="M550,101 V435 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M550,328 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal (scherm)">
+          <rect x="535" y="121" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="538" y="124" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="550" y1="140" x2="550" y2="143" stroke="#334155" stroke-width="1.6"/>
+          <line x1="544" y1="144" x2="556" y2="144" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="571" y="136">portaal</text>
+        <text class="pr-label" x="556" y="262">leest</text>
+        <circle cx="550" cy="185" r="13" fill="#154273"/><text class="pr-nr" x="550" y="190">4</text>
+      </g>
+      <g data-step="1">
+        <path d="M150,368 V393 Q150,405 162,405 H543 A7,7 0 0 1 557,405 H683 Q695,405 695,393 V368" fill="none" stroke="#a34f00" stroke-width="4" stroke-linejoin="round" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="400" y="396" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="418" y="409">FSC</text>
+      </g>
+      <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
+      <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
+      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
     </svg>
   </figure>
   <p class="technieken">Gebruikte technieken: <strong>FSC</strong> &middot; <strong>LDV</strong> (Logboek Dataverwerkingen) &middot; <strong>Haven+</strong></p>
@@ -3444,7 +3435,7 @@ html:not(.js) {
     <li><strong>1 Besluit.</strong> Uit een proces komt een inhoudelijk bericht, bijvoorbeeld een vergunning.</li>
     <li><strong>2 Bericht klaarzetten.</strong> Via FSC in het eigen magazijn: de plug-in. In de demo: Belastingdienst. Er kunnen meer magazijnen zijn, zoals RVO.</li>
     <li><strong>3 Kennisgeving (melding).</strong> Binnen 48 uur een e-mail via de centrale notificatiedienst. Het bericht zelf gaat niet mee.</li>
-    <li><strong>4 Bericht lezen.</strong> De ondernemer logt in op het portaal MijnOverheid Zakelijk. Het portaal vraagt de berichten op bij de BUS, die ze uit alle magazijnen haalt.</li>
+    <li><strong>4 Bericht lezen.</strong> De ondernemer leest het bericht via een portaal, rechtstreeks uit de magazijnen.</li>
   </ol>
     <p>Samengevoegd uit twee dia's (23-11-2026): de functionele route met begrippen en de dia "Van bericht tot seintje" van een collega (bron daarvan: toelichting BA doel 5, 23 november 2026).</p>
     <p>Plug-in of centraal: #1538, tabel "Centraal versus per organisatie". Centraal, één keer: "Berichtenbox (berichtenuitvraag)", "Stelselregister (magazijnregister)", "Profielservice (nagebootst)", "Notificatiedienst (echt)", "Printstraat (nagebootst)", "Business wallet (nagebootst)". Per organisatie, via de plug-in: "Berichtenmagazijn", "Eigen database voor magazijn en logboek", "Aanmelding in het magazijnregister", "FSC-aansluiting", "Instellingen richting profiel en notificatie", "Statuspagina in de Fundament-console". De notificatiedienst is dus geen plug-in: je sluit erop aan.</p>
@@ -3461,8 +3452,8 @@ html:not(.js) {
 <section class="slide" aria-roledescription="dia" aria-label="Attendering: notificatie aanvragen">
   <ol class="route" aria-label="Route van het bericht"><li data-staat="nu" aria-current="step">Attendering</li><li data-staat="straks">Aangifte</li><li data-staat="straks">Besluit</li><li data-staat="straks">Kennisgeving (melding)</li><li data-staat="straks">Besluit lezen</li><li class="route__concept">Concept</li></ol>
   <h2 class="title">Btw-aangifte blijft uit: herinnering versturen</h2>
-  <figure class="plaat plaat-praktijk proces-focus" data-focus="1 r1 3n">
-    <svg viewBox="0 0 1100 480" role="img" aria-labelledby="rondje1-titel-1 rondje1-uitleg-1" xmlns="http://www.w3.org/2000/svg">
+  <figure class="plaat plaat-praktijk proces-focus" data-focus="1">
+    <svg viewBox="0 0 1100 515" role="img" aria-labelledby="rondje1-titel-1 rondje1-uitleg-1" xmlns="http://www.w3.org/2000/svg">
       <title id="rondje1-titel-1">Van procesapplicatie rechtstreeks naar de notificatiedienst</title>
       <desc id="rondje1-uitleg-1">Zonder berichtenmagazijn. De procesapplicatie van de dienstverlener vraagt via FSC rechtstreeks een notificatie aan bij de NMC van de notificatiedienst. De NMC laat Notify een e-mail sturen naar de mailbox van de ondernemer. De ondernemer opent de e-mail, logt in op het portaal van de dienstverlener en doet daar de btw-aangifte. De aangifte gaat naar de procesapplicatie. In het portaal staat daarna een pdf met de aangifte en het besluit. Het berichtenmagazijn doet in deze stappen niet mee.</desc>
       <defs>
@@ -3481,140 +3472,267 @@ html:not(.js) {
         </style>
       </defs>
 
-      <!-- Zones -->
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
-
-      <rect x="20" y="140" width="290" height="300" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <text class="pr-zone-t" x="36" y="167">DIENSTVERLENER</text>
-      <text class="pr-zone-s" x="36" y="185">eigen omgeving</text>
-
-      <rect x="335" y="128" width="460" height="320" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="351" y="158" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
-      <rect x="350" y="185" width="200" height="245" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-sub-t" x="364" y="205">PLUG-IN</text>
-      <text class="pr-zone-s" x="364" y="221">per dienstverlener</text>
-      <rect x="565" y="185" width="215" height="245" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-sub-t" x="579" y="205">CENTRAAL</text>
-      <text class="pr-zone-s" x="579" y="221">je sluit aan</text>
-
-      <rect x="815" y="140" width="265" height="300" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
-      <text class="pr-zone-t" x="831" y="167">BUITEN</text>
-      <text class="pr-zone-t" x="831" y="185">FUNDAMENT</text>
-
-      <!-- Stap 1: besluit -->
-      <g data-fase="1">
-        <rect x="115" y="302" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="326">Procesapplicatie</text>
-        <text class="pr-mono" x="205" y="345">herinnering versturen</text>
-        
-        <circle cx="115" cy="302" r="13" fill="#154273"/><text class="pr-nr" x="115" y="307">1</text>
+      <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
+      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
+      <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
+      <rect x="575" y="200" width="240" height="272" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-sub-t" x="589" y="220">CENTRAAL</text>
+      <text class="pr-zone-s" x="589" y="236">je sluit aan</text>
+      <rect x="850" y="160" width="230" height="325" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
+      <text class="pr-zone-t" x="862" y="187">BUITEN</text>
+      <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
+      <g data-fase="r1b">
+        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
+        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="239">Portaal</text>
+        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
+        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
-
-      <!-- Stap 2: bericht klaarzetten in het eigen magazijn (plug-in) -->
+      <g data-fase="1">
+        <rect x="60" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="336">Procesapplicatie</text>
+        <text class="pr-mono" x="150" y="355">herinnering versturen</text>
+        <circle cx="60" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="60" y="317">1</text>
+      </g>
       <g data-fase="2f">
-        <path d="M295,330 H365" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
-        <rect x="312" y="321" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
-        <text class="pr-fsc-t" x="330" y="334">FSC</text>
+        <path d="M240,340 H335" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="266" y="331" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="284" y="344">FSC</text>
       </g>
       <g data-fase="2">
-        <rect x="365" y="232" width="170" height="118" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="450" y="287">Magazijn</text>
-        <text class="pr-mono" x="450" y="306">Belastingdienst</text>
-        <circle cx="535" cy="232" r="13" fill="#154273"/><text class="pr-nr" x="535" y="237">2</text>
-        <!-- Ander magazijn: kan, maar niet in de demo -->
+        <rect x="335" y="285" width="170" height="110" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="420" y="336">Magazijn</text>
+        <text class="pr-mono" x="420" y="355">Belastingdienst</text>
+        <circle cx="505" cy="285" r="13" fill="#154273"/><text class="pr-nr" x="505" y="290">2</text>
         <g opacity="0.4">
-          <rect x="365" y="362" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/>
-          <text class="pr-naam" x="450" y="380">Magazijn</text>
-          <text class="pr-mono" x="450" y="395">RVO</text>
+          <rect x="335" y="415" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/>
+        <text class="pr-naam" x="420" y="433">Magazijn</text>
+        <text class="pr-mono" x="420" y="448">RVO</text>
         </g>
-        <text class="pr-zone-s" x="450" y="420" text-anchor="middle">meer magazijnen mogelijk</text>
+        <text class="pr-zone-s" x="420" y="468" text-anchor="middle">meer magazijnen mogelijk</text>
       </g>
-
-      <!-- Stap 3: kennisgeving (melding) per e-mail -->
       <g data-fase="3s">
-        <path d="M535,305 H672 V330" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+        <path d="M505,352 H543 A7,7 0 0 1 557,352 H605" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="580" y="300">gebeurtenisbericht</text>
-        </g>
-      <g data-fase="3n"><rect x="582" y="330" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="672" y="354">NMC</text>
-        <text class="pr-mono" x="672" y="373">notificatiedienst</text>
-        <circle cx="582" cy="330" r="13" fill="#154273"/><text class="pr-nr" x="582" y="335">3</text>
-        </g>
-      <g data-fase="3m"><line x1="762" y1="358" x2="860" y2="358" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="810" y="349" text-anchor="middle">opdracht</text>
-        <rect x="860" y="330" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="354">Notify</text>
-        <text class="pr-mono" x="960" y="373">verstuurt de e-mail</text>
-        <line x1="1040" y1="330" x2="1040" y2="101" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="1034" y="305" text-anchor="end">e-mail</text>
-        
       </g>
-
-      <!-- Stap 4: terug naar de dienstverlener: inloggen op het portaal, bericht lezen -->
-      <g data-fase="4">
-        <line x1="860" y1="73" x2="640" y2="73" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="751" y="66" text-anchor="middle">opent</text>
-        <rect x="460" y="45" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+      <g data-fase="3n">
+        <rect x="605" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="695" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="695" y="355">NMC</text>
+        <circle cx="785" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="785" y="317">3</text>
+      </g>
+      <g data-fase="3m1">
+        <path d="M785,340 H905" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="845" y="333" text-anchor="middle">opdracht</text>
+        <rect x="905" y="312" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="985" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="985" y="355">Notify</text>
+      </g>
+      <g data-fase="3m2">
+        <path d="M985,312 V73 H670" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="e-mail">
+          <rect x="972" y="214" width="26" height="18" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <path d="M973,215 L985,225 L997,215" fill="none" stroke="#334155" stroke-width="1.6"/>
+        </g>
+        <text class="pr-label" x="1004" y="228">e-mail</text>
+      </g>
+      <g data-fase="on">
+        <rect x="430" y="45" width="240" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
         <text class="pr-naam" x="550" y="69">Ondernemer</text>
         <text class="pr-mono" x="550" y="88">aangifte en berichten</text>
       </g>
       <g data-fase="4u">
-        <path d="M640,94 H838 V130 H990 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="984" y="204" text-anchor="end">inloggen</text>
-        <rect x="860" y="215" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="940" y="239">Portaal</text>
-        <text class="pr-mono" x="940" y="258">MijnOverheid Zakelijk</text>
-        <circle cx="860" cy="215" r="13" fill="#154273"/><text class="pr-nr" x="860" y="220">4</text>
-        <path d="M860,253 H742" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="800" y="285" text-anchor="middle">uitvragen</text>
-        <rect x="582" y="230" width="160" height="46" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="662" y="250">BUS</text>
-        <text class="pr-mono" x="662" y="267">berichtenuitvraag</text>
-        <path d="M582,253 H535" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <path d="M558,253 V382 H535" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M550,101 V435 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M550,328 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal (scherm)">
+          <rect x="535" y="121" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="538" y="124" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="550" y1="140" x2="550" y2="143" stroke="#334155" stroke-width="1.6"/>
+          <line x1="544" y1="144" x2="556" y2="144" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="571" y="136">portaal</text>
+        <text class="pr-label" x="556" y="262">leest</text>
+        <circle cx="550" cy="185" r="13" fill="#154273"/><text class="pr-nr" x="550" y="190">4</text>
       </g>
-
-      
-      <!-- Procesapplicatie rechtstreeks naar de NMC, via FSC -->
       <g data-fase="r1">
-        <path d="M295,354 H582" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
-        <rect x="420" y="345" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
-        <text class="pr-fsc-t" x="438" y="358">FSC</text>
+        <path d="M150,368 V393 Q150,405 162,405 H543 A7,7 0 0 1 557,405 H683 Q695,405 695,393 V368" fill="none" stroke="#a34f00" stroke-width="4" stroke-linejoin="round" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="400" y="396" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="418" y="409">FSC</text>
       </g>
-      <!-- Aangifte vanuit het portaal, pdf in het portaal -->
-      <g data-fase="r1b">
-        <path d="M460,80 H250 V222" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="354" y="74" text-anchor="middle">inloggen</text>
-        <rect x="115" y="222" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="246">Portaal</text>
-        <text class="pr-mono" x="205" y="265">Belastingdienst</text>
-        <line x1="205" y1="278" x2="205" y2="302" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="213" y="294">aangifte</text>
-      </g>
-      <g data-fase="mb">
-        <rect x="860" y="45" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="69">Mailbox</text>
-        <text class="pr-mono" x="960" y="88">kennisgeving (melding)</text>
-      </g>
-      <text x="1070" y="432" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-
-      <!-- Legenda -->
-      <line x1="40" y1="465" x2="72" y2="465" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="470">FSC-verbinding</text>
-      <line x1="215" y1="465" x2="247" y2="465" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="470">Andere verbinding</text>
-      <rect x="415" y="458" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="470">Plug-in, per dienstverlener</text>
-      <rect x="640" y="458" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="470">Centraal, je sluit aan</text>
-      <rect x="845" y="458" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="470">Niet in de demo</text>
+      <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
+      <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
+      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
     </svg>
   </figure>
-  <aside class="notes"><p><strong>Laat zien</strong> · demo: FSC-aansluiting</p><ol><li><strong>Verzoek</strong> De procesapplicatie vraagt de NMC om een e-mail naar de ondernemer.</li><li><strong>Via FSC</strong> Over de FSC-aansluiting, met een contract tussen beide partijen.</li><li><strong>NMC</strong> De notificatiedienst ontvangt het verzoek.</li></ol><p><strong>Achtergrond</strong></p>
+  <aside class="notes"><p><strong>Gedachtegang</strong> De procesapplicatie signaleert dat de btw-aangifte uitblijft en wil een herinnering sturen. Alleen de procesapplicatie licht op; de verbinding met de notificatiedienst volgt op de volgende dia.</p><p><strong>Laat zien</strong> · demo: FSC-aansluiting</p><ol><li><strong>Verzoek</strong> De procesapplicatie vraagt de NMC om een e-mail naar de ondernemer.</li><li><strong>Via FSC</strong> Over de FSC-aansluiting, met een contract tussen beide partijen.</li><li><strong>NMC</strong> De notificatiedienst ontvangt het verzoek.</li></ol><p><strong>Achtergrond</strong></p>
     <p>Voorbereiding, vóór stap 1 van de simulatie. De procesapplicatie van de Belastingdienst stuurt via FSC rechtstreeks een notificatieverzoek naar de NMC, zonder magazijn.</p>
     <p>[aanvullen: welke tekst staat er in deze eerste e-mail? Bijvoorbeeld een uitnodiging om de btw-aangifte te doen.]</p>
+  </aside>
+</section>
+
+<!-- ===== Attendering: FSC Directory (nieuw) ===== -->
+<section class="slide" aria-roledescription="dia" aria-label="Attendering: FSC Directory">
+  <ol class="route" aria-label="Route van het bericht"><li data-staat="nu" aria-current="step">Attendering</li><li data-staat="straks">Aangifte</li><li data-staat="straks">Besluit</li><li data-staat="straks">Kennisgeving (melding)</li><li data-staat="straks">Besluit lezen</li><li class="route__concept">Concept</li></ol>
+  <h2 class="title">Eerst een veilige verbinding: FSC</h2>
+  <div class="ag-dia" data-demo="directory">
+    <div class="ag-links">
+      <figure class="plaat plaat-praktijk proces-focus ag-plaat" data-focus="1 r1 3n">
+    <svg viewBox="0 0 1100 515" role="img" aria-labelledby="rondje1-titel-1-dir rondje1-uitleg-1-dir" xmlns="http://www.w3.org/2000/svg">
+      <title id="rondje1-titel-1-dir">Van procesapplicatie rechtstreeks naar de notificatiedienst</title>
+      <desc id="rondje1-uitleg-1-dir">Zonder berichtenmagazijn. De procesapplicatie van de dienstverlener vraagt via FSC rechtstreeks een notificatie aan bij de NMC van de notificatiedienst. De NMC laat Notify een e-mail sturen naar de mailbox van de ondernemer. De ondernemer opent de e-mail, logt in op het portaal van de dienstverlener en doet daar de btw-aangifte. De aangifte gaat naar de procesapplicatie. In het portaal staat daarna een pdf met de aangifte en het besluit. Het berichtenmagazijn doet in deze stappen niet mee.</desc>
+      <defs>
+        <marker id="pr-pijl-dir" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker>
+        <marker id="pr-pijl-fsc-dir" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a34f00"/></marker>
+        <style>
+          .pr-zone-t { font-size: 15px; font-weight: 700; letter-spacing: 0.08em; fill: #1f2937; }
+          .pr-sub-t { font-size: 12.5px; font-weight: 700; letter-spacing: 0.06em; fill: #1f2937; }
+          .pr-zone-s { font-size: 12px; font-style: italic; fill: #475569; }
+          .pr-naam { font-size: 16px; font-weight: 600; fill: #111827; text-anchor: middle; }
+          .pr-mono { font-family: ui-monospace, Menlo, monospace; font-size: 11px; fill: #374151; text-anchor: middle; }
+          .pr-label { font-family: ui-monospace, Menlo, monospace; font-size: 11px; fill: #374151; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
+          .pr-fsc-t { font-size: 11px; font-weight: 700; fill: #a34f00; text-anchor: middle; letter-spacing: 0.04em; }
+          .pr-nr { font-size: 13px; font-weight: 700; fill: #fff; text-anchor: middle; }
+          .pr-leg { font-size: 13px; fill: #374151; }
+        </style>
+      </defs>
+
+      <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
+      <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
+      <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
+      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
+      <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
+      <rect x="575" y="200" width="240" height="272" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-sub-t" x="589" y="220">CENTRAAL</text>
+      <text class="pr-zone-s" x="589" y="236">je sluit aan</text>
+      <rect x="850" y="160" width="230" height="325" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
+      <text class="pr-zone-t" x="862" y="187">BUITEN</text>
+      <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
+      <g data-fase="r1b">
+        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
+        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="239">Portaal</text>
+        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
+        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="158" y="296">aangifte</text>
+      </g>
+      <g data-fase="1">
+        <rect x="60" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="345">Procesapplicatie</text>
+        <circle cx="60" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="60" y="317">1</text>
+      </g>
+      <g data-fase="2f">
+        <path d="M240,340 H335" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="266" y="331" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="284" y="344">FSC</text>
+      </g>
+      <g data-fase="2">
+        <rect x="335" y="285" width="170" height="110" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="420" y="336">Magazijn</text>
+        <text class="pr-mono" x="420" y="355">Belastingdienst</text>
+        <circle cx="505" cy="285" r="13" fill="#154273"/><text class="pr-nr" x="505" y="290">2</text>
+        <g opacity="0.4">
+          <rect x="335" y="415" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/>
+        <text class="pr-naam" x="420" y="433">Magazijn</text>
+        <text class="pr-mono" x="420" y="448">RVO</text>
+        </g>
+        <text class="pr-zone-s" x="420" y="468" text-anchor="middle">meer magazijnen mogelijk</text>
+      </g>
+      <g data-fase="3s">
+        <path d="M505,352 H543 A7,7 0 0 1 557,352 H605" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="580" y="300">gebeurtenisbericht</text>
+      </g>
+      <g data-fase="3n">
+        <rect x="605" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="695" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="695" y="355">NMC</text>
+        <circle cx="785" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="785" y="317">3</text>
+      </g>
+      <g data-fase="3m1">
+        <path d="M785,340 H905" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="845" y="333" text-anchor="middle">opdracht</text>
+        <rect x="905" y="312" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="985" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="985" y="355">Notify</text>
+      </g>
+      <g data-fase="3m2">
+        <path d="M985,312 V73 H670" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="e-mail">
+          <rect x="972" y="214" width="26" height="18" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <path d="M973,215 L985,225 L997,215" fill="none" stroke="#334155" stroke-width="1.6"/>
+        </g>
+        <text class="pr-label" x="1004" y="228">e-mail</text>
+      </g>
+      <g data-fase="on">
+        <rect x="430" y="45" width="240" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="550" y="69">Ondernemer</text>
+        <text class="pr-mono" x="550" y="88">aangifte en berichten</text>
+      </g>
+      <g data-fase="4u">
+        <path d="M550,101 V435 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M550,328 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal (scherm)">
+          <rect x="535" y="121" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="538" y="124" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="550" y1="140" x2="550" y2="143" stroke="#334155" stroke-width="1.6"/>
+          <line x1="544" y1="144" x2="556" y2="144" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="571" y="136">portaal</text>
+        <text class="pr-label" x="556" y="262">leest</text>
+        <circle cx="550" cy="185" r="13" fill="#154273"/><text class="pr-nr" x="550" y="190">4</text>
+      </g>
+      <g data-fase="r1">
+        <path d="M150,368 V393 Q150,405 162,405 H543 A7,7 0 0 1 557,405 H683 Q695,405 695,393 V368" fill="none" stroke="#a34f00" stroke-width="4" stroke-linejoin="round" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="400" y="396" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="418" y="409">FSC</text>
+      </g>
+      <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
+      <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
+      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
+    </svg>
+  </figure>
+      <ol class="ag-flow"></ol>
+    </div>
+    <div class="ag-demo ag-demo--directory">
+      <p class="ag-demo__bron">Nu: Directory van het MOZa FSC-testnet &middot; de RINIS-directory volgt</p>
+      <!-- DIRECTORY-URL: vervang src door de Directory van RINIS zodra die er is -->
+      <iframe loading="lazy" src="https://dirui-test-mft-tp9.rig.prd1.gn2.quattro.rijksapps.nl/" title="Demo: OpenFSC Directory"></iframe>
+    </div>
+  </div>
+  <aside class="notes"><p><strong>Gedachtegang</strong> Voordat de procesapplicatie de herinnering kan versturen, komt er eerst een veilige verbinding met de notificatiedienst: FSC. De FSC-lijn licht op; na een klik de Directory.</p>
+    <p><strong>Toelichting door RINIS (OpenFSC).</strong> FSC (Federatieve Service Connectiviteit) is een afsprakenstelsel voor een beveiligde verbinding tussen overheidsorganisaties. Organisaties leggen in digitale contracten vast wie welke gegevens mag opvragen, en herkennen elkaar aan hun PKIoverheid-certificaat.</p>
+    <p><strong>Laat zien</strong> · demo: OpenFSC Directory</p><ol><li><strong>Aanmelden</strong> De Manager van elke partij meldt zich aan bij de Directory; die controleert het certificaat.</li><li><strong>Dienst publiceren</strong> De notificatiedienst publiceert de dienst notificaties in de Directory.</li><li><strong>Contract</strong> De dienstverlener vraagt toegang; beide Managers tekenen. Dat levert de grant op.</li><li><strong>Veilig aanroepen</strong> De Outway haalt een token bij de Manager van de NMC en stuurt het verzoek over mTLS naar de Inway.</li></ol>
+    <p><strong>Achtergrond</strong></p><p>Rechts nu de Directory van het MOZa FSC-testnet (MinBZK/moza-fsc-testnet, group moza-fbs-test): https://dirui-test-mft-tp9.rig.prd1.gn2.quattro.rijksapps.nl/. De URL van de RINIS-directory volgt op 25 november; vervang dan de src van de iframe (commentaar DIRECTORY-URL). Tekst over FSC uit de uitwerking van team Turing (toon.rijks.app/team-turing/…fsc-notificatiedienst).</p>
   </aside>
 </section>
 
@@ -3622,8 +3740,8 @@ html:not(.js) {
 <section class="slide" data-melding="herinnering" aria-roledescription="dia" aria-label="Attendering: herinnering via Notify">
   <ol class="route" aria-label="Route van het bericht"><li data-staat="nu" aria-current="step">Attendering</li><li data-staat="straks">Aangifte</li><li data-staat="straks">Besluit</li><li data-staat="straks">Kennisgeving (melding)</li><li data-staat="straks">Besluit lezen</li><li class="route__concept">Concept</li></ol>
   <h2 class="title">Notify stuurt een attendering</h2>
-  <figure class="plaat plaat-praktijk proces-focus" data-focus="3n 3m1 3m2" data-doorloop="3n 3m1 3m2">
-    <svg viewBox="0 0 1100 480" role="img" aria-labelledby="rondje1-titel-2 rondje1-uitleg-2" xmlns="http://www.w3.org/2000/svg">
+  <figure class="plaat plaat-praktijk proces-focus" data-focus="3n 3m1 3m2" data-doorloop="3n 3m1 3m2 on">
+    <svg viewBox="0 0 1100 515" role="img" aria-labelledby="rondje1-titel-2 rondje1-uitleg-2" xmlns="http://www.w3.org/2000/svg">
       <title id="rondje1-titel-2">Van procesapplicatie rechtstreeks naar de notificatiedienst</title>
       <desc id="rondje1-uitleg-2">Zonder berichtenmagazijn. De procesapplicatie van de dienstverlener vraagt via FSC rechtstreeks een notificatie aan bij de NMC van de notificatiedienst. De NMC laat Notify een e-mail sturen naar de mailbox van de ondernemer. De ondernemer opent de e-mail, logt in op het portaal van de dienstverlener en doet daar de btw-aangifte. De aangifte gaat naar de procesapplicatie. In het portaal staat daarna een pdf met de aangifte en het besluit. Het berichtenmagazijn doet in deze stappen niet mee.</desc>
       <defs>
@@ -3642,132 +3760,112 @@ html:not(.js) {
         </style>
       </defs>
 
-      <!-- Zones -->
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
-
-      <rect x="20" y="140" width="290" height="300" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <text class="pr-zone-t" x="36" y="167">DIENSTVERLENER</text>
-      <text class="pr-zone-s" x="36" y="185">eigen omgeving</text>
-
-      <rect x="335" y="128" width="460" height="320" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="351" y="158" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
-      <rect x="350" y="185" width="200" height="245" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-sub-t" x="364" y="205">PLUG-IN</text>
-      <text class="pr-zone-s" x="364" y="221">per dienstverlener</text>
-      <rect x="565" y="185" width="215" height="245" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-sub-t" x="579" y="205">CENTRAAL</text>
-      <text class="pr-zone-s" x="579" y="221">je sluit aan</text>
-
-      <rect x="815" y="140" width="265" height="300" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
-      <text class="pr-zone-t" x="831" y="167">BUITEN</text>
-      <text class="pr-zone-t" x="831" y="185">FUNDAMENT</text>
-
-      <!-- Stap 1: besluit -->
-      <g data-fase="1">
-        <rect x="115" y="302" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="326">Procesapplicatie</text>
-        
-        <circle cx="115" cy="302" r="13" fill="#154273"/><text class="pr-nr" x="115" y="307">1</text>
+      <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
+      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
+      <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
+      <rect x="575" y="200" width="240" height="272" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-sub-t" x="589" y="220">CENTRAAL</text>
+      <text class="pr-zone-s" x="589" y="236">je sluit aan</text>
+      <rect x="850" y="160" width="230" height="325" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
+      <text class="pr-zone-t" x="862" y="187">BUITEN</text>
+      <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
+      <g data-fase="r1b">
+        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
+        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="239">Portaal</text>
+        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
+        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
-
-      <!-- Stap 2: bericht klaarzetten in het eigen magazijn (plug-in) -->
+      <g data-fase="1">
+        <rect x="60" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="345">Procesapplicatie</text>
+        <circle cx="60" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="60" y="317">1</text>
+      </g>
       <g data-fase="2f">
-        <path d="M295,330 H365" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
-        <rect x="312" y="321" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
-        <text class="pr-fsc-t" x="330" y="334">FSC</text>
+        <path d="M240,340 H335" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="266" y="331" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="284" y="344">FSC</text>
       </g>
       <g data-fase="2">
-        <rect x="365" y="232" width="170" height="118" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="450" y="287">Magazijn</text>
-        <text class="pr-mono" x="450" y="306">Belastingdienst</text>
-        <circle cx="535" cy="232" r="13" fill="#154273"/><text class="pr-nr" x="535" y="237">2</text>
-        <!-- Ander magazijn: kan, maar niet in de demo -->
+        <rect x="335" y="285" width="170" height="110" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="420" y="336">Magazijn</text>
+        <text class="pr-mono" x="420" y="355">Belastingdienst</text>
+        <circle cx="505" cy="285" r="13" fill="#154273"/><text class="pr-nr" x="505" y="290">2</text>
         <g opacity="0.4">
-          <rect x="365" y="362" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/>
-          <text class="pr-naam" x="450" y="380">Magazijn</text>
-          <text class="pr-mono" x="450" y="395">RVO</text>
+          <rect x="335" y="415" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/>
+        <text class="pr-naam" x="420" y="433">Magazijn</text>
+        <text class="pr-mono" x="420" y="448">RVO</text>
         </g>
-        <text class="pr-zone-s" x="450" y="420" text-anchor="middle">meer magazijnen mogelijk</text>
+        <text class="pr-zone-s" x="420" y="468" text-anchor="middle">meer magazijnen mogelijk</text>
       </g>
-
-      <!-- Stap 3: kennisgeving (melding) per e-mail -->
       <g data-fase="3s">
-        <path d="M535,305 H672 V330" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+        <path d="M505,352 H543 A7,7 0 0 1 557,352 H605" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="580" y="300">gebeurtenisbericht</text>
-        </g>
-      <g data-fase="3n"><rect x="582" y="330" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="672" y="354">NMC</text>
-        <text class="pr-mono" x="672" y="373">notificatiedienst</text>
-        <circle cx="582" cy="330" r="13" fill="#154273"/><text class="pr-nr" x="582" y="335">3</text>
-        </g>
-      <g data-fase="3m1"><line x1="762" y1="358" x2="860" y2="358" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="810" y="349" text-anchor="middle">opdracht</text>
-        <rect x="860" y="330" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="354">Notify</text>
-        <text class="pr-mono" x="960" y="373">verstuurt de e-mail</text>
-        </g>
-      <g data-fase="3m2"><line x1="1040" y1="330" x2="1040" y2="101" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="1034" y="305" text-anchor="end">e-mail</text>
-        <rect x="860" y="45" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="69">Mailbox</text>
-        <text class="pr-mono" x="960" y="88">kennisgeving (melding)</text>
       </g>
-
-      <!-- Stap 4: terug naar de dienstverlener: inloggen op het portaal, bericht lezen -->
-      <g data-fase="4">
-        <line x1="860" y1="73" x2="640" y2="73" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="751" y="66" text-anchor="middle">opent</text>
-        <rect x="460" y="45" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+      <g data-fase="3n">
+        <rect x="605" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="695" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="695" y="355">NMC</text>
+        <circle cx="785" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="785" y="317">3</text>
+      </g>
+      <g data-fase="3m1">
+        <path d="M785,340 H905" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="845" y="333" text-anchor="middle">opdracht</text>
+        <rect x="905" y="312" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="985" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="985" y="355">Notify</text>
+      </g>
+      <g data-fase="3m2">
+        <path d="M985,312 V73 H670" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="e-mail">
+          <rect x="972" y="214" width="26" height="18" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <path d="M973,215 L985,225 L997,215" fill="none" stroke="#334155" stroke-width="1.6"/>
+        </g>
+        <text class="pr-label" x="1004" y="228">e-mail</text>
+      </g>
+      <g data-fase="on">
+        <rect x="430" y="45" width="240" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
         <text class="pr-naam" x="550" y="69">Ondernemer</text>
         <text class="pr-mono" x="550" y="88">aangifte en berichten</text>
       </g>
       <g data-fase="4u">
-        <path d="M640,94 H838 V130 H990 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="984" y="204" text-anchor="end">inloggen</text>
-        <rect x="860" y="215" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="940" y="239">Portaal</text>
-        <text class="pr-mono" x="940" y="258">MijnOverheid Zakelijk</text>
-        <circle cx="860" cy="215" r="13" fill="#154273"/><text class="pr-nr" x="860" y="220">4</text>
-        <path d="M860,253 H742" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="800" y="285" text-anchor="middle">uitvragen</text>
-        <rect x="582" y="230" width="160" height="46" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="662" y="250">BUS</text>
-        <text class="pr-mono" x="662" y="267">berichtenuitvraag</text>
-        <path d="M582,253 H535" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <path d="M558,253 V382 H535" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M550,101 V435 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M550,328 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal (scherm)">
+          <rect x="535" y="121" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="538" y="124" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="550" y1="140" x2="550" y2="143" stroke="#334155" stroke-width="1.6"/>
+          <line x1="544" y1="144" x2="556" y2="144" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="571" y="136">portaal</text>
+        <text class="pr-label" x="556" y="262">leest</text>
+        <circle cx="550" cy="185" r="13" fill="#154273"/><text class="pr-nr" x="550" y="190">4</text>
       </g>
-
-      
-      <!-- Procesapplicatie rechtstreeks naar de NMC, via FSC -->
       <g data-fase="r1">
-        <path d="M205,358 V423 Q205,435 217,435 H660 Q672,435 672,423 V386" fill="none" stroke="#a34f00" stroke-width="4" stroke-linejoin="round" marker-end="url(#pr-pijl-fsc)"/>
-        <rect x="420" y="426" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
-        <text class="pr-fsc-t" x="438" y="439">FSC</text>
+        <path d="M150,368 V393 Q150,405 162,405 H543 A7,7 0 0 1 557,405 H683 Q695,405 695,393 V368" fill="none" stroke="#a34f00" stroke-width="4" stroke-linejoin="round" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="400" y="396" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="418" y="409">FSC</text>
       </g>
-      <!-- Aangifte vanuit het portaal, pdf in het portaal -->
-      <g data-fase="r1b">
-        <path d="M460,80 H250 V222" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="354" y="74" text-anchor="middle">inloggen</text>
-        <rect x="115" y="222" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="246">Portaal</text>
-        <text class="pr-mono" x="205" y="265">Belastingdienst</text>
-        <line x1="205" y1="278" x2="205" y2="302" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="213" y="294">aangifte</text>
-      </g>
-      <text x="1070" y="432" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-
-      <!-- Legenda -->
-      <line x1="40" y1="465" x2="72" y2="465" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="470">FSC-verbinding</text>
-      <line x1="215" y1="465" x2="247" y2="465" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="470">Andere verbinding</text>
-      <rect x="415" y="458" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="470">Plug-in, per dienstverlener</text>
-      <rect x="640" y="458" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="470">Centraal, je sluit aan</text>
-      <rect x="845" y="458" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="470">Niet in de demo</text>
+      <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
+      <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
+      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
     </svg>
   </figure>
   <aside class="notes"><p><strong>Laat zien</strong> · demo: Notificatie sturen</p><ol><li><strong>Opdracht</strong> De NMC geeft Notify de opdracht een e-mail te sturen.</li><li><strong>E-mail</strong> Notify stuurt de e-mail. Notify gebruikt NotifyNL en staat buiten Fundament.</li><li><strong>Attendering</strong> “Herinnering: doe uw btw-aangifte voor Q3 2026.”</li><li><strong>2 Outlook</strong> De ondernemer opent Outlook: er staat een e-mail van Fieldlab (buiten de presentatie).</li></ol><p>De pop-up verschijnt vanzelf onderin</p><p><strong>Achtergrond</strong></p>
@@ -3781,8 +3879,8 @@ html:not(.js) {
   <h2 class="title">Btw-aangifte doen in het portaal</h2>
   <div class="ag-dia" data-demo="aangifte">
     <div class="ag-links">
-      <figure class="plaat plaat-praktijk proces-focus ag-plaat" data-focus="4 r1b 1 mb">
-    <svg viewBox="0 0 1100 480" role="img" aria-labelledby="rondje1-titel-3 rondje1-uitleg-3" xmlns="http://www.w3.org/2000/svg">
+      <figure class="plaat plaat-praktijk proces-focus ag-plaat" data-focus="on r1b 1">
+    <svg viewBox="0 0 1100 515" role="img" aria-labelledby="rondje1-titel-3 rondje1-uitleg-3" xmlns="http://www.w3.org/2000/svg">
       <title id="rondje1-titel-3">Van procesapplicatie rechtstreeks naar de notificatiedienst</title>
       <desc id="rondje1-uitleg-3">Zonder berichtenmagazijn. De procesapplicatie van de dienstverlener vraagt via FSC rechtstreeks een notificatie aan bij de NMC van de notificatiedienst. De NMC laat Notify een e-mail sturen naar de mailbox van de ondernemer. De ondernemer opent de e-mail, logt in op het portaal van de dienstverlener en doet daar de btw-aangifte. De aangifte gaat naar de procesapplicatie. In het portaal staat daarna een pdf met de aangifte en het besluit. Het berichtenmagazijn doet in deze stappen niet mee.</desc>
       <defs>
@@ -3801,134 +3899,112 @@ html:not(.js) {
         </style>
       </defs>
 
-      <!-- Zones -->
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
-
-      <rect x="20" y="140" width="290" height="300" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <text class="pr-zone-t" x="36" y="167">DIENSTVERLENER</text>
-      <text class="pr-zone-s" x="36" y="185">eigen omgeving</text>
-
-      <rect x="335" y="128" width="460" height="320" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="351" y="158" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
-      <rect x="350" y="185" width="200" height="245" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-sub-t" x="364" y="205">PLUG-IN</text>
-      <text class="pr-zone-s" x="364" y="221">per dienstverlener</text>
-      <rect x="565" y="185" width="215" height="245" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-sub-t" x="579" y="205">CENTRAAL</text>
-      <text class="pr-zone-s" x="579" y="221">je sluit aan</text>
-
-      <rect x="815" y="140" width="265" height="300" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
-      <text class="pr-zone-t" x="831" y="167">BUITEN</text>
-      <text class="pr-zone-t" x="831" y="185">FUNDAMENT</text>
-
-      <!-- Stap 1: besluit -->
-      <g data-fase="1">
-        <rect x="115" y="302" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="326">Procesapplicatie</text>
-        
-        <circle cx="115" cy="302" r="13" fill="#154273"/><text class="pr-nr" x="115" y="307">1</text>
+      <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
+      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
+      <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
+      <rect x="575" y="200" width="240" height="272" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-sub-t" x="589" y="220">CENTRAAL</text>
+      <text class="pr-zone-s" x="589" y="236">je sluit aan</text>
+      <rect x="850" y="160" width="230" height="325" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
+      <text class="pr-zone-t" x="862" y="187">BUITEN</text>
+      <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
+      <g data-fase="r1b">
+        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
+        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="239">Portaal</text>
+        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
+        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
-
-      <!-- Stap 2: bericht klaarzetten in het eigen magazijn (plug-in) -->
+      <g data-fase="1">
+        <rect x="60" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="345">Procesapplicatie</text>
+        <circle cx="60" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="60" y="317">1</text>
+      </g>
       <g data-fase="2f">
-        <path d="M295,330 H365" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
-        <rect x="312" y="321" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
-        <text class="pr-fsc-t" x="330" y="334">FSC</text>
+        <path d="M240,340 H335" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="266" y="331" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="284" y="344">FSC</text>
       </g>
       <g data-fase="2">
-        <rect x="365" y="232" width="170" height="118" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="450" y="287">Magazijn</text>
-        <text class="pr-mono" x="450" y="306">Belastingdienst</text>
-        <circle cx="535" cy="232" r="13" fill="#154273"/><text class="pr-nr" x="535" y="237">2</text>
-        <!-- Ander magazijn: kan, maar niet in de demo -->
+        <rect x="335" y="285" width="170" height="110" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="420" y="336">Magazijn</text>
+        <text class="pr-mono" x="420" y="355">Belastingdienst</text>
+        <circle cx="505" cy="285" r="13" fill="#154273"/><text class="pr-nr" x="505" y="290">2</text>
         <g opacity="0.4">
-          <rect x="365" y="362" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/>
-          <text class="pr-naam" x="450" y="380">Magazijn</text>
-          <text class="pr-mono" x="450" y="395">RVO</text>
+          <rect x="335" y="415" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/>
+        <text class="pr-naam" x="420" y="433">Magazijn</text>
+        <text class="pr-mono" x="420" y="448">RVO</text>
         </g>
-        <text class="pr-zone-s" x="450" y="420" text-anchor="middle">meer magazijnen mogelijk</text>
+        <text class="pr-zone-s" x="420" y="468" text-anchor="middle">meer magazijnen mogelijk</text>
       </g>
-
-      <!-- Stap 3: kennisgeving (melding) per e-mail -->
       <g data-fase="3s">
-        <path d="M535,305 H672 V330" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+        <path d="M505,352 H543 A7,7 0 0 1 557,352 H605" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="580" y="300">gebeurtenisbericht</text>
-        </g>
-      <g data-fase="3n"><rect x="582" y="330" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="672" y="354">NMC</text>
-        <text class="pr-mono" x="672" y="373">notificatiedienst</text>
-        <circle cx="582" cy="330" r="13" fill="#154273"/><text class="pr-nr" x="582" y="335">3</text>
-        </g>
-      <g data-fase="3m"><line x1="762" y1="358" x2="860" y2="358" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="810" y="349" text-anchor="middle">opdracht</text>
-        <rect x="860" y="330" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="354">Notify</text>
-        <text class="pr-mono" x="960" y="373">verstuurt de e-mail</text>
-        <line x1="1040" y1="330" x2="1040" y2="101" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="1034" y="305" text-anchor="end">e-mail</text>
-        
       </g>
-
-      <!-- Stap 4: terug naar de dienstverlener: inloggen op het portaal, bericht lezen -->
-      <g data-fase="4">
-        <line x1="860" y1="73" x2="640" y2="73" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="751" y="66" text-anchor="middle">opent</text>
-        <rect x="460" y="45" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+      <g data-fase="3n">
+        <rect x="605" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="695" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="695" y="355">NMC</text>
+        <circle cx="785" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="785" y="317">3</text>
+      </g>
+      <g data-fase="3m1">
+        <path d="M785,340 H905" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="845" y="333" text-anchor="middle">opdracht</text>
+        <rect x="905" y="312" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="985" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="985" y="355">Notify</text>
+      </g>
+      <g data-fase="3m2">
+        <path d="M985,312 V73 H670" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="e-mail">
+          <rect x="972" y="214" width="26" height="18" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <path d="M973,215 L985,225 L997,215" fill="none" stroke="#334155" stroke-width="1.6"/>
+        </g>
+        <text class="pr-label" x="1004" y="228">e-mail</text>
+      </g>
+      <g data-fase="on">
+        <rect x="430" y="45" width="240" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
         <text class="pr-naam" x="550" y="69">Ondernemer</text>
         <text class="pr-mono" x="550" y="88">aangifte en berichten</text>
       </g>
       <g data-fase="4u">
-        <path d="M640,94 H838 V130 H990 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="984" y="204" text-anchor="end">inloggen</text>
-        <rect x="860" y="215" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="940" y="239">Portaal</text>
-        <text class="pr-mono" x="940" y="258">MijnOverheid Zakelijk</text>
-        <circle cx="860" cy="215" r="13" fill="#154273"/><text class="pr-nr" x="860" y="220">4</text>
-        <path d="M860,253 H742" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="800" y="285" text-anchor="middle">uitvragen</text>
-        <rect x="582" y="230" width="160" height="46" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="662" y="250">BUS</text>
-        <text class="pr-mono" x="662" y="267">berichtenuitvraag</text>
-        <path d="M582,253 H535" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <path d="M558,253 V382 H535" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M550,101 V435 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M550,328 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal (scherm)">
+          <rect x="535" y="121" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="538" y="124" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="550" y1="140" x2="550" y2="143" stroke="#334155" stroke-width="1.6"/>
+          <line x1="544" y1="144" x2="556" y2="144" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="571" y="136">portaal</text>
+        <text class="pr-label" x="556" y="262">leest</text>
+        <circle cx="550" cy="185" r="13" fill="#154273"/><text class="pr-nr" x="550" y="190">4</text>
       </g>
-
-      
-      <!-- Procesapplicatie rechtstreeks naar de NMC, via FSC -->
       <g data-fase="r1">
-        <path d="M205,358 V423 Q205,435 217,435 H660 Q672,435 672,423 V386" fill="none" stroke="#a34f00" stroke-width="4" stroke-linejoin="round" marker-end="url(#pr-pijl-fsc)"/>
-        <rect x="420" y="426" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
-        <text class="pr-fsc-t" x="438" y="439">FSC</text>
+        <path d="M150,368 V393 Q150,405 162,405 H543 A7,7 0 0 1 557,405 H683 Q695,405 695,393 V368" fill="none" stroke="#a34f00" stroke-width="4" stroke-linejoin="round" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="400" y="396" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="418" y="409">FSC</text>
       </g>
-      <!-- Aangifte vanuit het portaal, pdf in het portaal -->
-      <g data-fase="r1b">
-        <path d="M460,80 H250 V222" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="354" y="74" text-anchor="middle">inloggen</text>
-        <rect x="115" y="222" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="246">Portaal</text>
-        <text class="pr-mono" x="205" y="265">Belastingdienst</text>
-        <line x1="205" y1="278" x2="205" y2="302" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="213" y="294">aangifte</text>
-      </g>
-      <g data-fase="mb">
-        <rect x="860" y="45" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="69">Mailbox</text>
-        <text class="pr-mono" x="960" y="88">kennisgeving (melding)</text>
-      </g>
-      <text x="1070" y="432" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-
-      <!-- Legenda -->
-      <line x1="40" y1="465" x2="72" y2="465" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="470">FSC-verbinding</text>
-      <line x1="215" y1="465" x2="247" y2="465" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="470">Andere verbinding</text>
-      <rect x="415" y="458" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="470">Plug-in, per dienstverlener</text>
-      <rect x="640" y="458" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="470">Centraal, je sluit aan</text>
-      <rect x="845" y="458" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="470">Niet in de demo</text>
+      <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
+      <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
+      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
     </svg>
   </figure>
       <ol class="ag-flow"></ol>
@@ -3949,9 +4025,9 @@ html:not(.js) {
   <div class="ag-dia" data-demo="besluit">
     <div class="ag-links">
       <figure class="plaat plaat-praktijk proces-focus ag-plaat" data-focus="1 2 2f">
-    <svg viewBox="0 0 1100 480" role="img" aria-labelledby="praktijk-titel-r2 praktijk-uitleg-r2" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 1100 515" role="img" aria-labelledby="praktijk-titel-r2 praktijk-uitleg-r2" xmlns="http://www.w3.org/2000/svg">
       <title id="praktijk-titel-r2">Van besluit tot kennisgeving (melding), in vier stappen, op het fieldlab</title>
-      <desc id="praktijk-uitleg-r2">Fundament is verdeeld in twee delen: de plug-in per dienstverlener en de centrale diensten waarop je aansluit. Stap 1: in de procesapplicatie van de dienstverlener ontstaat een besluit. Stap 2: de procesapplicatie zet het bericht via FSC klaar in het eigen berichtenmagazijn, dat de dienstverlener als plug-in aanzet. In de demo is dat het magazijn van de Belastingdienst; het magazijn van RVO staat vervaagd, om te laten zien dat er meer magazijnen kunnen zijn. Stap 3: het berichtenmagazijn geeft de centrale NMC van de notificatiedienst een gebeurtenisbericht. De NMC geeft Notify, buiten Fundament, opdracht een e-mail te sturen: de kennisgeving (melding) komt binnen in de mailbox van de burger of ondernemer. De burger of ondernemer staat in een strook bovenaan. Stap 4: de ondernemer opent de e-mail en logt in op het portaal MijnOverheid Zakelijk, buiten Fundament. Het portaal vraagt de berichten op bij de berichtenuitvraag (BUS), centraal op Fundament; de BUS haalt ze op uit alle berichtenmagazijnen. De aangifte doet de ondernemer eerder in het portaal van de Belastingdienst, bij de dienstverlener.</desc>
+      <desc id="praktijk-uitleg-r2">Fundament is verdeeld in twee delen: de plug-in per dienstverlener en de centrale diensten waarop je aansluit. Stap 1: in de procesapplicatie van de dienstverlener ontstaat een besluit. Stap 2: de procesapplicatie zet het bericht via FSC klaar in het eigen berichtenmagazijn, dat de dienstverlener als plug-in aanzet. In de demo is dat het magazijn van de Belastingdienst; het magazijn van RVO staat vervaagd, om te laten zien dat er meer magazijnen kunnen zijn. Stap 3: het berichtenmagazijn geeft de centrale NMC van de notificatiedienst een gebeurtenisbericht. De NMC geeft Notify, buiten Fundament, opdracht een e-mail te sturen: de kennisgeving (melding) komt binnen in de mailbox van de burger of ondernemer. De burger of ondernemer staat in een strook bovenaan. Stap 4: de ondernemer opent de e-mail en logt in op het portaal MijnOverheid Zakelijk, buiten Fundament. De ondernemer leest de berichten, via een portaal, rechtstreeks uit de berichtenmagazijnen. De aangifte doet de ondernemer eerder in het portaal van de Belastingdienst, bij de dienstverlener.</desc>
       <defs>
         <marker id="pr-pijl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker>
         <marker id="pr-pijl-fsc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a34f00"/></marker>
@@ -3968,139 +4044,130 @@ html:not(.js) {
         </style>
       </defs>
 
-      <!-- Zones -->
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
-
-      <rect x="20" y="140" width="290" height="300" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <text class="pr-zone-t" x="36" y="167">DIENSTVERLENER</text>
-      <text class="pr-zone-s" x="36" y="185">eigen omgeving</text>
-
-      <rect x="335" y="128" width="460" height="320" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="351" y="158" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
-      <rect x="350" y="185" width="200" height="245" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-sub-t" x="364" y="205">PLUG-IN</text>
-      <text class="pr-zone-s" x="364" y="221">per dienstverlener</text>
-      <rect x="565" y="185" width="215" height="245" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-sub-t" x="579" y="205">CENTRAAL</text>
-      <text class="pr-zone-s" x="579" y="221">je sluit aan</text>
-
-      <rect x="815" y="140" width="265" height="300" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
-      <text class="pr-zone-t" x="831" y="167">BUITEN</text>
-      <text class="pr-zone-t" x="831" y="185">FUNDAMENT</text>
-
-      <!-- Stap 1: besluit -->
-      <g data-fase="1">
-        <rect x="115" y="302" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="326">Procesapplicatie</text>
-        <text class="pr-mono" x="205" y="345">besluit</text>
-        <circle cx="115" cy="302" r="13" fill="#154273"/><text class="pr-nr" x="115" y="307">1</text>
+      <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
+      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
+      <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
+      <rect x="575" y="200" width="240" height="272" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-sub-t" x="589" y="220">CENTRAAL</text>
+      <text class="pr-zone-s" x="589" y="236">je sluit aan</text>
+      <rect x="850" y="160" width="230" height="325" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
+      <text class="pr-zone-t" x="862" y="187">BUITEN</text>
+      <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
+      <g data-fase="0">
+        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
+        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="239">Portaal</text>
+        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
+        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
-
-      <!-- Stap 2: bericht klaarzetten in het eigen magazijn (plug-in) -->
+      <g data-fase="1">
+        <rect x="60" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="336">Procesapplicatie</text>
+        <text class="pr-mono" x="150" y="355">besluit</text>
+        <circle cx="60" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="60" y="317">1</text>
+      </g>
       <g data-fase="2f">
-        <path d="M295,330 H365" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
-        <rect x="312" y="321" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
-        <text class="pr-fsc-t" x="330" y="334">FSC</text>
+        <path d="M240,340 H335" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="266" y="331" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="284" y="344">FSC</text>
       </g>
       <g data-fase="2">
-        <rect x="365" y="232" width="170" height="118" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="450" y="287">Magazijn</text>
-        <text class="pr-mono" x="450" y="306">Belastingdienst</text>
-        <circle cx="535" cy="232" r="13" fill="#154273"/><text class="pr-nr" x="535" y="237">2</text>
-        <!-- Ander magazijn: kan, maar niet in de demo -->
+        <rect x="335" y="285" width="170" height="110" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="420" y="336">Magazijn</text>
+        <text class="pr-mono" x="420" y="355">Belastingdienst</text>
+        <circle cx="505" cy="285" r="13" fill="#154273"/><text class="pr-nr" x="505" y="290">2</text>
         <g opacity="0.4">
-          <rect x="365" y="362" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/>
-          <text class="pr-naam" x="450" y="380">Magazijn</text>
-          <text class="pr-mono" x="450" y="395">RVO</text>
+          <rect x="335" y="415" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/>
+        <text class="pr-naam" x="420" y="433">Magazijn</text>
+        <text class="pr-mono" x="420" y="448">RVO</text>
         </g>
-        <text class="pr-zone-s" x="450" y="420" text-anchor="middle">meer magazijnen mogelijk</text>
+        <text class="pr-zone-s" x="420" y="468" text-anchor="middle">meer magazijnen mogelijk</text>
       </g>
-
-      <!-- Stap 3: kennisgeving (melding) per e-mail -->
-      <g data-fase="3">
-        <path d="M535,305 H672 V330" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <g data-fase="3s">
+        <path d="M505,352 H543 A7,7 0 0 1 557,352 H605" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="580" y="300">gebeurtenisbericht</text>
-        <rect x="582" y="330" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="672" y="354">NMC</text>
-        <text class="pr-mono" x="672" y="373">notificatiedienst</text>
-        <circle cx="582" cy="330" r="13" fill="#154273"/><text class="pr-nr" x="582" y="335">3</text>
-        <line x1="762" y1="358" x2="860" y2="358" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="810" y="349" text-anchor="middle">opdracht</text>
-        <rect x="860" y="330" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="354">Notify</text>
-        <text class="pr-mono" x="960" y="373">verstuurt de e-mail</text>
-        <line x1="1040" y1="330" x2="1040" y2="101" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="1034" y="305" text-anchor="end">e-mail</text>
-        
       </g>
-
-      <!-- Stap 4: terug naar de dienstverlener: inloggen op het portaal, bericht lezen -->
-      <g data-fase="0">
-        <path d="M460,80 H250 V222" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="354" y="74" text-anchor="middle">inloggen</text>
-        <rect x="115" y="222" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="246">Portaal</text>
-        <text class="pr-mono" x="205" y="265">Belastingdienst</text>
-        <line x1="205" y1="278" x2="205" y2="302" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="213" y="294">aangifte</text>
+      <g data-fase="3n">
+        <rect x="605" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="695" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="695" y="355">NMC</text>
+        <circle cx="785" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="785" y="317">3</text>
       </g>
-      <g data-fase="4">
-        <line x1="860" y1="73" x2="640" y2="73" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="751" y="66" text-anchor="middle">opent</text>
-        <rect x="460" y="45" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+      <g data-fase="3m1">
+        <path d="M785,340 H905" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="845" y="333" text-anchor="middle">opdracht</text>
+        <rect x="905" y="312" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="985" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="985" y="355">Notify</text>
+      </g>
+      <g data-fase="3m2">
+        <path d="M985,312 V73 H670" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="e-mail">
+          <rect x="972" y="214" width="26" height="18" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <path d="M973,215 L985,225 L997,215" fill="none" stroke="#334155" stroke-width="1.6"/>
+        </g>
+        <text class="pr-label" x="1004" y="228">e-mail</text>
+      </g>
+      <g data-fase="on">
+        <rect x="430" y="45" width="240" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
         <text class="pr-naam" x="550" y="69">Ondernemer</text>
         <text class="pr-mono" x="550" y="88">aangifte en berichten</text>
-        <path d="M640,94 H838 V130 H990 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="984" y="204" text-anchor="end">inloggen</text>
-        <rect x="860" y="215" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="940" y="239">Portaal</text>
-        <text class="pr-mono" x="940" y="258">MijnOverheid Zakelijk</text>
-        <circle cx="860" cy="215" r="13" fill="#154273"/><text class="pr-nr" x="860" y="220">4</text>
-        <path d="M860,253 H742" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="800" y="285" text-anchor="middle">uitvragen</text>
-        <rect x="582" y="230" width="160" height="46" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="662" y="250">BUS</text>
-        <text class="pr-mono" x="662" y="267">berichtenuitvraag</text>
-        <path d="M582,253 H535" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <path d="M558,253 V382 H535" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
       </g>
-
-      <g data-fase="mb">
-        <rect x="860" y="45" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="69">Mailbox</text>
-        <text class="pr-mono" x="960" y="88">kennisgeving (melding)</text>
+      <g data-fase="4">
+        <path d="M550,101 V435 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M550,328 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal (scherm)">
+          <rect x="535" y="121" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="538" y="124" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="550" y1="140" x2="550" y2="143" stroke="#334155" stroke-width="1.6"/>
+          <line x1="544" y1="144" x2="556" y2="144" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="571" y="136">portaal</text>
+        <text class="pr-label" x="556" y="262">leest</text>
+        <circle cx="550" cy="185" r="13" fill="#154273"/><text class="pr-nr" x="550" y="190">4</text>
       </g>
-      <text x="1070" y="432" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-
-      <!-- Legenda -->
-      <line x1="40" y1="465" x2="72" y2="465" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="470">FSC-verbinding</text>
-      <line x1="215" y1="465" x2="247" y2="465" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="470">Andere verbinding</text>
-      <rect x="415" y="458" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="470">Plug-in, per dienstverlener</text>
-      <rect x="640" y="458" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="470">Centraal, je sluit aan</text>
-      <rect x="845" y="458" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="470">Niet in de demo</text>
+      <g data-fase="r1">
+        <path d="M150,368 V393 Q150,405 162,405 H543 A7,7 0 0 1 557,405 H683 Q695,405 695,393 V368" fill="none" stroke="#a34f00" stroke-width="4" stroke-linejoin="round" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="400" y="396" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="418" y="409">FSC</text>
+      </g>
+      <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
+      <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
+      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
     </svg>
   </figure>
       <ol class="ag-flow"></ol>
     </div>
     <div class="ag-demo"><iframe loading="lazy" src="/procesapplicatie/werklijst.html?ingebed" title="Demo: werklijst medewerker Belastingdienst"></iframe></div>
   </div>
-  <aside class="notes"><p><strong>Demo in de dia</strong> Eerst de plaat groot; klik of pijl rechts, dan rechts het scenario. Rechts de werklijst van een medewerker van de Belastingdienst, met de aangifte van de dia ervoor. In werkelijkheid gaat dit automatisch; in de demo keurt de medewerker elke stap goed: Behandelen, Verwerking goedkeuren, Bekijk beschikking (pdf in venster), Besluit vaststellen, Plaatsen in berichtenmagazijn. De stappen links lopen mee.</p><p><strong>Laat zien</strong> · demo: Mock-dienstverlener</p><ol><li><strong>5 Pdf met aangifte en besluit</strong> De procesapplicatie verwerkt de aangifte en maakt de pdf (in het portaal: stap 2 t/m 5).</li><li><strong>6 Besluit</strong> De procesapplicatie maakt een besluit op de aangifte.</li><li><strong>7 Magazijn</strong> Het besluit gaat via FSC in het magazijn.</li><li><strong>Controleren</strong> In de demo-bediening: het bericht staat in het magazijn.</li></ol><p><strong>Achtergrond</strong></p><p>Stap 5: de procesapplicatie verwerkt de aangifte van stap 4 en maakt de pdf met aangifte en besluit. Begrip: een besluit is een inhoudelijk bericht; het klaarzetten in het magazijn is de bekendmaking. Stap 6: uit de aangifte van stap 4 komt een besluit in de procesapplicatie. Stap 7: de procesapplicatie zet het besluit via FSC in het magazijn.</p><p>Eerst de plaat: alleen deze stap is in beeld. Dan "Open de demo", de drie stappen laten zien, terug naar de presentatie. Demo-stappen aanvullen na het bekijken van de democonsole.</p></aside>
+  <aside class="notes"><p><strong>Demo in de dia</strong> Eerst de plaat groot; klik of pijl rechts, dan rechts het scenario. Rechts de werklijst van een medewerker van de Belastingdienst, met de aangifte van de dia ervoor. Klik op Behandelen: daarna loopt het vanzelf door verwerking, besluit en plaatsen in het berichtenmagazijn. Bekijk beschikking opent de pdf in een venster. De stappen links lopen mee.</p><p><strong>Laat zien</strong> · demo: Mock-dienstverlener</p><ol><li><strong>5 Pdf met aangifte en besluit</strong> De procesapplicatie verwerkt de aangifte en maakt de pdf (in het portaal: stap 2 t/m 5).</li><li><strong>6 Besluit</strong> De procesapplicatie maakt een besluit op de aangifte.</li><li><strong>7 Magazijn</strong> Het besluit gaat via FSC in het magazijn.</li><li><strong>Controleren</strong> In de demo-bediening: het bericht staat in het magazijn.</li></ol><p><strong>Achtergrond</strong></p><p>Stap 5: de procesapplicatie verwerkt de aangifte van stap 4 en maakt de pdf met aangifte en besluit. Begrip: een besluit is een inhoudelijk bericht; het klaarzetten in het magazijn is de bekendmaking. Stap 6: uit de aangifte van stap 4 komt een besluit in de procesapplicatie. Stap 7: de procesapplicatie zet het besluit via FSC in het magazijn.</p><p>Eerst de plaat: alleen deze stap is in beeld. Dan "Open de demo", de drie stappen laten zien, terug naar de presentatie. Demo-stappen aanvullen na het bekijken van de democonsole.</p></aside>
 </section>
 
 <!-- ===== Kennisgeving (melding): het besluit staat klaar ===== -->
 <section class="slide" data-melding="bericht" aria-roledescription="dia" aria-label="Kennisgeving (melding): het besluit staat klaar">
   <ol class="route" aria-label="Route van het bericht"><li data-staat="gedaan">Attendering</li><li data-staat="gedaan">Aangifte</li><li data-staat="gedaan">Besluit</li><li data-staat="nu" aria-current="step">Kennisgeving (melding)</li><li data-staat="straks">Besluit lezen</li><li class="route__concept">Concept</li></ol>
   <h2 class="title">Kennisgeving (melding): het besluit staat klaar</h2>
-  <figure class="plaat plaat-praktijk proces-focus" data-focus="2 3n 3m1 3m2" data-doorloop="2 3n 3m1 3m2">
-    <svg viewBox="0 0 1100 480" role="img" aria-labelledby="praktijk-titel-r3 praktijk-uitleg-r3" xmlns="http://www.w3.org/2000/svg">
+  <figure class="plaat plaat-praktijk proces-focus" data-focus="2 3s 3n 3m1 3m2 on" data-doorloop="2 3s 3n 3m1 3m2 on">
+    <svg viewBox="0 0 1100 515" role="img" aria-labelledby="praktijk-titel-r3 praktijk-uitleg-r3" xmlns="http://www.w3.org/2000/svg">
       <title id="praktijk-titel-r3">Van besluit tot kennisgeving (melding), in vier stappen, op het fieldlab</title>
-      <desc id="praktijk-uitleg-r3">Fundament is verdeeld in twee delen: de plug-in per dienstverlener en de centrale diensten waarop je aansluit. Stap 1: in de procesapplicatie van de dienstverlener ontstaat een besluit. Stap 2: de procesapplicatie zet het bericht via FSC klaar in het eigen berichtenmagazijn, dat de dienstverlener als plug-in aanzet. In de demo is dat het magazijn van de Belastingdienst; het magazijn van RVO staat vervaagd, om te laten zien dat er meer magazijnen kunnen zijn. Stap 3: het berichtenmagazijn geeft de centrale NMC van de notificatiedienst een gebeurtenisbericht. De NMC geeft Notify, buiten Fundament, opdracht een e-mail te sturen: de kennisgeving (melding) komt binnen in de mailbox van de burger of ondernemer. De burger of ondernemer staat in een strook bovenaan. Stap 4: de ondernemer opent de e-mail en logt in op het portaal MijnOverheid Zakelijk, buiten Fundament. Het portaal vraagt de berichten op bij de berichtenuitvraag (BUS), centraal op Fundament; de BUS haalt ze op uit alle berichtenmagazijnen. De aangifte doet de ondernemer eerder in het portaal van de Belastingdienst, bij de dienstverlener.</desc>
+      <desc id="praktijk-uitleg-r3">Fundament is verdeeld in twee delen: de plug-in per dienstverlener en de centrale diensten waarop je aansluit. Stap 1: in de procesapplicatie van de dienstverlener ontstaat een besluit. Stap 2: de procesapplicatie zet het bericht via FSC klaar in het eigen berichtenmagazijn, dat de dienstverlener als plug-in aanzet. In de demo is dat het magazijn van de Belastingdienst; het magazijn van RVO staat vervaagd, om te laten zien dat er meer magazijnen kunnen zijn. Stap 3: het berichtenmagazijn geeft de centrale NMC van de notificatiedienst een gebeurtenisbericht. De NMC geeft Notify, buiten Fundament, opdracht een e-mail te sturen: de kennisgeving (melding) komt binnen in de mailbox van de burger of ondernemer. De burger of ondernemer staat in een strook bovenaan. Stap 4: de ondernemer opent de e-mail en logt in op het portaal MijnOverheid Zakelijk, buiten Fundament. De ondernemer leest de berichten, via een portaal, rechtstreeks uit de berichtenmagazijnen. De aangifte doet de ondernemer eerder in het portaal van de Belastingdienst, bij de dienstverlener.</desc>
       <defs>
         <marker id="pr-pijl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker>
         <marker id="pr-pijl-fsc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a34f00"/></marker>
@@ -4117,121 +4184,113 @@ html:not(.js) {
         </style>
       </defs>
 
-      <!-- Zones -->
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
-
-      <rect x="20" y="140" width="290" height="300" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <text class="pr-zone-t" x="36" y="167">DIENSTVERLENER</text>
-      <text class="pr-zone-s" x="36" y="185">eigen omgeving</text>
-
-      <rect x="335" y="128" width="460" height="320" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="351" y="158" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
-      <rect x="350" y="185" width="200" height="245" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-sub-t" x="364" y="205">PLUG-IN</text>
-      <text class="pr-zone-s" x="364" y="221">per dienstverlener</text>
-      <rect x="565" y="185" width="215" height="245" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-sub-t" x="579" y="205">CENTRAAL</text>
-      <text class="pr-zone-s" x="579" y="221">je sluit aan</text>
-
-      <rect x="815" y="140" width="265" height="300" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
-      <text class="pr-zone-t" x="831" y="167">BUITEN</text>
-      <text class="pr-zone-t" x="831" y="185">FUNDAMENT</text>
-
-      <!-- Stap 1: besluit -->
-      <g data-fase="1">
-        <rect x="115" y="302" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="326">Procesapplicatie</text>
-        <text class="pr-mono" x="205" y="345">besluit</text>
-        <circle cx="115" cy="302" r="13" fill="#154273"/><text class="pr-nr" x="115" y="307">1</text>
+      <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
+      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
+      <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
+      <rect x="575" y="200" width="240" height="272" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-sub-t" x="589" y="220">CENTRAAL</text>
+      <text class="pr-zone-s" x="589" y="236">je sluit aan</text>
+      <rect x="850" y="160" width="230" height="325" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
+      <text class="pr-zone-t" x="862" y="187">BUITEN</text>
+      <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
+      <g data-fase="0">
+        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
+        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="239">Portaal</text>
+        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
+        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
-
-      <!-- Stap 2: bericht klaarzetten in het eigen magazijn (plug-in) -->
+      <g data-fase="1">
+        <rect x="60" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="336">Procesapplicatie</text>
+        <text class="pr-mono" x="150" y="355">besluit</text>
+        <circle cx="60" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="60" y="317">1</text>
+      </g>
       <g data-fase="2f">
-        <path d="M295,330 H365" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
-        <rect x="312" y="321" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
-        <text class="pr-fsc-t" x="330" y="334">FSC</text>
+        <path d="M240,340 H335" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="266" y="331" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="284" y="344">FSC</text>
       </g>
       <g data-fase="2">
-        <rect x="365" y="232" width="170" height="118" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="450" y="287">Magazijn</text>
-        <text class="pr-mono" x="450" y="306">Belastingdienst</text>
-        <circle cx="535" cy="232" r="13" fill="#154273"/><text class="pr-nr" x="535" y="237">2</text>
-        <!-- Ander magazijn: kan, maar niet in de demo -->
+        <rect x="335" y="285" width="170" height="110" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="420" y="336">Magazijn</text>
+        <text class="pr-mono" x="420" y="355">Belastingdienst</text>
+        <circle cx="505" cy="285" r="13" fill="#154273"/><text class="pr-nr" x="505" y="290">2</text>
         <g opacity="0.4">
-          <rect x="365" y="362" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/>
-          <text class="pr-naam" x="450" y="380">Magazijn</text>
-          <text class="pr-mono" x="450" y="395">RVO</text>
+          <rect x="335" y="415" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/>
+        <text class="pr-naam" x="420" y="433">Magazijn</text>
+        <text class="pr-mono" x="420" y="448">RVO</text>
         </g>
-        <text class="pr-zone-s" x="450" y="420" text-anchor="middle">meer magazijnen mogelijk</text>
+        <text class="pr-zone-s" x="420" y="468" text-anchor="middle">meer magazijnen mogelijk</text>
       </g>
-
-      <!-- Stap 3: kennisgeving (melding) per e-mail -->
-      <g data-fase="3n">
-        <path d="M535,305 H672 V330" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <g data-fase="3s">
+        <path d="M505,352 H543 A7,7 0 0 1 557,352 H605" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="580" y="300">gebeurtenisbericht</text>
-        <rect x="582" y="330" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="672" y="354">NMC</text>
-        <text class="pr-mono" x="672" y="373">notificatiedienst</text>
-        <circle cx="582" cy="330" r="13" fill="#154273"/><text class="pr-nr" x="582" y="335">3</text>
-        </g>
-      <g data-fase="3m1"><line x1="762" y1="358" x2="860" y2="358" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="810" y="349" text-anchor="middle">opdracht</text>
-        <rect x="860" y="330" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="354">Notify</text>
-        <text class="pr-mono" x="960" y="373">verstuurt de e-mail</text>
-        </g>
-      <g data-fase="3m2"><line x1="1040" y1="330" x2="1040" y2="101" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="1034" y="305" text-anchor="end">e-mail</text>
-        <rect x="860" y="45" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="69">Mailbox</text>
-        <text class="pr-mono" x="960" y="88">kennisgeving (melding)</text>
       </g>
-
-      <!-- Stap 4: terug naar de dienstverlener: inloggen op het portaal, bericht lezen -->
-      <g data-fase="0">
-        <path d="M460,80 H250 V222" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="354" y="74" text-anchor="middle">inloggen</text>
-        <rect x="115" y="222" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="246">Portaal</text>
-        <text class="pr-mono" x="205" y="265">Belastingdienst</text>
-        <line x1="205" y1="278" x2="205" y2="302" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="213" y="294">aangifte</text>
+      <g data-fase="3n">
+        <rect x="605" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="695" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="695" y="355">NMC</text>
+        <circle cx="785" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="785" y="317">3</text>
       </g>
-      <g data-fase="4">
-        <line x1="860" y1="73" x2="640" y2="73" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="751" y="66" text-anchor="middle">opent</text>
-        <rect x="460" y="45" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+      <g data-fase="3m1">
+        <path d="M785,340 H905" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="845" y="333" text-anchor="middle">opdracht</text>
+        <rect x="905" y="312" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="985" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="985" y="355">Notify</text>
+      </g>
+      <g data-fase="3m2">
+        <path d="M985,312 V73 H670" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="e-mail">
+          <rect x="972" y="214" width="26" height="18" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <path d="M973,215 L985,225 L997,215" fill="none" stroke="#334155" stroke-width="1.6"/>
+        </g>
+        <text class="pr-label" x="1004" y="228">e-mail</text>
+      </g>
+      <g data-fase="on">
+        <rect x="430" y="45" width="240" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
         <text class="pr-naam" x="550" y="69">Ondernemer</text>
         <text class="pr-mono" x="550" y="88">aangifte en berichten</text>
-        <path d="M640,94 H838 V130 H990 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="984" y="204" text-anchor="end">inloggen</text>
-        <rect x="860" y="215" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="940" y="239">Portaal</text>
-        <text class="pr-mono" x="940" y="258">MijnOverheid Zakelijk</text>
-        <circle cx="860" cy="215" r="13" fill="#154273"/><text class="pr-nr" x="860" y="220">4</text>
-        <path d="M860,253 H742" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="800" y="285" text-anchor="middle">uitvragen</text>
-        <rect x="582" y="230" width="160" height="46" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="662" y="250">BUS</text>
-        <text class="pr-mono" x="662" y="267">berichtenuitvraag</text>
-        <path d="M582,253 H535" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <path d="M558,253 V382 H535" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
       </g>
-
-      <text x="1070" y="432" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-
-      <!-- Legenda -->
-      <line x1="40" y1="465" x2="72" y2="465" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="470">FSC-verbinding</text>
-      <line x1="215" y1="465" x2="247" y2="465" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="470">Andere verbinding</text>
-      <rect x="415" y="458" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="470">Plug-in, per dienstverlener</text>
-      <rect x="640" y="458" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="470">Centraal, je sluit aan</text>
-      <rect x="845" y="458" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="470">Niet in de demo</text>
+      <g data-fase="4">
+        <path d="M550,101 V435 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M550,328 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal (scherm)">
+          <rect x="535" y="121" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="538" y="124" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="550" y1="140" x2="550" y2="143" stroke="#334155" stroke-width="1.6"/>
+          <line x1="544" y1="144" x2="556" y2="144" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="571" y="136">portaal</text>
+        <text class="pr-label" x="556" y="262">leest</text>
+        <circle cx="550" cy="185" r="13" fill="#154273"/><text class="pr-nr" x="550" y="190">4</text>
+      </g>
+      <g data-fase="r1">
+        <path d="M150,368 V393 Q150,405 162,405 H543 A7,7 0 0 1 557,405 H683 Q695,405 695,393 V368" fill="none" stroke="#a34f00" stroke-width="4" stroke-linejoin="round" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="400" y="396" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="418" y="409">FSC</text>
+      </g>
+      <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
+      <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
+      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
     </svg>
   </figure>
   <aside class="notes"><p><strong>Op de dia</strong> Bij het openen lichten het gebeurtenisbericht en de NMC, dan Notify en dan de mailbox een voor een op. Bij de mailbox komt onderin de pop-up “Er staat een bericht voor u klaar.”</p><p><strong>Laat zien</strong> · demo: Demo-bediening en mailbox</p><ol><li><strong>8 Gebeurtenisbericht</strong> Het magazijn geeft de NMC een gebeurtenisbericht.</li><li><strong>Opdracht</strong> De NMC geeft Notify de opdracht.</li><li><strong>9 Kennisgeving (melding)</strong> Notify mailt: er staat een bericht voor u klaar.</li></ol><p><strong>Achtergrond</strong></p><p>Stap 8: het magazijn geeft de NMC een gebeurtenisbericht: er staat een bericht klaar. Stap 9: de NMC laat Notify een e-mail sturen. Op deze dia verschijnt onderin de melding “Er staat een bericht voor u klaar”: het besluit staat klaar.</p><p>Eerst de plaat: alleen deze stap is in beeld. Dan "Open de demo", de drie stappen laten zien, terug naar de presentatie. Demo-stappen aanvullen na het bekijken van de democonsole.</p></aside>
@@ -4244,10 +4303,10 @@ html:not(.js) {
   
   <div class="ag-dia" data-demo="lezen">
     <div class="ag-links">
-      <figure class="plaat plaat-praktijk proces-focus ag-plaat" data-focus="4 2 mb">
-    <svg viewBox="0 0 1100 480" role="img" aria-labelledby="praktijk-titel-r4 praktijk-uitleg-r4" xmlns="http://www.w3.org/2000/svg">
+      <figure class="plaat plaat-praktijk proces-focus ag-plaat" data-focus="on 4 2">
+    <svg viewBox="0 0 1100 515" role="img" aria-labelledby="praktijk-titel-r4 praktijk-uitleg-r4" xmlns="http://www.w3.org/2000/svg">
       <title id="praktijk-titel-r4">Van besluit tot kennisgeving (melding), in vier stappen, op het fieldlab</title>
-      <desc id="praktijk-uitleg-r4">Fundament is verdeeld in twee delen: de plug-in per dienstverlener en de centrale diensten waarop je aansluit. Stap 1: in de procesapplicatie van de dienstverlener ontstaat een besluit. Stap 2: de procesapplicatie zet het bericht via FSC klaar in het eigen berichtenmagazijn, dat de dienstverlener als plug-in aanzet. In de demo is dat het magazijn van de Belastingdienst; het magazijn van RVO staat vervaagd, om te laten zien dat er meer magazijnen kunnen zijn. Stap 3: het berichtenmagazijn geeft de centrale NMC van de notificatiedienst een gebeurtenisbericht. De NMC geeft Notify, buiten Fundament, opdracht een e-mail te sturen: de kennisgeving (melding) komt binnen in de mailbox van de burger of ondernemer. De burger of ondernemer staat in een strook bovenaan. Stap 4: de ondernemer opent de e-mail en logt in op het portaal MijnOverheid Zakelijk, buiten Fundament. Het portaal vraagt de berichten op bij de berichtenuitvraag (BUS), centraal op Fundament; de BUS haalt ze op uit alle berichtenmagazijnen. De aangifte doet de ondernemer eerder in het portaal van de Belastingdienst, bij de dienstverlener.</desc>
+      <desc id="praktijk-uitleg-r4">Fundament is verdeeld in twee delen: de plug-in per dienstverlener en de centrale diensten waarop je aansluit. Stap 1: in de procesapplicatie van de dienstverlener ontstaat een besluit. Stap 2: de procesapplicatie zet het bericht via FSC klaar in het eigen berichtenmagazijn, dat de dienstverlener als plug-in aanzet. In de demo is dat het magazijn van de Belastingdienst; het magazijn van RVO staat vervaagd, om te laten zien dat er meer magazijnen kunnen zijn. Stap 3: het berichtenmagazijn geeft de centrale NMC van de notificatiedienst een gebeurtenisbericht. De NMC geeft Notify, buiten Fundament, opdracht een e-mail te sturen: de kennisgeving (melding) komt binnen in de mailbox van de burger of ondernemer. De burger of ondernemer staat in een strook bovenaan. Stap 4: de ondernemer opent de e-mail en logt in op het portaal MijnOverheid Zakelijk, buiten Fundament. De ondernemer leest de berichten, via een portaal, rechtstreeks uit de berichtenmagazijnen. De aangifte doet de ondernemer eerder in het portaal van de Belastingdienst, bij de dienstverlener.</desc>
       <defs>
         <marker id="pr-pijl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker>
         <marker id="pr-pijl-fsc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a34f00"/></marker>
@@ -4264,123 +4323,109 @@ html:not(.js) {
         </style>
       </defs>
 
-      <!-- Zones -->
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
-
-      <rect x="20" y="140" width="290" height="300" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <text class="pr-zone-t" x="36" y="167">DIENSTVERLENER</text>
-      <text class="pr-zone-s" x="36" y="185">eigen omgeving</text>
-
-      <rect x="335" y="128" width="460" height="320" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="351" y="158" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
-      <rect x="350" y="185" width="200" height="245" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-sub-t" x="364" y="205">PLUG-IN</text>
-      <text class="pr-zone-s" x="364" y="221">per dienstverlener</text>
-      <rect x="565" y="185" width="215" height="245" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-sub-t" x="579" y="205">CENTRAAL</text>
-      <text class="pr-zone-s" x="579" y="221">je sluit aan</text>
-
-      <rect x="815" y="140" width="265" height="300" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
-      <text class="pr-zone-t" x="831" y="167">BUITEN</text>
-      <text class="pr-zone-t" x="831" y="185">FUNDAMENT</text>
-
-      <!-- Stap 1: besluit -->
-      <g data-fase="1">
-        <rect x="115" y="302" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="326">Procesapplicatie</text>
-        <text class="pr-mono" x="205" y="345">besluit</text>
-        <circle cx="115" cy="302" r="13" fill="#154273"/><text class="pr-nr" x="115" y="307">1</text>
+      <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
+      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
+      <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
+      <rect x="575" y="200" width="240" height="272" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-sub-t" x="589" y="220">CENTRAAL</text>
+      <text class="pr-zone-s" x="589" y="236">je sluit aan</text>
+      <rect x="850" y="160" width="230" height="325" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
+      <text class="pr-zone-t" x="862" y="187">BUITEN</text>
+      <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
+      <g data-fase="0">
+        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
+        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="239">Portaal</text>
+        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
+        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
-
-      <!-- Stap 2: bericht klaarzetten in het eigen magazijn (plug-in) -->
+      <g data-fase="1">
+        <rect x="60" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="336">Procesapplicatie</text>
+        <text class="pr-mono" x="150" y="355">besluit</text>
+        <circle cx="60" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="60" y="317">1</text>
+      </g>
       <g data-fase="2f">
-        <path d="M295,330 H365" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
-        <rect x="312" y="321" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
-        <text class="pr-fsc-t" x="330" y="334">FSC</text>
+        <path d="M240,340 H335" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="266" y="331" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="284" y="344">FSC</text>
       </g>
       <g data-fase="2">
-        
-        <rect x="365" y="232" width="170" height="118" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="450" y="287">Magazijn</text>
-        <text class="pr-mono" x="450" y="306">Belastingdienst</text>
-        <circle cx="535" cy="232" r="13" fill="#154273"/><text class="pr-nr" x="535" y="237">2</text>
-        <!-- Ander magazijn: kan, maar niet in de demo -->
-        <g>
-          <rect x="365" y="362" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9"/>
-          <text class="pr-naam" x="450" y="380">Magazijn</text>
-          <text class="pr-mono" x="450" y="395">RVO</text>
-        </g>
-        <text class="pr-zone-s" x="450" y="420" text-anchor="middle">meer magazijnen mogelijk</text>
+        <rect x="335" y="285" width="170" height="110" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="420" y="336">Magazijn</text>
+        <text class="pr-mono" x="420" y="355">Belastingdienst</text>
+        <circle cx="505" cy="285" r="13" fill="#154273"/><text class="pr-nr" x="505" y="290">2</text>
+        <rect x="335" y="415" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="420" y="433">Magazijn</text>
+        <text class="pr-mono" x="420" y="448">RVO</text>
+        <text class="pr-zone-s" x="420" y="468" text-anchor="middle">meer magazijnen mogelijk</text>
       </g>
-
-      <!-- Stap 3: kennisgeving (melding) per e-mail -->
-      <g data-fase="3">
-        <path d="M535,305 H672 V330" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <g data-fase="3s">
+        <path d="M505,352 H543 A7,7 0 0 1 557,352 H605" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="580" y="300">gebeurtenisbericht</text>
-        <rect x="582" y="330" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="672" y="354">NMC</text>
-        <text class="pr-mono" x="672" y="373">notificatiedienst</text>
-        <circle cx="582" cy="330" r="13" fill="#154273"/><text class="pr-nr" x="582" y="335">3</text>
-        <line x1="762" y1="358" x2="860" y2="358" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="810" y="349" text-anchor="middle">opdracht</text>
-        <rect x="860" y="330" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="354">Notify</text>
-        <text class="pr-mono" x="960" y="373">verstuurt de e-mail</text>
-        <line x1="1040" y1="330" x2="1040" y2="101" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="1034" y="305" text-anchor="end">e-mail</text>
-        
       </g>
-
-      <!-- Stap 4: terug naar de dienstverlener: inloggen op het portaal, bericht lezen -->
-      <g data-fase="0">
-        <path d="M460,80 H250 V222" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="354" y="74" text-anchor="middle">inloggen</text>
-        <rect x="115" y="222" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="246">Portaal</text>
-        <text class="pr-mono" x="205" y="265">Belastingdienst</text>
-        <line x1="205" y1="278" x2="205" y2="302" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="213" y="294">aangifte</text>
+      <g data-fase="3n">
+        <rect x="605" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="695" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="695" y="355">NMC</text>
+        <circle cx="785" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="785" y="317">3</text>
       </g>
-      <g data-fase="4">
-        <line x1="860" y1="73" x2="640" y2="73" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="751" y="66" text-anchor="middle">opent</text>
-        <rect x="460" y="45" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+      <g data-fase="3m1">
+        <path d="M785,340 H905" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="845" y="333" text-anchor="middle">opdracht</text>
+        <rect x="905" y="312" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="985" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="985" y="355">Notify</text>
+      </g>
+      <g data-fase="3m2">
+        <path d="M985,312 V73 H670" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="e-mail">
+          <rect x="972" y="214" width="26" height="18" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <path d="M973,215 L985,225 L997,215" fill="none" stroke="#334155" stroke-width="1.6"/>
+        </g>
+        <text class="pr-label" x="1004" y="228">e-mail</text>
+      </g>
+      <g data-fase="on">
+        <rect x="430" y="45" width="240" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
         <text class="pr-naam" x="550" y="69">Ondernemer</text>
         <text class="pr-mono" x="550" y="88">aangifte en berichten</text>
-        <path d="M640,94 H838 V130 H990 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="984" y="204" text-anchor="end">inloggen</text>
-        <rect x="860" y="215" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="940" y="239">Portaal</text>
-        <text class="pr-mono" x="940" y="258">MijnOverheid Zakelijk</text>
-        <circle cx="860" cy="215" r="13" fill="#154273"/><text class="pr-nr" x="860" y="220">4</text>
-        <path d="M860,253 H742" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="800" y="285" text-anchor="middle">uitvragen</text>
-        <rect x="582" y="230" width="160" height="46" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="662" y="250">BUS</text>
-        <text class="pr-mono" x="662" y="267">berichtenuitvraag</text>
-        <path d="M582,253 H535" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <path d="M558,253 V382 H535" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
       </g>
-
-      <g data-fase="mb">
-        <rect x="860" y="45" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="69">Mailbox</text>
-        <text class="pr-mono" x="960" y="88">kennisgeving (melding)</text>
+      <g data-fase="4">
+        <path d="M550,101 V435 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M550,328 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal (scherm)">
+          <rect x="535" y="121" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="538" y="124" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="550" y1="140" x2="550" y2="143" stroke="#334155" stroke-width="1.6"/>
+          <line x1="544" y1="144" x2="556" y2="144" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="571" y="136">portaal</text>
+        <text class="pr-label" x="556" y="262">leest</text>
+        <circle cx="550" cy="185" r="13" fill="#154273"/><text class="pr-nr" x="550" y="190">4</text>
       </g>
-      <text x="1070" y="432" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-
-      <!-- Legenda -->
-      <line x1="40" y1="465" x2="72" y2="465" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="470">FSC-verbinding</text>
-      <line x1="215" y1="465" x2="247" y2="465" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="470">Andere verbinding</text>
-      <rect x="415" y="458" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="470">Plug-in, per dienstverlener</text>
-      <rect x="640" y="458" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="470">Centraal, je sluit aan</text>
-      <rect x="845" y="458" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="470">Niet in de demo</text>
+      <g data-fase="r1">
+        <path d="M150,368 V393 Q150,405 162,405 H543 A7,7 0 0 1 557,405 H683 Q695,405 695,393 V368" fill="none" stroke="#a34f00" stroke-width="4" stroke-linejoin="round" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="400" y="396" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="418" y="409">FSC</text>
+      </g>
+      <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
+      <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
+      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
     </svg>
   </figure>
       <ol class="ag-flow"></ol>
@@ -4437,7 +4482,7 @@ html:not(.js) {
   <div class="ag-dia" data-demo="fsc">
     <div class="ag-links">
       <figure class="plaat plaat-praktijk proces-focus ag-plaat" data-focus="1 2 2f r1 3n">
-    <svg viewBox="0 0 1100 480" role="img" aria-labelledby="fsc-titel fsc-uitleg" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 1100 515" role="img" aria-labelledby="fsc-titel fsc-uitleg" xmlns="http://www.w3.org/2000/svg">
       <title id="fsc-titel">De twee FSC-verbindingen van de procesapplicatie</title>
       <desc id="fsc-uitleg">De procesapplicatie van de dienstverlener heeft twee FSC-verbindingen: een naar het eigen berichtenmagazijn op Fundament (plug-in) en een naar de NMC van de notificatiedienst. Beide pijlen zijn uitgelicht.</desc>
       <defs>
@@ -4456,134 +4501,112 @@ html:not(.js) {
         </style>
       </defs>
 
-      <!-- Zones -->
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
-
-      <rect x="20" y="140" width="290" height="300" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <text class="pr-zone-t" x="36" y="167">DIENSTVERLENER</text>
-      <text class="pr-zone-s" x="36" y="185">eigen omgeving</text>
-
-      <rect x="335" y="128" width="460" height="320" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="351" y="158" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
-      <rect x="350" y="185" width="200" height="245" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-sub-t" x="364" y="205">PLUG-IN</text>
-      <text class="pr-zone-s" x="364" y="221">per dienstverlener</text>
-      <rect x="565" y="185" width="215" height="245" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-sub-t" x="579" y="205">CENTRAAL</text>
-      <text class="pr-zone-s" x="579" y="221">je sluit aan</text>
-
-      <rect x="815" y="140" width="265" height="300" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
-      <text class="pr-zone-t" x="831" y="167">BUITEN</text>
-      <text class="pr-zone-t" x="831" y="185">FUNDAMENT</text>
-
-      <!-- Stap 1: besluit -->
-      <g data-fase="1">
-        <rect x="115" y="302" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="326">Procesapplicatie</text>
-        
-        <circle cx="115" cy="302" r="13" fill="#154273"/><text class="pr-nr" x="115" y="307">1</text>
+      <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
+      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
+      <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
+      <rect x="575" y="200" width="240" height="272" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-sub-t" x="589" y="220">CENTRAAL</text>
+      <text class="pr-zone-s" x="589" y="236">je sluit aan</text>
+      <rect x="850" y="160" width="230" height="325" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
+      <text class="pr-zone-t" x="862" y="187">BUITEN</text>
+      <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
+      <g data-fase="r1b">
+        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
+        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="239">Portaal</text>
+        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
+        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
-
-      <!-- Stap 2: bericht klaarzetten in het eigen magazijn (plug-in) -->
+      <g data-fase="1">
+        <rect x="60" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="345">Procesapplicatie</text>
+        <circle cx="60" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="60" y="317">1</text>
+      </g>
       <g data-fase="2f">
-        <path d="M295,330 H365" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
-        <rect x="312" y="321" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
-        <text class="pr-fsc-t" x="330" y="334">FSC</text>
+        <path d="M240,340 H335" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="266" y="331" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="284" y="344">FSC</text>
       </g>
       <g data-fase="2">
-        <rect x="365" y="232" width="170" height="118" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="450" y="287">Magazijn</text>
-        <text class="pr-mono" x="450" y="306">Belastingdienst</text>
-        <circle cx="535" cy="232" r="13" fill="#154273"/><text class="pr-nr" x="535" y="237">2</text>
-        <!-- Ander magazijn: kan, maar niet in de demo -->
+        <rect x="335" y="285" width="170" height="110" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="420" y="336">Magazijn</text>
+        <text class="pr-mono" x="420" y="355">Belastingdienst</text>
+        <circle cx="505" cy="285" r="13" fill="#154273"/><text class="pr-nr" x="505" y="290">2</text>
         <g opacity="0.4">
-          <rect x="365" y="362" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/>
-          <text class="pr-naam" x="450" y="380">Magazijn</text>
-          <text class="pr-mono" x="450" y="395">RVO</text>
+          <rect x="335" y="415" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/>
+        <text class="pr-naam" x="420" y="433">Magazijn</text>
+        <text class="pr-mono" x="420" y="448">RVO</text>
         </g>
-        <text class="pr-zone-s" x="450" y="420" text-anchor="middle">meer magazijnen mogelijk</text>
+        <text class="pr-zone-s" x="420" y="468" text-anchor="middle">meer magazijnen mogelijk</text>
       </g>
-
-      <!-- Stap 3: kennisgeving (melding) per e-mail -->
       <g data-fase="3s">
-        <path d="M535,305 H672 V330" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+        <path d="M505,352 H543 A7,7 0 0 1 557,352 H605" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="580" y="300">gebeurtenisbericht</text>
-        </g>
-      <g data-fase="3n"><rect x="582" y="330" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="672" y="354">NMC</text>
-        <text class="pr-mono" x="672" y="373">notificatiedienst</text>
-        <circle cx="582" cy="330" r="13" fill="#154273"/><text class="pr-nr" x="582" y="335">3</text>
-        </g>
-      <g data-fase="3m"><line x1="762" y1="358" x2="860" y2="358" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="810" y="349" text-anchor="middle">opdracht</text>
-        <rect x="860" y="330" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="354">Notify</text>
-        <text class="pr-mono" x="960" y="373">verstuurt de e-mail</text>
-        <line x1="1040" y1="330" x2="1040" y2="101" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="1034" y="305" text-anchor="end">e-mail</text>
-        
       </g>
-
-      <!-- Stap 4: terug naar de dienstverlener: inloggen op het portaal, bericht lezen -->
-      <g data-fase="4">
-        <line x1="860" y1="73" x2="640" y2="73" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="751" y="66" text-anchor="middle">opent</text>
-        <rect x="460" y="45" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+      <g data-fase="3n">
+        <rect x="605" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="695" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="695" y="355">NMC</text>
+        <circle cx="785" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="785" y="317">3</text>
+      </g>
+      <g data-fase="3m1">
+        <path d="M785,340 H905" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="845" y="333" text-anchor="middle">opdracht</text>
+        <rect x="905" y="312" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="985" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="985" y="355">Notify</text>
+      </g>
+      <g data-fase="3m2">
+        <path d="M985,312 V73 H670" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="e-mail">
+          <rect x="972" y="214" width="26" height="18" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <path d="M973,215 L985,225 L997,215" fill="none" stroke="#334155" stroke-width="1.6"/>
+        </g>
+        <text class="pr-label" x="1004" y="228">e-mail</text>
+      </g>
+      <g data-fase="on">
+        <rect x="430" y="45" width="240" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
         <text class="pr-naam" x="550" y="69">Ondernemer</text>
         <text class="pr-mono" x="550" y="88">aangifte en berichten</text>
       </g>
       <g data-fase="4u">
-        <path d="M640,94 H838 V130 H990 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="984" y="204" text-anchor="end">inloggen</text>
-        <rect x="860" y="215" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="940" y="239">Portaal</text>
-        <text class="pr-mono" x="940" y="258">MijnOverheid Zakelijk</text>
-        <circle cx="860" cy="215" r="13" fill="#154273"/><text class="pr-nr" x="860" y="220">4</text>
-        <path d="M860,253 H742" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="800" y="285" text-anchor="middle">uitvragen</text>
-        <rect x="582" y="230" width="160" height="46" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="662" y="250">BUS</text>
-        <text class="pr-mono" x="662" y="267">berichtenuitvraag</text>
-        <path d="M582,253 H535" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <path d="M558,253 V382 H535" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M550,101 V435 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M550,328 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal (scherm)">
+          <rect x="535" y="121" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="538" y="124" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="550" y1="140" x2="550" y2="143" stroke="#334155" stroke-width="1.6"/>
+          <line x1="544" y1="144" x2="556" y2="144" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="571" y="136">portaal</text>
+        <text class="pr-label" x="556" y="262">leest</text>
+        <circle cx="550" cy="185" r="13" fill="#154273"/><text class="pr-nr" x="550" y="190">4</text>
       </g>
-
-      
-      <!-- Procesapplicatie rechtstreeks naar de NMC, via FSC -->
       <g data-fase="r1">
-        <path d="M205,358 V423 Q205,435 217,435 H660 Q672,435 672,423 V386" fill="none" stroke="#a34f00" stroke-width="4" stroke-linejoin="round" marker-end="url(#pr-pijl-fsc)"/>
-        <rect x="420" y="426" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
-        <text class="pr-fsc-t" x="438" y="439">FSC</text>
+        <path d="M150,368 V393 Q150,405 162,405 H543 A7,7 0 0 1 557,405 H683 Q695,405 695,393 V368" fill="none" stroke="#a34f00" stroke-width="4" stroke-linejoin="round" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="400" y="396" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="418" y="409">FSC</text>
       </g>
-      <!-- Aangifte vanuit het portaal, pdf in het portaal -->
-      <g data-fase="r1b">
-        <path d="M460,80 H250 V222" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="354" y="74" text-anchor="middle">inloggen</text>
-        <rect x="115" y="222" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="246">Portaal</text>
-        <text class="pr-mono" x="205" y="265">Belastingdienst</text>
-        <line x1="205" y1="278" x2="205" y2="302" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="213" y="294">aangifte</text>
-      </g>
-      <g data-fase="mb">
-        <rect x="860" y="45" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="69">Mailbox</text>
-        <text class="pr-mono" x="960" y="88">kennisgeving (melding)</text>
-      </g>
-      <text x="1070" y="432" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-
-      <!-- Legenda -->
-      <line x1="40" y1="465" x2="72" y2="465" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="470">FSC-verbinding</text>
-      <line x1="215" y1="465" x2="247" y2="465" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="470">Andere verbinding</text>
-      <rect x="415" y="458" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="470">Plug-in, per dienstverlener</text>
-      <rect x="640" y="458" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="470">Centraal, je sluit aan</text>
-      <rect x="845" y="458" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="470">Niet in de demo</text>
+      <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
+      <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
+      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
     </svg>
   </figure>
       <ol class="ag-flow"></ol>
@@ -4744,9 +4767,9 @@ html:not(.js) {
   <ol class="ronde" aria-label="Opbouw van deze stap"><li class="is-nu">Proces</li><li class="is-nu">Demo, live</li><li class="">Techniek</li></ol>
   <h2 class="title">Plug-in aanzetten</h2>
   <figure class="plaat plaat-praktijk proces-focus" data-focus="2">
-    <svg viewBox="0 0 1100 480" role="img" aria-labelledby="praktijk-titel-r1 praktijk-uitleg-r1" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 1100 515" role="img" aria-labelledby="praktijk-titel-r1 praktijk-uitleg-r1" xmlns="http://www.w3.org/2000/svg">
       <title id="praktijk-titel-r1">Van besluit tot kennisgeving (melding), in vier stappen, op het fieldlab</title>
-      <desc id="praktijk-uitleg-r1">Fundament is verdeeld in twee delen: de plug-in per dienstverlener en de centrale diensten waarop je aansluit. Stap 1: in de procesapplicatie van de dienstverlener ontstaat een besluit. Stap 2: de procesapplicatie zet het bericht via FSC klaar in het eigen berichtenmagazijn, dat de dienstverlener als plug-in aanzet. In de demo is dat het magazijn van de Belastingdienst; het magazijn van RVO staat vervaagd, om te laten zien dat er meer magazijnen kunnen zijn. Stap 3: het berichtenmagazijn geeft de centrale NMC van de notificatiedienst een gebeurtenisbericht. De NMC geeft Notify, buiten Fundament, opdracht een e-mail te sturen: de kennisgeving (melding) komt binnen in de mailbox van de burger of ondernemer. De burger of ondernemer staat in een strook bovenaan. Stap 4: de ondernemer opent de e-mail en logt in op het portaal MijnOverheid Zakelijk, buiten Fundament. Het portaal vraagt de berichten op bij de berichtenuitvraag (BUS), centraal op Fundament; de BUS haalt ze op uit alle berichtenmagazijnen. De aangifte doet de ondernemer eerder in het portaal van de Belastingdienst, bij de dienstverlener.</desc>
+      <desc id="praktijk-uitleg-r1">Fundament is verdeeld in twee delen: de plug-in per dienstverlener en de centrale diensten waarop je aansluit. Stap 1: in de procesapplicatie van de dienstverlener ontstaat een besluit. Stap 2: de procesapplicatie zet het bericht via FSC klaar in het eigen berichtenmagazijn, dat de dienstverlener als plug-in aanzet. In de demo is dat het magazijn van de Belastingdienst; het magazijn van RVO staat vervaagd, om te laten zien dat er meer magazijnen kunnen zijn. Stap 3: het berichtenmagazijn geeft de centrale NMC van de notificatiedienst een gebeurtenisbericht. De NMC geeft Notify, buiten Fundament, opdracht een e-mail te sturen: de kennisgeving (melding) komt binnen in de mailbox van de burger of ondernemer. De burger of ondernemer staat in een strook bovenaan. Stap 4: de ondernemer opent de e-mail en logt in op het portaal MijnOverheid Zakelijk, buiten Fundament. De ondernemer leest de berichten, via een portaal, rechtstreeks uit de berichtenmagazijnen. De aangifte doet de ondernemer eerder in het portaal van de Belastingdienst, bij de dienstverlener.</desc>
       <defs>
         <marker id="pr-pijl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker>
         <marker id="pr-pijl-fsc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a34f00"/></marker>
@@ -4763,122 +4786,113 @@ html:not(.js) {
         </style>
       </defs>
 
-      <!-- Zones -->
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
-
-      <rect x="20" y="140" width="290" height="300" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <text class="pr-zone-t" x="36" y="167">DIENSTVERLENER</text>
-      <text class="pr-zone-s" x="36" y="185">eigen omgeving</text>
-
-      <rect x="335" y="128" width="460" height="320" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="351" y="158" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
-      <rect x="350" y="185" width="200" height="245" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-sub-t" x="364" y="205">PLUG-IN</text>
-      <text class="pr-zone-s" x="364" y="221">per dienstverlener</text>
-      <rect x="565" y="185" width="215" height="245" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-sub-t" x="579" y="205">CENTRAAL</text>
-      <text class="pr-zone-s" x="579" y="221">je sluit aan</text>
-
-      <rect x="815" y="140" width="265" height="300" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
-      <text class="pr-zone-t" x="831" y="167">BUITEN</text>
-      <text class="pr-zone-t" x="831" y="185">FUNDAMENT</text>
-
-      <!-- Stap 1: besluit -->
-      <g data-fase="1">
-        <rect x="115" y="302" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="326">Procesapplicatie</text>
-        <text class="pr-mono" x="205" y="345">besluit</text>
-        <circle cx="115" cy="302" r="13" fill="#154273"/><text class="pr-nr" x="115" y="307">1</text>
+      <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
+      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
+      <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
+      <rect x="575" y="200" width="240" height="272" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-sub-t" x="589" y="220">CENTRAAL</text>
+      <text class="pr-zone-s" x="589" y="236">je sluit aan</text>
+      <rect x="850" y="160" width="230" height="325" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
+      <text class="pr-zone-t" x="862" y="187">BUITEN</text>
+      <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
+      <g data-fase="0">
+        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
+        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="239">Portaal</text>
+        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
+        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
-
-      <!-- Stap 2: bericht klaarzetten in het eigen magazijn (plug-in) -->
+      <g data-fase="1">
+        <rect x="60" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="336">Procesapplicatie</text>
+        <text class="pr-mono" x="150" y="355">besluit</text>
+        <circle cx="60" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="60" y="317">1</text>
+      </g>
       <g data-fase="2f">
-        <path d="M295,330 H365" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
-        <rect x="312" y="321" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
-        <text class="pr-fsc-t" x="330" y="334">FSC</text>
+        <path d="M240,340 H335" fill="none" stroke="#a34f00" stroke-width="4" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="266" y="331" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="284" y="344">FSC</text>
       </g>
       <g data-fase="2">
-        <rect x="365" y="232" width="170" height="118" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="450" y="287">Magazijn</text>
-        <text class="pr-mono" x="450" y="306">Belastingdienst</text>
-        <circle cx="535" cy="232" r="13" fill="#154273"/><text class="pr-nr" x="535" y="237">2</text>
-        <!-- Ander magazijn: kan, maar niet in de demo -->
+        <rect x="335" y="285" width="170" height="110" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="420" y="336">Magazijn</text>
+        <text class="pr-mono" x="420" y="355">Belastingdienst</text>
+        <circle cx="505" cy="285" r="13" fill="#154273"/><text class="pr-nr" x="505" y="290">2</text>
         <g opacity="0.4">
-          <rect x="365" y="362" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/>
-          <text class="pr-naam" x="450" y="380">Magazijn</text>
-          <text class="pr-mono" x="450" y="395">RVO</text>
+          <rect x="335" y="415" width="170" height="40" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/>
+        <text class="pr-naam" x="420" y="433">Magazijn</text>
+        <text class="pr-mono" x="420" y="448">RVO</text>
         </g>
-        <text class="pr-zone-s" x="450" y="420" text-anchor="middle">meer magazijnen mogelijk</text>
+        <text class="pr-zone-s" x="420" y="468" text-anchor="middle">meer magazijnen mogelijk</text>
       </g>
-
-      <!-- Stap 3: kennisgeving (melding) per e-mail -->
-      <g data-fase="3">
-        <path d="M535,305 H672 V330" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <g data-fase="3s">
+        <path d="M505,352 H543 A7,7 0 0 1 557,352 H605" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="580" y="300">gebeurtenisbericht</text>
-        <rect x="582" y="330" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="672" y="354">NMC</text>
-        <text class="pr-mono" x="672" y="373">notificatiedienst</text>
-        <circle cx="582" cy="330" r="13" fill="#154273"/><text class="pr-nr" x="582" y="335">3</text>
-        <line x1="762" y1="358" x2="860" y2="358" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="810" y="349" text-anchor="middle">opdracht</text>
-        <rect x="860" y="330" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="354">Notify</text>
-        <text class="pr-mono" x="960" y="373">verstuurt de e-mail</text>
-        <line x1="1040" y1="330" x2="1040" y2="101" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="1034" y="305" text-anchor="end">e-mail</text>
-        
       </g>
-
-      <!-- Stap 4: terug naar de dienstverlener: inloggen op het portaal, bericht lezen -->
-      <g data-fase="0">
-        <path d="M460,80 H250 V222" fill="none" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="354" y="74" text-anchor="middle">inloggen</text>
-        <rect x="115" y="222" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="205" y="246">Portaal</text>
-        <text class="pr-mono" x="205" y="265">Belastingdienst</text>
-        <line x1="205" y1="278" x2="205" y2="302" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="213" y="294">aangifte</text>
+      <g data-fase="3n">
+        <rect x="605" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="695" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="695" y="355">NMC</text>
+        <circle cx="785" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="785" y="317">3</text>
       </g>
-      <g data-fase="4">
-        <line x1="860" y1="73" x2="640" y2="73" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="751" y="66" text-anchor="middle">opent</text>
-        <rect x="460" y="45" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+      <g data-fase="3m1">
+        <path d="M785,340 H905" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <text class="pr-label" x="845" y="333" text-anchor="middle">opdracht</text>
+        <rect x="905" y="312" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="985" y="336">Notificatiedienst</text>
+        <text class="pr-mono" x="985" y="355">Notify</text>
+      </g>
+      <g data-fase="3m2">
+        <path d="M985,312 V73 H670" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="e-mail">
+          <rect x="972" y="214" width="26" height="18" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <path d="M973,215 L985,225 L997,215" fill="none" stroke="#334155" stroke-width="1.6"/>
+        </g>
+        <text class="pr-label" x="1004" y="228">e-mail</text>
+      </g>
+      <g data-fase="on">
+        <rect x="430" y="45" width="240" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
         <text class="pr-naam" x="550" y="69">Ondernemer</text>
         <text class="pr-mono" x="550" y="88">aangifte en berichten</text>
-        <path d="M640,94 H838 V130 H990 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="984" y="204" text-anchor="end">inloggen</text>
-        <rect x="860" y="215" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="940" y="239">Portaal</text>
-        <text class="pr-mono" x="940" y="258">MijnOverheid Zakelijk</text>
-        <circle cx="860" cy="215" r="13" fill="#154273"/><text class="pr-nr" x="860" y="220">4</text>
-        <path d="M860,253 H742" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <text class="pr-label" x="800" y="285" text-anchor="middle">uitvragen</text>
-        <rect x="582" y="230" width="160" height="46" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="662" y="250">BUS</text>
-        <text class="pr-mono" x="662" y="267">berichtenuitvraag</text>
-        <path d="M582,253 H535" fill="none" stroke="#334155" stroke-width="1.6" marker-start="url(#pr-pijl)" marker-end="url(#pr-pijl)"/>
-        <path d="M558,253 V382 H535" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
       </g>
-
-      <g data-fase="mb">
-        <rect x="860" y="45" width="200" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="960" y="69">Mailbox</text>
-        <text class="pr-mono" x="960" y="88">kennisgeving (melding)</text>
+      <g data-fase="4">
+        <path d="M550,101 V435 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M550,328 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal (scherm)">
+          <rect x="535" y="121" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="538" y="124" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="550" y1="140" x2="550" y2="143" stroke="#334155" stroke-width="1.6"/>
+          <line x1="544" y1="144" x2="556" y2="144" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="571" y="136">portaal</text>
+        <text class="pr-label" x="556" y="262">leest</text>
+        <circle cx="550" cy="185" r="13" fill="#154273"/><text class="pr-nr" x="550" y="190">4</text>
       </g>
-      <text x="1070" y="432" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-
-      <!-- Legenda -->
-      <line x1="40" y1="465" x2="72" y2="465" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="470">FSC-verbinding</text>
-      <line x1="215" y1="465" x2="247" y2="465" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="470">Andere verbinding</text>
-      <rect x="415" y="458" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="470">Plug-in, per dienstverlener</text>
-      <rect x="640" y="458" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="470">Centraal, je sluit aan</text>
-      <rect x="845" y="458" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="470">Niet in de demo</text>
+      <g data-fase="r1">
+        <path d="M150,368 V393 Q150,405 162,405 H543 A7,7 0 0 1 557,405 H683 Q695,405 695,393 V368" fill="none" stroke="#a34f00" stroke-width="4" stroke-linejoin="round" marker-end="url(#pr-pijl-fsc)"/>
+        <rect x="400" y="396" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="418" y="409">FSC</text>
+      </g>
+      <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
+      <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
+      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
     </svg>
   </figure>
   <aside class="notes"><p><strong>Laat zien</strong> · demo: Fundament-console</p><ol><li><strong>Cluster openen</strong> Tab Plugins, kies "berichtenmagazijn".</li><li><strong>Invullen</strong> OIN en de naam die ontvangers zien.</li><li><strong>Status</strong> Van "installing" naar "running".</li></ol><p>[link Fundament-console aanvullen]</p><p><strong>Achtergrond</strong></p><p>Voorbereiding voor stap 7: de dienstverlener zet de plug-in berichtenmagazijn aan. Dat gebeurt één keer.</p><p>Eerst de plaat: alleen deze stap is in beeld. Dan "Open de demo", de drie stappen laten zien, terug naar de presentatie. Demo-stappen aanvullen na het bekijken van de democonsole.</p></aside>
@@ -36740,6 +36754,20 @@ window.fieldlabStappen = (() => {
   const leesVeld = (doc, naam) => (doc.querySelector(`[name="${naam}"]`)?.value ?? '').toString().trim();
 
   const DEMOS = {
+    directory: {
+      uitleg: true,  // geen voortgang: genummerde uitleg, niet aanklikbaar
+      stappen: [
+        { nr: '', titel: 'Aanmelden bij de Directory', tekst: 'De Manager van elke partij meldt zich aan; de Directory controleert het PKIoverheid-certificaat.',
+          tech: ['Directory', [['Beheer', 'RINIS beheert de Directory']]] },
+        { nr: '', titel: 'Dienst publiceren', tekst: 'De notificatiedienst publiceert de dienst notificaties, zodat anderen hem kunnen vinden.',
+          tech: ['Publiceren', [['Grant', 'ServicePublicationGrant']]] },
+        { nr: '', titel: 'Contract', tekst: 'De dienstverlener vraagt toegang; beide Managers tekenen. Zo ligt vast wie wat mag.',
+          tech: ['Contract', [['Grant', 'ServiceConnectionGrant']]] },
+        { nr: '', titel: 'Veilig aanroepen', tekst: 'De Outway stuurt het verzoek met een token over mTLS naar de Inway. Elke transactie wordt vastgelegd.',
+          tech: ['Aanroep', [['Log', 'transaction log aan beide kanten']]] },
+      ],
+      klaar: ['FSC', [['Klaar', 'verbinding via FSC']]],
+    },
     fsc: {
       stappen: [
         { nr: '', titel: 'Outway', tekst: 'De uitgang in de eigen omgeving van de dienstverlener.',
@@ -36764,7 +36792,13 @@ window.fieldlabStappen = (() => {
         api.kijk(() => {
           if (zichtbaar(doc, 'bevestiging') || zichtbaar(doc, 'stap-verwerking')) {
             const kvk = leesVeld(doc, 'kvk');
-            if (/^\d{8}$/.test(kvk)) aangifte = { kvk, tijdvak: leesVeld(doc, 'tijdvak') || aangifte.tijdvak, bedrag: leesVeld(doc, 'bedrag') || aangifte.bedrag };
+            if (/^\d{8}$/.test(kvk)) {
+              // Het moment van verzenden (en het kenmerk) zoals de procesapplicatie het bewaarde
+              let bewaard = null;
+              try { bewaard = JSON.parse(doc.defaultView.localStorage.getItem('fieldlab-aangifte') || 'null'); } catch (e) { bewaard = null; }
+              aangifte = { kvk, tijdvak: leesVeld(doc, 'tijdvak') || aangifte.tijdvak, bedrag: leesVeld(doc, 'bedrag') || aangifte.bedrag,
+                ontvangenOp: (bewaard && bewaard.kvk === kvk && bewaard.ontvangenOp) || new Date().toISOString(), kenmerk: bewaard && bewaard.kenmerk };
+            }
             api.klaar();
           }
         });
@@ -36772,11 +36806,11 @@ window.fieldlabStappen = (() => {
     },
     besluit: {
       stappen: [
-        { nr: '5', titel: 'Verwerking', tekst: 'De medewerker opent de aangifte in de werklijst; de controles lopen. Daarna: Verwerking goedkeuren.',
+        { nr: '5', titel: 'Verwerking', tekst: 'Klik op Behandelen: de controles lopen en de verwerking wordt goedgekeurd.',
           tech: ['Verwerking', [['In werkelijkheid', 'automatisch; in de demo keurt een medewerker elke stap goed'], ['Controles', 'nagebootst: ontvangen, rekenkundige controle, vergelijking met eerdere aangiften']]] },
-        { nr: '6', titel: 'Besluit', tekst: 'Het besluit (de beschikking) staat klaar als pdf. Bekijk het en klik op Besluit vaststellen.',
+        { nr: '6', titel: 'Besluit', tekst: 'Het besluit (de beschikking) wordt vastgesteld en staat klaar als pdf.',
           tech: ['Besluit', [['Begrip', 'een besluit is een inhoudelijk bericht'], ['Bekendmaking', 'door het klaar te zetten in het magazijn']]] },
-        { nr: '7', titel: 'In het magazijn', tekst: 'Klik op Plaatsen: het besluit gaat via FSC in het magazijn van de Belastingdienst.',
+        { nr: '7', titel: 'In het magazijn', tekst: 'Het besluit gaat via FSC in het magazijn van de Belastingdienst.',
           tech: ['Plaatsen', [['Aanleveren', 'de procesapplicatie levert het bericht via FSC aan bij het magazijn (POST /api/scenario/plaatsen → /aanleveringen)'], ['Opslaan', 'het magazijn slaat het bericht op en schrijft het logboek'], ['Bijlage', 'de pdf, als base64']]] },
       ],
       klaar: ['Besluit geplaatst', [['Hierna', 'het magazijn stuurt de NMC een gebeurtenisbericht: stap 8']]],
@@ -36827,12 +36861,20 @@ window.fieldlabStappen = (() => {
     let nu = cfg.start ?? 0, doc = null, timers = [];
 
     cfg.stappen.forEach((st, i) => {
-      const li = mk('li'); const b = mk('button', 'ag-stap'); b.type = 'button';
+      const li = mk('li');
       const t = mk('span'); t.append(mk('span', 'ag-titel', st.titel), mk('span', 'ag-tekst', st.tekst));
+      if (cfg.uitleg) {
+        // Uitleg: genummerd zoals op de plaat, geen bolletje of vinkje, niet aanklikbaar
+        const u = mk('div', 'ag-stap'); u.dataset.staat = 'uitleg';
+        u.append(mk('span', 'ag-num', String(i + 1)), t);
+        li.append(u); flow.append(li); return;
+      }
+      const b = mk('button', 'ag-stap'); b.type = 'button';
       b.append(mk('span', 'ag-num'), t);
       b.addEventListener('click', e => { e.stopPropagation(); zet(i); });
       li.append(b); flow.append(li);
     });
+    if (cfg.uitleg) flow.classList.add('ag-flow--uitleg');
     function techTonen([titel, items]) {
       if (!dia.querySelector('.ag-tech__titel')) return;  // techniekblok is weggehaald
       dia.querySelector('.ag-tech__titel').textContent = titel;
@@ -36853,7 +36895,7 @@ window.fieldlabStappen = (() => {
       techTonen(cfg.klaar);
     }
     const api = { zet, klaar, nu: () => nu, kijk: fn => { new MutationObserver(fn).observe(doc.body, { subtree: true, attributes: true, attributeFilter: ['hidden'], childList: true }); fn(); } };
-    zet(nu);
+    if (!cfg.uitleg) zet(nu);
 
     let geladen = null;
     const opLaden = new Promise(r => { geladen = r; });
@@ -37069,5 +37111,22 @@ async function toonPdf(url, titel) {
   document.addEventListener('click', e => { if (e.target.closest('.route a')) e.stopPropagation(); }, true);
 })();
 </script>
+
+<style>
+.proces-focus[data-focus~="on"] svg [data-fase="on"] { opacity: 1; }
+</style>
+
+<style>
+.ag-demo--directory { display: flex; flex-direction: column; }
+.ag-demo__bron { margin: 0; padding: 0.4cqw 0.9cqw; background: #fff4db; border-bottom: 0.12cqw solid #ffb612; font-size: 0.95cqw; color: #1a1a1a; }
+.ag-demo--directory iframe { flex: 1; height: auto; min-height: 0; }
+</style>
+
+<style>
+/* Uitleg (zoals bij FSC): genummerd in de stijl van de plaat, geen voortgang */
+.ag-flow--uitleg .ag-stap { cursor: default; }
+.ag-flow--uitleg .ag-num { background: #154273; border-color: #154273; color: #fff; font-size: 1.05cqw; }
+.ag-flow--uitleg .ag-num::before { content: none; }
+</style>
 </body>
 </html>

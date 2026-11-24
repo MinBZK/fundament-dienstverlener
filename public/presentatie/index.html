@@ -4325,9 +4325,9 @@ html:not(.js) {
       <ol class="ag-flow"></ol>
       <div class="ag-tech" aria-live="polite"><p class="ag-tech__kop">Techniek &middot; <span class="ag-tech__titel"></span></p><ul class="ag-tech__items"></ul></div>
     </div>
-    <div class="ag-demo"><iframe loading="lazy" src="/portaal.html?magazijn=bld" title="Demo: portaal, magazijn van de Belastingdienst"></iframe></div>
+    <div class="ag-demo"><iframe loading="lazy" src="/moza-portaal/index.html" title="Demo: MijnOverheid Zakelijk, berichtenbox"></iframe></div>
   </div>
-  <aside class="notes"><p><strong>Demo in de dia</strong> Eerst 1,5 seconde de plaat groot, dan rechts het portaal. Het portaal logt vanzelf in met het KVK-nummer van de aangifte en haalt de berichten op. Open het besluit: dan staat stap 10 op klaar.</p><p><strong>Laat zien</strong> · demo: Portaal</p><ol><li><strong>Inloggen</strong> Vanuit de e-mail naar het portaal.</li><li><strong>10 Besluit lezen</strong> Het portaal haalt het besluit op uit het magazijn.</li><li><strong>Gelezen</strong> In de demo-bediening: status "gelezen".</li></ol><p><strong>Achtergrond</strong></p><p>Stap 10: de ondernemer logt vanuit de e-mail in op het portaal en leest het besluit uit het magazijn.</p><p>Eerst de plaat: alleen deze stap is in beeld. Dan "Open de demo", de drie stappen laten zien, terug naar de presentatie. Demo-stappen aanvullen na het bekijken van de democonsole.</p></aside>
+  <aside class="notes"><p><strong>Demo in de dia</strong> Eerst 1,5 seconde de plaat groot, dan rechts de berichtenbox van MijnOverheid Zakelijk (layout van het proefportaal). Klik op het besluit van de Belastingdienst: het bericht opent en stap 10 krijgt een vinkje. Klik op de bijlage: de pdf opent in een venster, met de gegevens van de aangifte.</p><p><strong>Laat zien</strong> · demo: Portaal</p><ol><li><strong>Inloggen</strong> Vanuit de e-mail naar het portaal.</li><li><strong>10 Besluit lezen</strong> Het portaal haalt het besluit op uit het magazijn.</li><li><strong>Gelezen</strong> In de demo-bediening: status "gelezen".</li></ol><p><strong>Achtergrond</strong></p><p>Stap 10: de ondernemer logt vanuit de e-mail in op het portaal en leest het besluit uit het magazijn.</p><p>Eerst de plaat: alleen deze stap is in beeld. Dan "Open de demo", de drie stappen laten zien, terug naar de presentatie. Demo-stappen aanvullen na het bekijken van de democonsole.</p></aside>
 </section>
 
 <!-- ===== RONDJE 2: FSC-aansluiting ===== -->
@@ -36628,15 +36628,13 @@ document.querySelectorAll(&quot;svg .cont[data-term] text, svg text.lbl[data-ter
     },
     lezen: {
       stappen: [
-        { nr: '10', titel: 'Besluit lezen', tekst: 'Het portaal haalt de berichten op uit het magazijn. Open het besluit.',
-          tech: ['Uitlezen', [['Magazijnregister', 'vertelt welk magazijn het portaal uitleest'], ['Uitlezen', 'vraag en antwoord: het portaal vraagt, het magazijn levert (GET /api/portaal/berichten)'], ['Alleen eigen berichten', 'de ondernemer ziet alleen berichten voor het eigen KVK-nummer']]] },
+        { nr: '10', titel: 'Besluit lezen', tekst: 'Open in de berichtenbox het besluit van de Belastingdienst, en daarna de bijlage.',
+          tech: ['Uitlezen', [['Magazijnregister', 'vertelt welk magazijn het portaal uitleest'], ['Uitlezen', 'het portaal vraagt, het magazijn levert; in deze demo nagebootst in de berichtenbox van MijnOverheid Zakelijk'], ['Bijlage', 'de pdf van het besluit (GET /api/scenario/beschikking)']]] },
       ],
       klaar: ['Besluit gelezen', [['Klaar', 'de keten is rond: van aangifte tot besluit lezen']]],
-      naIntro(doc) {
-        if (doc.querySelector('#berichten')?.children.length) return;
-        zetVeld(doc, 'ontvangerWaarde', aangifte.kvk);
-        verstuur(doc, '#form-inloggen');
-      },
+      // De berichtenbox (layout van het MOZa-portaal) krijgt de gegevens van de aangifte voor de pdf
+      bijLaden(doc) { doc.defaultView.zetAangifte?.(aangifte); },
+      naIntro(doc) { doc.defaultView.zetAangifte?.(aangifte); },
       volg(doc, api) { api.kijk(() => { if (zichtbaar(doc, 'bericht')) api.klaar(); }); },
     },
   };
@@ -36689,7 +36687,7 @@ document.querySelectorAll(&quot;svg .cont[data-term] text, svg text.lbl[data-ter
         const link = e.composedPath().find(n => n && n.getAttribute && n.getAttribute('href') && /beschikking|\/bijlagen\/|\.pdf(\?|$)/i.test(n.getAttribute('href')));
         if (!link) return;
         e.preventDefault(); e.stopPropagation();
-        const naam = link.getAttribute('download') || (link.id === 'link-beschikking' ? 'Beschikking btw-aangifte' : (link.getAttribute('text') || 'Pdf'));
+        const naam = link.getAttribute('download') || (link.id === 'link-beschikking' ? 'Beschikking btw-aangifte' : (link.getAttribute('text') || link.textContent.trim() || 'Pdf'));
         toonPdf(new URL(link.getAttribute('href'), doc.baseURI).href, naam);
       }, true);
       cfg.volg && cfg.volg(doc, api);

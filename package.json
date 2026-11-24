@@ -1,0 +1,26 @@
+{
+  "name": "fundament-dienstverlener",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Presentatie en werkende demo van het Fieldlab Soevereine basis: een nagebootste dienstverlener die berichten plaatst in berichtenmagazijnen op Fundament en notificaties stuurt via de NMC.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "dev": "node server.ts --dev",
+    "build": "tsc --noEmit && vite build",
+    "start": "node server.ts",
+    "lint": "nldd lint index.html werkscherm.html instellingen.html portaal.html scenario.html"
+  },
+  "dependencies": {
+    "@nldd/design-system": "0.28.0",
+    "@pdf-lib/fontkit": "^1.1.1",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.0",
+    "vite": "^8.3.8"
+  }
+}

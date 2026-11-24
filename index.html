@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="nl" data-scheme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fundament Dienstverlener · MijnOverheid Zakelijk</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/src/stijl.css">
+    <link rel="stylesheet" href="/src/start.css">
+    <script type="module" src="/src/start.ts"></script>
+  </head>
+  <body>
+    <div class="start">
+      <main class="start-inhoud">
+        <p class="start-overline">MijnOverheid Zakelijk · Fieldlab Soevereine basis</p>
+        <h1 class="start-titel">Fundament Dienstverlener</h1>
+        <p class="start-lead">Presentatie en werkende demo van het Fieldlab Soevereine basis.</p>
+
+        <nldd-collection
+          class="start-keuzes"
+          item-min-width="230px"
+          gap="24"
+        >
+          <nldd-card>
+            <nldd-container padding="24">
+              <nldd-title
+                text="Presentatie"
+                heading-level="2"
+                size="display-5"
+              ></nldd-title>
+              <nldd-spacer size="8"></nldd-spacer>
+              <nldd-text text="Het verhaal van het fieldlab, met de live demo op de dia's."></nldd-text>
+            </nldd-container>
+            <nldd-container
+              slot="footer"
+              padding="24"
+            >
+              <nldd-button
+                appearance="primary"
+                text="Open de presentatie"
+                end-icon="arrow-right"
+                single-line
+                href="/presentatie/index.html"
+              ></nldd-button>
+            </nldd-container>
+          </nldd-card>
+
+          <nldd-card>
+            <nldd-container padding="24">
+              <nldd-title
+                text="Scenario btw-aangifte"
+                heading-level="2"
+                size="display-5"
+              ></nldd-title>
+              <nldd-spacer size="8"></nldd-spacer>
+              <nldd-text text="Aangifte, beschikking en plaatsen in het magazijn van de Belastingdienst, met een losse notificatie."></nldd-text>
+            </nldd-container>
+            <nldd-container
+              slot="footer"
+              padding="24"
+            >
+              <nldd-button
+                appearance="primary"
+                text="Start het scenario"
+                end-icon="arrow-right"
+                single-line
+                href="/scenario.html"
+              ></nldd-button>
+            </nldd-container>
+          </nldd-card>
+
+          <nldd-card>
+            <nldd-container padding="24">
+              <nldd-title
+                text="Portaal-mock"
+                heading-level="2"
+                size="display-5"
+              ></nldd-title>
+              <nldd-spacer size="8"></nldd-spacer>
+              <nldd-text text="Berichten bekijken zoals de ondernemer of burger ze ziet."></nldd-text>
+            </nldd-container>
+            <nldd-container
+              slot="footer"
+              padding="24"
+            >
+              <nldd-button
+                appearance="primary"
+                text="Open het portaal"
+                end-icon="arrow-right"
+                single-line
+                href="/portaal.html"
+              ></nldd-button>
+            </nldd-container>
+          </nldd-card>
+
+          <nldd-card>
+            <nldd-container padding="24">
+              <nldd-title
+                text="Werkscherm"
+                heading-level="2"
+                size="display-5"
+              ></nldd-title>
+              <nldd-spacer size="8"></nldd-spacer>
+              <nldd-text text="Losse berichten plaatsen en notificaties sturen, met logboek."></nldd-text>
+            </nldd-container>
+            <nldd-container
+              slot="footer"
+              padding="24"
+            >
+              <nldd-button
+                appearance="primary"
+                text="Open werkscherm"
+                end-icon="arrow-right"
+                single-line
+                href="/werkscherm.html"
+              ></nldd-button>
+            </nldd-container>
+          </nldd-card>
+        </nldd-collection>
+      </main>
+
+      <footer class="start-voet">
+        <span><strong>MijnOverheid Zakelijk</strong> · Makkelijk zakendoen met de overheid</span>
+        <a href="/instellingen.html">Instellingen</a>
+      </footer>
+    </div>
+  </body>
+</html>

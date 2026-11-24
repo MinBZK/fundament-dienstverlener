@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="nl" data-scheme="light">
+  <head>
+    <meta charset="utf-8">
+    <title>Beschikking · Mock-dienstverlener</title>
+    <script type="module" src="/src/beschikking-sjabloon.ts"></script>
+    <style>
+      /* Zelfde opzet als testbijlage.html: A4 zonder marge, logo als lint bovenaan. */
+      @page { size: A4; margin: 0; }
+      body { margin: 0; width: 210mm; }
+      /* Lege plekken voor de gegevens: de onderkant ligt op de basislijn van de regel. */
+      [data-plek] { display: inline-block; width: 0; height: 0; }
+      #logo { width: 44px; margin-inline: auto; }
+      #logo svg { display: block; width: 100%; height: auto; }
+    </style>
+  </head>
+  <body>
+      <nldd-container>
+        <div id="logo" role="img" aria-label="Rijksoverheid"></div>
+        <nldd-container
+          padding="48"
+          max-width="640px"
+        >
+        <nldd-title>
+          <h1>Beschikking btw-aangifte (fieldlab)</h1>
+        </nldd-title>
+        <nldd-spacer size="24"></nldd-spacer>
+        <nldd-rich-text>
+          <p>Testdocument voor het Fieldlab Soevereine basis. Dit is geen echt besluit.</p>
+          <h2>Gegevens</h2>
+          <dl>
+            <dt>KVK-nummer</dt>
+            <dd><span data-plek="kvk"></span></dd>
+            <dt>Tijdvak</dt>
+            <dd><span data-plek="tijdvak"></span></dd>
+            <dt>Aangegeven btw</dt>
+            <dd><span data-plek="bedrag"></span></dd>
+            <dt>Aangifte ontvangen op</dt>
+            <dd><span data-plek="ontvangen"></span></dd>
+          </dl>
+          <h2>Besluit</h2>
+          <p>Uw aangifte is goedgekeurd.</p>
+          <dl>
+            <dt>Besloten op</dt>
+            <dd><span data-plek="besloten"></span></dd>
+            <dt>Afzender</dt>
+            <dd>Belastingdienst (nagebootst, fieldlab)</dd>
+          </dl>
+        </nldd-rich-text>
+        </nldd-container>
+      </nldd-container>
+  </body>
+</html>

@@ -195,7 +195,7 @@ async function doorsturen(
 
 // Portaal-mock: haalt berichten op uit het magazijn, zoals een portaal dat doet (lijst, één
 // bericht, een bijlage), en geeft het antwoord ongewijzigd door. De ontvanger komt binnen als
-// ?ontvanger=KVK:12345678 en gaat als header X-Ontvanger mee.
+// ?ontvanger=KVK:90000013 en gaat als header X-Ontvanger mee.
 const portaalPaden = /^\/berichten(\/[0-9a-f-]{36}(\/bijlagen\/[0-9a-f-]{36})?)?$/i;
 const ontvangerVorm = /^(BSN:[0-9]{9}|RSIN:[0-9]{9}|KVK:[0-9]{8}|OIN:[0-9]{20})$/;
 
@@ -207,8 +207,17 @@ const ontvangerVorm = /^(BSN:[0-9]{9}|RSIN:[0-9]{9}|KVK:[0-9]{8}|OIN:[0-9]{20})$
 const bldMagazijnAdres =
   process.env.BLD_MAGAZIJN_URL ?? 'https://berichtenmagazijn-b.fbs.cluster-c.fieldlab2026.nl/api/v1';
 
+// OIN van de Belastingdienst (stelseldocument van het fieldlab), als afzender van het besluit.
+const bldAfzender = process.env.BLD_AFZENDER_OIN ?? '00000001823288444000';
 function bldMagazijn(): Dienst {
   return instellingen.magazijn.modus === 'fsc' ? instellingen.magazijn : { ...instellingen.magazijn, directAdres: bldMagazijnAdres };
+}
+
+// Magazijn A (RVO) van het fieldlab: alleen lezen, voor de berichtenbox die beide magazijnen toont.
+const rvoMagazijnAdres =
+  process.env.RVO_MAGAZIJN_URL ?? 'https://berichtenmagazijn-a.fbs.cluster-c.fieldlab2026.nl/api/v1';
+function rvoMagazijn(): Dienst {
+  return { modus: 'direct', directAdres: rvoMagazijnAdres, grantHash: '', fscPad: '' };
 }
 
 // Leest en controleert de gegevens van de aangifte (uit een body of uit de zoekparameters).
@@ -230,10 +239,11 @@ async function ophalenUitMagazijn(req: IncomingMessage, res: ServerResponse, mag
   const ontvanger = vraag.get('ontvanger') ?? '';
   if (!portaalPaden.test(magazijnPad)) return stuurJson(res, 404, { fout: 'Onbekend pad.' });
   if (!ontvangerVorm.test(ontvanger)) {
-    return stuurJson(res, 400, { fout: 'De ontvanger hoort eruit te zien als KVK:12345678 of BSN:999993653.' });
+    return stuurJson(res, 400, { fout: 'De ontvanger hoort eruit te zien als KVK:90000013 of BSN:999993653.' });
   }
-  // ?magazijn=bld: kijk in het magazijn van de Belastingdienst (scenario), anders in het ingestelde.
-  const dienst = vraag.get('magazijn') === 'bld' ? bldMagazijn() : instellingen.magazijn;
+  // ?magazijn=bld: magazijn B (Belastingdienst, scenario); ?magazijn=a: magazijn A (RVO); anders het ingestelde.
+  const keuze = vraag.get('magazijn');
+  const dienst = keuze === 'bld' ? bldMagazijn() : keuze === 'a' ? rvoMagazijn() : instellingen.magazijn;
   const mist = ontbreekt(dienst);
   if (mist) return stuurJson(res, 409, { fout: `Voor het berichtenmagazijn ontbreekt nog ${mist}.` });
 
@@ -259,6 +269,89 @@ async function ophalenUitMagazijn(req: IncomingMessage, res: ServerResponse, mag
   } catch (e) {
     const oorzaak = e instanceof Error ? (e.cause instanceof Error ? e.cause.message : e.message) : String(e);
     stuurJson(res, 502, { fout: `Het magazijn is niet bereikbaar (${url}): ${oorzaak}` });
+  }
+}
+
+// --- Berichtenuitvraag (BUS) van het Federatief Berichtenstelsel -----------------------------
+// Zoals moza-poc en moza-portaal: eerst een sessie (POST /sessies), dan een ophaalronde
+// (GET /berichten/_ophalen, Server-Sent Events), dan de lijst, de inhoud en de bijlagen.
+// De server houdt de sessie per ontvanger bij; de browser ziet het sessie-id niet.
+const busAdres = (process.env.BUS_URL ?? 'https://demo.fbs.cluster-c.fieldlab2026.nl/api/v1').replace(/\/$/, '');
+const busSessies = new Map<string, string>();
+const busPaden = /^\/(ophalen|berichten(\/[\w-]+(\/bijlagen\/[\w-]+)?)?)$/;
+
+async function busSessie(ontvanger: string, nieuw = false): Promise<string> {
+  if (!nieuw && busSessies.has(ontvanger)) return busSessies.get(ontvanger)!;
+  const antwoord = await fetch(`${busAdres}/sessies`, { method: 'POST', headers: { 'X-Ontvanger': ontvanger, accept: 'application/json' }, signal: AbortSignal.timeout(10_000) });
+  if (!antwoord.ok) throw new Error(`sessie starten gaf ${antwoord.status}`);
+  const { sessieId } = (await antwoord.json()) as { sessieId?: string };
+  if (!sessieId) throw new Error('sessie starten: geen sessieId');
+  busSessies.set(ontvanger, sessieId);
+  return sessieId;
+}
+
+async function busFetch(ontvanger: string, pad: string, init: RequestInit = {}, ms = 15_000): Promise<Response> {
+  const doe = async (sessie: string) =>
+    fetch(`${busAdres}${pad}`, { ...init, headers: { 'X-Ontvanger': ontvanger, 'X-Sessie': sessie, ...(init.headers as Record<string, string>) }, signal: AbortSignal.timeout(ms) });
+  let antwoord = await doe(await busSessie(ontvanger));
+  if (antwoord.status === 401) antwoord = await doe(await busSessie(ontvanger, true));
+  return antwoord;
+}
+
+// Leest de ophaalronde tot "ophalen-gereed" en geeft een samenvatting terug.
+async function busOphalen(ontvanger: string): Promise<{ magazijnen: { naam: string; status: string; aantal: number }[]; totaal: number; gereed: boolean }> {
+  const antwoord = await busFetch(ontvanger, '/berichten/_ophalen', { headers: { accept: 'text/event-stream' } }, 45_000);
+  if (antwoord.status === 409) return { magazijnen: [], totaal: 0, gereed: true }; // er loopt al een ronde
+  if (!antwoord.ok || !antwoord.body) throw new Error(`ophalen gaf ${antwoord.status}`);
+  const lezer = antwoord.body.getReader();
+  const decoder = new TextDecoder();
+  const magazijnen: { naam: string; status: string; aantal: number }[] = [];
+  let buffer = '', totaal = 0, gereed = false;
+  try {
+    while (!gereed) {
+      const { value, done } = await lezer.read();
+      if (done) break;
+      buffer = (buffer + decoder.decode(value, { stream: true })).replace(/\r\n/g, '\n');
+      let i;
+      while ((i = buffer.indexOf('\n\n')) >= 0) {
+        const frame = buffer.slice(0, i); buffer = buffer.slice(i + 2);
+        const data = frame.split('\n').filter((r) => r.startsWith('data:')).map((r) => r.slice(5).trim()).join('\n');
+        if (!data) continue;
+        const g = JSON.parse(data) as Record<string, unknown>;
+        if (g.event === 'magazijn-bevraging-voltooid') magazijnen.push({ naam: String(g.naam ?? g.magazijnId), status: String(g.status ?? ''), aantal: Number(g.aantalBerichten) || 0 });
+        if (g.event === 'ophalen-gereed') { totaal = Number(g.totaalBerichten) || 0; gereed = true; }
+        if (g.event === 'ophalen-fout') throw new Error('fout tijdens ophalen');
+      }
+    }
+  } finally {
+    lezer.cancel().catch(() => {});
+  }
+  return { magazijnen, totaal, gereed };
+}
+
+async function viaBus(req: IncomingMessage, res: ServerResponse, busPad: string): Promise<void> {
+  const vraag = new URL(req.url ?? '/', 'http://localhost').searchParams;
+  const ontvanger = vraag.get('ontvanger') ?? '';
+  if (!busPaden.test(busPad)) return stuurJson(res, 404, { fout: 'Onbekend pad.' });
+  if (!ontvangerVorm.test(ontvanger)) return stuurJson(res, 400, { fout: 'De ontvanger hoort eruit te zien als KVK:90000013.' });
+  try {
+    if (busPad === '/ophalen') return stuurJson(res, 200, await busOphalen(ontvanger));
+    const door = new URLSearchParams();
+    for (const sleutel of ['pagina', 'paginaGrootte', 'magazijnId']) {
+      const w = vraag.get(sleutel);
+      if (w && /^[\w-]{1,64}$/.test(w)) door.set(sleutel, w);
+    }
+    const antwoord = await busFetch(ontvanger, `${busPad}${door.size ? `?${door}` : ''}`, { headers: { accept: '*/*' } });
+    const koppen: Record<string, string> = {};
+    for (const kop of ['content-type', 'content-disposition']) {
+      const w = antwoord.headers.get(kop);
+      if (w) koppen[kop] = w;
+    }
+    res.writeHead(antwoord.status, koppen);
+    res.end(Buffer.from(await antwoord.arrayBuffer()));
+  } catch (e) {
+    const oorzaak = e instanceof Error ? (e.cause instanceof Error ? e.cause.message : e.message) : String(e);
+    stuurJson(res, 502, { fout: `De berichtenuitvraag is niet bereikbaar (${busAdres}): ${oorzaak}` });
   }
 }
 
@@ -316,13 +409,19 @@ async function verwerkApi(req: IncomingMessage, res: ServerResponse, pad: string
     }
     const beschikking = await maakBeschikking(aangifte);
     const body = {
-      afzender: instellingen.afzender,
+      // Het besluit komt van de Belastingdienst: hun OIN uit het stelseldocument van het fieldlab.
+      afzender: bldAfzender,
       ontvanger: { type: 'KVK', waarde: aangifte.kvk },
       onderwerp: `Beschikking btw-aangifte ${aangifte.tijdvak} (fieldlab)`,
       inhoud: `Uw btw-aangifte over ${aangifte.tijdvak} is verwerkt. De beschikking staat in de bijlage. Dit is een testbericht van het Fieldlab Soevereine basis.`,
       bijlagen: [{ naam: beschikking.naam, mimeType: 'application/pdf', inhoud: Buffer.from(beschikking.pdf).toString('base64') }],
     };
     stuurJson(res, 200, await doorsturen('bericht', dienst, '/aanleveringen', body));
+    return true;
+  }
+
+  if (pad.startsWith('/api/bus/') && methode === 'GET') {
+    await viaBus(req, res, pad.slice('/api/bus'.length));
     return true;
   }
 

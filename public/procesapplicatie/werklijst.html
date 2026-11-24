@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Gemaakt met ondersteuning van AI (concept). Nagebootste werklijst van een medewerker van de Belastingdienst voor het Fieldlab Soevereine basis. -->
+<title>Werklijst btw-aangiften · Werkomgeving Omzetbelasting (fieldlab-demo)</title>
+<link rel="icon" href="/favicon.svg">
+<link rel="stylesheet" href="stijl.css">
+</head>
+<body class="medewerker">
+<a class="vh" href="#hoofdinhoud">Naar de hoofdinhoud</a>
+
+<div class="demo-strook" role="note"><div class="wrap"><b>FIELDLAB-DEMO</b><span>Nagebootste werkomgeving van de Belastingdienst voor het Fieldlab Soevereine basis. Geen echte omgeving.</span></div></div>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="Belastingdienst (nagebootst), naar de werklijst">
+      <img src="beeldmerk-rijksoverheid.svg" alt="">
+      <span>Belastingdienst<small>Nagebootst voor het fieldlab</small></span>
+    </a>
+    <div class="gebruiker">
+      <div><strong>Behandelaar Fieldlab</strong><span>Team Omzetbelasting</span></div>
+      <button type="button" class="knop-link">Uitloggen</button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Werkomgeving Omzetbelasting">
+  <div class="wrap">
+    <span class="titel">Medewerkersportaal &middot; Omzetbelasting</span>
+    <ul>
+      <li><a href="#" aria-current="page">Werklijst</a></li>
+      <li><a href="#">Zoeken</a></li>
+      <li><a href="#">Rapportages</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap">
+  <nav class="kruimel" aria-label="Kruimelpad"><ol><li><a href="#">Werkomgeving Omzetbelasting</a></li><li aria-current="page">Werklijst btw-aangiften</li></ol></nav>
+
+  <div class="pagina">
+    <main id="hoofdinhoud">
+      <h1>Werklijst btw-aangiften</h1>
+      <p class="uitleg-demo">Demo: in werkelijkheid verloopt dit automatisch. Hier keurt een medewerker elke stap goed, zodat je de stappen ziet.</p>
+
+      <section class="kaart" aria-labelledby="kop-werklijst">
+        <div class="kaart__kop"><h2 id="kop-werklijst">Te behandelen</h2><span class="label-stap" id="aantal">1 aangifte</span></div>
+        <div class="tabel-wrap">
+          <table class="tabel">
+            <caption class="vh">Btw-aangiften in de werklijst</caption>
+            <thead><tr><th scope="col">Ontvangen</th><th scope="col">Onderneming</th><th scope="col">Tijdvak</th><th scope="col">Bedrag</th><th scope="col">Status</th><th scope="col"><span class="vh">Actie</span></th></tr></thead>
+            <tbody><tr id="rij">
+              <td id="r-datum"></td>
+              <td><strong>Fieldlab Testbedrijf B.V.</strong><br><small>KVK <span id="r-kvk"></span></small></td>
+              <td id="r-tijdvak"></td>
+              <td id="r-bedrag"></td>
+              <td><span class="status status--nieuw" id="r-status">Te beoordelen</span></td>
+              <td><button type="button" class="knop" id="knop-behandelen">Behandelen</button></td>
+            </tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="kaart" id="behandeling" aria-labelledby="kop-behandeling" hidden tabindex="-1">
+        <div class="kaart__kop"><h2 id="kop-behandeling">Aangifte <span id="d-tijdvak"></span> · Fieldlab Testbedrijf B.V.</h2><span class="label-stap" id="d-kenmerk"></span></div>
+        <div class="kaart__inhoud">
+
+          <div class="taak" id="stap-verwerking" hidden>
+            <span class="taak__nr" aria-hidden="true"><span>1</span></span>
+            <div>
+              <h3>Verwerking</h3>
+              <p>De automatische controles op de aangifte.</p>
+              <ol class="tijdlijn" id="verwerking" aria-live="polite"></ol>
+              <div class="knoppen"><button type="button" class="knop" id="knop-verwerking" disabled>Verwerking goedkeuren</button><span class="goedgekeurd" id="ok-verwerking" hidden>&#10003; Goedgekeurd</span></div>
+            </div>
+          </div>
+
+          <div class="taak" id="stap-beschikking" hidden>
+            <span class="taak__nr" aria-hidden="true"><span>2</span></span>
+            <div>
+              <h3>Besluit</h3>
+              <p>Voorstel: de aangifte goedkeuren. Het besluit (de beschikking) is klaar om vast te stellen.</p>
+              <dl class="gegevens">
+                <dt>KVK-nummer</dt><dd id="b-kvk"></dd>
+                <dt>Tijdvak</dt><dd id="b-tijdvak"></dd>
+                <dt>Aangegeven btw</dt><dd id="b-bedrag"></dd>
+                <dt>Besloten op</dt><dd id="b-datum"></dd>
+              </dl>
+              <p><a id="link-beschikking" href="/api/scenario/beschikking" target="_blank" rel="noopener">Bekijk beschikking</a></p>
+              <div class="knoppen"><button type="button" class="knop" id="knop-besluit">Besluit vaststellen</button><span class="goedgekeurd" id="ok-besluit" hidden>&#10003; Vastgesteld</span></div>
+            </div>
+          </div>
+
+          <div class="taak" id="stap-plaatsen" hidden>
+            <span class="taak__nr" aria-hidden="true"><span>3</span></span>
+            <div>
+              <h3>Berichtenmagazijn</h3>
+              <p>Zet het besluit als bericht klaar voor KVK <strong id="plaatsen-kvk"></strong>, met de beschikking als bijlage. Daarmee is het besluit bekendgemaakt; het magazijn geeft de notificatiedienst een gebeurtenisbericht.</p>
+              <div class="knoppen">
+                <button type="button" class="knop knop--cta" id="knop-plaatsen">Plaatsen in berichtenmagazijn</button>
+              </div>
+              <div class="melding" id="uitkomst-plaatsen" role="status" hidden><span class="melding__ic">i</span><div><strong></strong><p></p></div></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <aside class="zij" aria-label="Aanvullende informatie">
+      <section class="kaart">
+        <div class="kaart__kop"><h2>Verbindingen</h2></div>
+        <div class="kaart__inhoud">
+          <dl>
+            <dt>Berichtenmagazijn Belastingdienst</dt><dd><span id="bld-modus">…</span><small id="bld-adres"></small></dd>
+            <dt>Notificatiedienst (NMC)</dt><dd><span id="nmc-modus">…</span><small id="nmc-adres"></small></dd>
+          </dl>
+          <p style="margin:.8rem 0 0"><a href="/instellingen.html" target="_blank" rel="noopener">Instellingen wijzigen</a></p>
+        </div>
+      </section>
+      <details class="kaart" id="notificatie">
+        <summary><div class="kaart__kop"><h2>Losse notificatie sturen</h2></div></summary>
+        <div class="kaart__inhoud">
+          <p style="margin-top:0">Test de notificatiedienst los van de aangifte: een e-mail via Notify.</p>
+          <form id="form-notificatie" novalidate>
+            <div class="veld"><label for="emailAdres">E-mailadres</label><input id="emailAdres" name="emailAdres" type="email" autocomplete="off"></div>
+            <div class="veld"><label for="voornaam">Voornaam</label><input id="voornaam" name="voornaam" autocomplete="off"></div>
+            <div class="knoppen"><button type="submit" class="knop knop--secundair" id="knop-notificatie">Notificatie sturen</button></div>
+          </form>
+          <div class="melding" id="uitkomst-notificatie" role="status" hidden><span class="melding__ic">i</span><div><strong></strong><p></p></div></div>
+        </div>
+      </details>
+    </aside>
+  </div>
+</div>
+
+<footer class="voet">
+  <div class="wrap">
+    <div><h2>Over deze demo</h2><ul><li>Fieldlab Soevereine basis</li><li>MijnOverheid Zakelijk</li><li><a href="/">Startpagina van de demo</a></li></ul></div>
+    <div><h2>Demo</h2><ul><li><a href="index.html">Aangifte doen (ondernemer)</a></li><li><a href="/moza-portaal/index.html">Berichtenbox MijnOverheid Zakelijk</a></li></ul></div>
+    <div><h2>Service</h2><ul><li><a href="#">Toegankelijkheid</a></li><li><a href="#">Privacy</a></li></ul></div>
+    <p class="onder">Fieldlab-demo, nagebootst. Geen echte omgeving van de Belastingdienst. Concept, gemaakt met ondersteuning van AI.</p>
+  </div>
+</footer>
+
+<script type="module">
+import { $, wacht, tijd, euro, datumTijd, post, melding, toonUitkomst, bezig, leesAangifte, ontbreekt } from './gedeeld.js';
+
+// De aangifte: van de presentatie (zetAangifte), anders van het ondernemersscherm, anders de testwaarden
+let aangifte = leesAangifte() ?? { kvk: '90000013', tijdvak: '3e kwartaal 2026', bedrag: 1250, ontvangenOp: new Date().toISOString() };
+let gestart = false;
+const naarGetal = (b) => typeof b === 'number' ? b : Number(String(b).replace(/\./g, '').replace(',', '.')) || 0;
+
+function toonRij() {
+  $('r-datum').textContent = datumTijd(aangifte.ontvangenOp);
+  $('r-kvk').textContent = aangifte.kvk;
+  $('r-tijdvak').textContent = aangifte.tijdvak;
+  $('r-bedrag').textContent = euro(aangifte.bedrag);
+}
+function status(tekst, soort) { const s = $('r-status'); s.textContent = tekst; s.className = 'status status--' + soort; }
+window.zetAangifte = (a) => {
+  if (gestart) return;
+  aangifte = { ...aangifte, ...a, bedrag: naarGetal(a.bedrag ?? aangifte.bedrag), ontvangenOp: a.ontvangenOp ?? aangifte.ontvangenOp ?? new Date().toISOString() };
+  toonRij();
+};
+toonRij();
+
+// Stap 1: verwerking, met controles
+function controle(titel) {
+  const li = document.createElement('li');
+  li.innerHTML = '<span class="bol" aria-hidden="true"></span><span><strong></strong><br><small>Bezig…</small></span><span class="status">Bezig</span>';
+  li.querySelector('strong').textContent = titel;
+  $('verwerking').append(li);
+  return { klaar(m) { li.dataset.klaar = ''; li.querySelector('small').textContent = tijd(m); const s = li.querySelector('.status'); s.textContent = 'In orde'; s.className = 'status status--klaar'; } };
+}
+$('knop-behandelen').addEventListener('click', async () => {
+  if (gestart) { $('behandeling').scrollIntoView({ behavior: 'smooth' }); return; }
+  gestart = true;
+  $('knop-behandelen').textContent = 'Openen';
+  $('rij').setAttribute('aria-selected', 'true');
+  status('In behandeling', 'bezig');
+  $('d-tijdvak').textContent = aangifte.tijdvak;
+  $('d-kenmerk').textContent = aangifte.kenmerk ?? '';
+  $('behandeling').hidden = false;
+  $('stap-verwerking').hidden = false;
+  $('behandeling').focus({ preventScroll: true });
+  $('behandeling').scrollIntoView({ behavior: 'smooth' });
+  $('verwerking').replaceChildren();
+  controle('Aangifte ontvangen').klaar(new Date(aangifte.ontvangenOp));
+  for (const t of ['Rekenkundige controle', 'Vergelijking met eerdere aangiften']) { const c = controle(t); await wacht(800); c.klaar(new Date()); }
+  $('knop-verwerking').disabled = false;
+});
+
+$('knop-verwerking').addEventListener('click', () => {
+  aangifte.beslotenOp = new Date().toISOString();
+  $('knop-verwerking').hidden = true; $('ok-verwerking').hidden = false;
+  $('stap-verwerking').dataset.klaar = '';
+  const vraag = new URLSearchParams({ kvk: aangifte.kvk, tijdvak: aangifte.tijdvak, bedrag: String(aangifte.bedrag), ontvangenOp: aangifte.ontvangenOp, beslotenOp: aangifte.beslotenOp });
+  $('link-beschikking').href = `/api/scenario/beschikking?${vraag}`;
+  $('b-kvk').textContent = aangifte.kvk; $('b-tijdvak').textContent = aangifte.tijdvak; $('b-bedrag').textContent = euro(aangifte.bedrag);
+  $('b-datum').textContent = datumTijd(aangifte.beslotenOp);
+  $('stap-beschikking').hidden = false;
+});
+
+$('knop-besluit').addEventListener('click', () => {
+  $('knop-besluit').hidden = true; $('ok-besluit').hidden = false;
+  $('stap-beschikking').dataset.klaar = '';
+  $('plaatsen-kvk').textContent = aangifte.kvk;
+  $('stap-plaatsen').hidden = false;
+});
+
+// Stap 3: plaatsen in het magazijn (echte aanroep, zoals scenario.html)
+$('knop-plaatsen').addEventListener('click', () => bezig($('knop-plaatsen'), async () => {
+  const el = $('uitkomst-plaatsen'); el.hidden = true;
+  try {
+    const { kvk, tijdvak, bedrag, ontvangenOp, beslotenOp } = aangifte;
+    const uitkomst = await post('/api/scenario/plaatsen', { kvk, tijdvak, bedrag, ontvangenOp, beslotenOp });
+    toonUitkomst(el, 'Besluit geplaatst', 'Besluit niet geplaatst', 'Het magazijn van de Belastingdienst', uitkomst);
+    if (el.classList.contains('melding--goed')) { $('stap-plaatsen').dataset.klaar = ''; status('Afgehandeld', 'klaar'); $('aantal').textContent = '0 te behandelen'; }
+  } catch (err) { melding(el, 'fout', 'De mock zelf reageert niet', err instanceof Error ? err.message : String(err)); }
+}));
+
+// Losse notificatie
+$('form-notificatie').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const f = e.currentTarget;
+  const voornaam = f.voornaam.value.trim(), emailAdres = f.emailAdres.value.trim();
+  if (!voornaam || !emailAdres) return;
+  const el = $('uitkomst-notificatie'); el.hidden = true;
+  bezig($('knop-notificatie'), async () => {
+    try {
+      const uitkomst = await post('/api/notificatie', { emailAdres, berichtType: 'Demo template', berichtgegevens: `voornaam: ${voornaam}` });
+      toonUitkomst(el, 'Notificatie verstuurd', 'Notificatie niet verstuurd', 'De NMC', uitkomst);
+    } catch (err) { melding(el, 'fout', 'De mock zelf reageert niet', err instanceof Error ? err.message : String(err)); }
+  });
+});
+
+// Verbindingen
+try {
+  const [scenario, inst] = await Promise.all([fetch('/api/scenario').then((a) => a.json()), fetch('/api/instellingen').then((a) => a.json())]);
+  $('bld-modus').textContent = scenario.ontbreekt ? 'Nog niet ingesteld' : scenario.modus === 'fsc' ? 'Met FSC, via de eigen Outway' : 'Zonder FSC';
+  $('bld-adres').textContent = scenario.ontbreekt ? `${scenario.ontbreekt} ontbreekt` : scenario.adres;
+  const mist = ontbreekt(inst, inst.nmc);
+  $('nmc-modus').textContent = mist ? 'Nog niet ingesteld' : inst.nmc.modus === 'fsc' ? 'Met FSC, via de eigen Outway' : 'Zonder FSC';
+  $('nmc-adres').textContent = mist ? `${mist} ontbreekt` : inst.nmc.modus === 'fsc' ? inst.outwayAdres : inst.nmc.directAdres;
+} catch { $('bld-modus').textContent = 'Onbekend'; $('nmc-modus').textContent = 'Onbekend'; }
+</script>
+</body>
+</html>

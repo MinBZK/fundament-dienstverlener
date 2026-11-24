@@ -39,7 +39,7 @@ De kaarten "Live demo" in de presentatie:
 | Actie | Aanroep |
 | --- | --- |
 | Bericht plaatsen | `POST {magazijn}/aanleveringen` met `afzender`, `ontvanger` (BSN of KVK), `onderwerp`, `inhoud` en optioneel bijlagen |
-| Berichten ophalen | `GET {magazijn}/berichten` met header `X-Ontvanger` (bijvoorbeeld `KVK:12345678`) |
+| Berichten ophalen | `GET {magazijn}/berichten` met header `X-Ontvanger` (bijvoorbeeld `KVK:90000013`) |
 | Notificatie sturen | `POST {nmc}/api/nmc/v1/decentraal/notificaties` met `emailAdres`, `berichtType` en `berichtgegevens.voornaam` (het Demo template vraagt om een voornaam) |
 | Statusmelding ontvangen | `POST /events`: de NMC meldt hier de bezorgstatus |
 
@@ -53,6 +53,9 @@ Stel de adressen in op de pagina Instellingen of vooraf met omgevingsvariabelen.
 | --- | --- |
 | `MAGAZIJN_URL` | Adres van het berichtenmagazijn voor het werkscherm, tot en met `/api/v1` |
 | `BLD_MAGAZIJN_URL` | Adres van het magazijn van de Belastingdienst voor het scenario (standaard magazijn B op het fieldlab) |
+| `BLD_AFZENDER_OIN` | OIN van de Belastingdienst als afzender van het besluit (standaard `00000001823288444000`, uit het stelseldocument) |
+| `RVO_MAGAZIJN_URL` | Adres van magazijn A (RVO), alleen lezen voor de berichtenbox (standaard magazijn A op het fieldlab) |
+| `BUS_URL` | Adres van de berichtenuitvraag (BUS), tot en met `/api/v1` (standaard `https://demo.fbs.cluster-c.fieldlab2026.nl/api/v1`) |
 | `NMC_URL` | Adres van de NMC, zonder pad |
 | `MAGAZIJN_MODUS`, `NMC_MODUS` | `direct` (zonder FSC) of `fsc` (via de eigen Outway) |
 | `OUTWAY_URL`, `MAGAZIJN_GRANT_HASH`, `NMC_GRANT_HASH` | Voor de verbinding met FSC |

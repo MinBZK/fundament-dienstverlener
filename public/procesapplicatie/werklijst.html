@@ -199,22 +199,22 @@ $('knop-behandelen').addEventListener('click', async () => {
   // Daarna vanzelf door de drie stappen; de focus schuift rustig mee
   const [ontvangen, ...rest] = ['Aangifte ontvangen', 'Rekenkundige controle', 'Vergelijking met eerdere aangiften'].map(controle);
   await bezigMet('stap-verwerking');
-  await wacht(300);
+  await wacht(200);
   ontvangen.klaar(new Date(aangifte.ontvangenOp));
-  for (const c of rest) { await wacht(400); c.start(); await wacht(850); c.klaar(new Date()); }
+  for (const c of rest) { await wacht(250); c.start(); await wacht(550); c.klaar(new Date()); }
   $('knop-verwerking').disabled = false;
-  await autoKlik('knop-verwerking', 700);
+  await autoKlik('knop-verwerking', 400);
   await bezigMet('stap-beschikking');
-  await autoKlik('knop-besluit', 2000);
+  await autoKlik('knop-besluit', 1300);
   await bezigMet('stap-plaatsen');
-  await autoKlik('knop-plaatsen', 1000);
+  await autoKlik('knop-plaatsen', 800);
   await wachtOp(() => !$('uitkomst-plaatsen').hidden, 20000);
   zetBezig(null);
   await naar($('uitkomst-plaatsen'));
 });
 
 // Rustig scrollen binnen de werklijst zelf (niet de presentatie eromheen)
-function naar(el, duur = 800) {
+function naar(el, duur = 600) {
   if (!el) return Promise.resolve();
   const r = el.getBoundingClientRect();
   const doel = Math.max(0, Math.min(document.documentElement.scrollHeight - innerHeight,
@@ -238,7 +238,7 @@ function zetBezig(id) {
 }
 async function bezigMet(id) {
   await wachtOp(() => !$(id).hidden, 5000);
-  await wacht(250);
+  await wacht(150);
   await naar($(id));
   zetBezig(id);
 }
@@ -253,7 +253,7 @@ async function autoKlik(id, pauze) {
   const knop = $(id);
   await wacht(pauze);
   knop.classList.add('is-auto');
-  await wacht(700);
+  await wacht(550);
   knop.classList.remove('is-auto');
   knop.click();
 }

@@ -224,15 +224,20 @@ const ontvangerVorm = /^(BSN:[0-9]{9}|RSIN:[0-9]{9}|KVK:[0-9]{8}|OIN:[0-9]{20})$
 // --- Scenario btw-aangifte ---------------------------------------------------
 // Een ondernemer doet aangifte in een nagebootst portaal van de Belastingdienst; de mock
 // "verwerkt" die, maakt een fieldlab-beschikking en plaatst die in het magazijn van de
-// Belastingdienst (magazijn B op het fieldlab). Zonder FSC gaat het naar dat adres; met FSC
-// via de eigen Outway, met de grant-hash die bij Instellingen voor het magazijn staat.
+// Belastingdienst (magazijn B op het fieldlab). Het magazijn loopt op het fieldlab niet via FSC:
+// het scenario plaatst daarom altijd direct, wat er bij Instellingen ook staat. Alleen met
+// BLD_MAGAZIJN_MODUS=fsc gaat het via de eigen Outway (grant-hash van Instellingen, magazijn).
 const bldMagazijnAdres =
   process.env.BLD_MAGAZIJN_URL ?? 'https://berichtenmagazijn-b.fbs.cluster-c.fieldlab2026.nl/api/v1';
+
+// NMC op het fieldlab (Fundament, cluster-c), voor de directe melding na het magazijn.
+const nmcFieldlabAdres = 'https://nmc.cluster-c.fieldlab2026.nl';
 
 // OIN van de Belastingdienst (stelseldocument van het fieldlab), als afzender van het besluit.
 const bldAfzender = process.env.BLD_AFZENDER_OIN ?? '00000001823288444000';
 function bldMagazijn(): Dienst {
-  return instellingen.magazijn.modus === 'fsc' ? instellingen.magazijn : { ...instellingen.magazijn, directAdres: bldMagazijnAdres };
+  if (process.env.BLD_MAGAZIJN_MODUS === 'fsc') return { ...instellingen.magazijn, modus: 'fsc' };
+  return { modus: 'direct', directAdres: bldMagazijnAdres, grantHash: '', fscPad: '' };
 }
 
 // Magazijn A (RVO) van het fieldlab: alleen lezen, voor de berichtenbox die beide magazijnen toont.
@@ -541,14 +546,19 @@ async function verwerkApi(req: IncomingMessage, res: ServerResponse, pad: string
       stuurJson(res, 200, { overgeslagen: true, reden: 'Echte e-mails staan uit (schakelaar op de startdia).' });
       return true;
     }
-    const mist = ontbreekt(instellingen.nmc) ?? (instellingen.demoEmail ? null : 'het e-mailadres voor de demo');
+    // Zoals in de keten: de herinnering komt van de procesapplicatie en volgt de NMC-instelling
+    // (online via FSC); de melding na het magazijn gaat altijd direct, zonder FSC.
+    const nmc: Dienst = soort === 'magazijn'
+      ? { modus: 'direct', directAdres: process.env.NMC_DIRECT_URL || instellingen.nmc.directAdres || nmcFieldlabAdres, grantHash: '', fscPad: '' }
+      : instellingen.nmc;
+    const mist = ontbreekt(nmc) ?? (instellingen.demoEmail ? null : 'het e-mailadres voor de demo');
     if (mist) {
       stuurJson(res, 409, { fout: `Voor de echte e-mail ontbreekt nog ${mist}.` });
       return true;
     }
     const body: Record<string, unknown> = { emailAdres: instellingen.demoEmail, berichtType };
     if (instellingen.terugmeldadres) body.callbackUrl = `${zonderSlash(instellingen.terugmeldadres)}/events`;
-    stuurJson(res, 200, await doorsturen('notificatie', instellingen.nmc, '/api/nmc/v1/decentraal/notificaties', body));
+    stuurJson(res, 200, await doorsturen('notificatie', nmc, '/api/nmc/v1/decentraal/notificaties', body));
     return true;
   }
 

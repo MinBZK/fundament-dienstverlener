@@ -59,10 +59,10 @@
             <div class="veld">
               <label for="tijdvak">Tijdvak</label>
               <select id="tijdvak" name="tijdvak">
-                <option value="" selected disabled>Kies een tijdvak</option>
+                <option value="" disabled>Kies een tijdvak</option>
                 <option>1e kwartaal 2026</option>
                 <option>2e kwartaal 2026</option>
-                <option>3e kwartaal 2026</option>
+                <option selected>3e kwartaal 2026</option>
                 <option>4e kwartaal 2026</option>
               </select>
             </div>
@@ -70,7 +70,7 @@
               <label for="bedrag">Aangegeven btw</label>
               <span class="hint" id="bedrag-hint">In euro, bijvoorbeeld 1.250,00</span>
               <span class="euro" aria-hidden="true">&euro;</span>
-              <input id="bedrag" name="bedrag" inputmode="decimal" autocomplete="off" aria-describedby="bedrag-hint" value="">
+              <input id="bedrag" name="bedrag" inputmode="decimal" autocomplete="off" aria-describedby="bedrag-hint" value="1.250,00">
             </div>
             <div class="melding melding--fout" id="fout-aangifte" role="alert" hidden><span class="melding__ic">!</span><div><strong>Controleer uw aangifte</strong><p id="fout-tekst"></p></div></div>
             <div class="knoppen"><button type="submit" class="knop" id="knop-verzenden">Aangifte verzenden</button></div>

@@ -59,12 +59,77 @@ Stel de adressen in op de pagina Instellingen of vooraf met omgevingsvariabelen.
 | `NMC_URL` | Adres van de NMC, zonder pad |
 | `MAGAZIJN_MODUS`, `NMC_MODUS` | `direct` (zonder FSC) of `fsc` (via de eigen Outway) |
 | `OUTWAY_URL`, `MAGAZIJN_GRANT_HASH`, `NMC_GRANT_HASH` | Voor de verbinding met FSC |
+| `MAGAZIJN_FSC_PAD`, `NMC_FSC_PAD` | Pad tussen het adres van de Outway en de aanroep (standaard `/api/v1` voor het magazijn, leeg voor de NMC) |
+| `NODE_EXTRA_CA_CERTS` | Extra CA's die Node vertrouwt. Met FSC: de internal-CA van de eigen peer(s), want de app praat over TLS met de Outway |
 | `AFZENDER_OIN` | OIN van de nagebootste dienstverlener (standaard `00000000000000100000`) |
 | `TERUGMELDADRES` | Adres waarop de NMC deze app bereikt; de app zet er `/events` achter |
 | `WACHTWOORD`, `GEBRUIKER` | Zet de inlog aan (HTTP Basic). Zonder `WACHTWOORD` is er geen inlog. Gebruiker standaard `fieldlab`. `POST /events` blijft open voor de NMC |
 | `POORT`, `HOST` | Standaard `3000` en `127.0.0.1` |
 
 Adressen op het fieldlab (cluster-c): magazijn A (RVO) `https://berichtenmagazijn-a.fbs.cluster-c.fieldlab2026.nl/api/v1`, magazijn B (Belastingdienst) `https://berichtenmagazijn-b.fbs.cluster-c.fieldlab2026.nl/api/v1`, NMC `https://nmc.cluster-c.fieldlab2026.nl`.
+
+## NMC aanroepen via FSC
+
+Met `NMC_MODUS=fsc` stuurt de app de notificatie naar `{OUTWAY_URL}{NMC_FSC_PAD}/api/nmc/v1/decentraal/notificaties`, met de header `Fsc-Grant-Hash`. Daarvoor staan op ZAD (project `funda-xeq`) twee eigen FSC-peers, elk in een andere FSC-groep en elk met een eigen contract met de NMC. De app gebruikt er één tegelijk: `OUTWAY_URL` en `NMC_GRANT_HASH` bepalen welke.
+
+| | MOZa FSC-testnet | fsc-fieldlab (RINIS) |
+| --- | --- | --- |
+| Groep | `moza-fbs-test` | `fsc-fieldlab` |
+| Directory | `00000000000000000010`, op ZAD ([moza-fsc-testnet](https://github.com/MinBZK/moza-fsc-testnet)) | `07000000000000000001`, `https://fsc-directory.cluster-a.fieldlab2026.nl:443` |
+| Onze peer | `00000000000000900000`, "Fundament Dienstverlener" | `19000000000000000090`, "Fundament Dienstverlener" |
+| ZAD-deployment | `fsc-dienstverlener`, componenten `dienstverlener-fsc…` | `fsc-fieldlab`, componenten `fieldlab-fsc…` |
+| NMC | dienst `nmc` van `00000000000000000050` | dienst `nmc` van `19000000000000000010` |
+| `OUTWAY_URL` | `https://fsc-dienstverlener-dienstverlener-fscoutway:8443` | `https://fsc-fieldlab-fieldlab-fscoutway:8443` |
+| Certificaten | test-CA van het testnet (`pki/` in moza-fsc-testnet), sleutels in de geheime repo | group-certificaat van de certportal van RINIS, sleutels alleen in ZAD |
+
+### Wisselen tussen de routes
+
+Sinds 25 november 2026 gebruikt de app fsc-fieldlab. Wisselen kost één herstart van `frontend`:
+
+```bash
+# fsc-fieldlab
+zadctl env set -c frontend 'OUTWAY_URL=https://fsc-fieldlab-fieldlab-fscoutway:8443' \
+  'NMC_GRANT_HASH=$1$3$_SxbrXUiQ3W6phHlLAs4GLh1fXFfCp1Dih4B3N7NVGs_XbAkqwdRlZ6YcL1xrCIa7R1ZaP6vazTy7uTkoHCvQg'
+# MOZa FSC-testnet
+zadctl env set -c frontend 'OUTWAY_URL=https://fsc-dienstverlener-dienstverlener-fscoutway:8443' \
+  'NMC_GRANT_HASH=$1$3$1X0p400AfrU2x-4GhPCMnzQn3hDWkKpiTHd89tEomECd8iDgWsiUggV85rtehfZnaRBtl8ZiM5Fcpi8lciAuYQ'
+```
+
+Gebruik enkele aanhalingstekens, anders vult de shell `$1` en `$3` in. Verder hoeft er niets te veranderen:
+
+- `NODE_EXTRA_CA_CERTS=/etc/fsc/internal-roots.pem` (bijlage `fsc-internal-roots`) bevat de internal-CA van beide peers.
+- `cross-domain-access` laat `frontend` (deployment `dev`) bij beide Outways op poort 8443: een `outbound`-regel bij `dev` en een `inbound`-regel bij elke FSC-deployment.
+
+Terug zonder FSC: `NMC_MODUS=direct` en `NMC_URL`.
+
+### Hoe de peers zijn opgezet
+
+- Losse OpenFSC-componenten volgens `docs/peer-aansluiten.md` van moza-fsc-testnet: Postgres (volume van 500Mi), manager, controller en txlog (de `*-migrate`-images van moza-fsc-testnet) en de Outway, alle op OpenFSC v2.9.0. De groep fsc-fieldlab draait 2.9.1; dat gaat samen.
+- De manager is gepubliceerd met passthrough, omdat FSC zelf mTLS doet. De Outway is alleen intern bereikbaar.
+- De certificaten zijn bijlagen onder `/etc/fsc/`: `ca/` (group-CA), `out/<peer>/` (group) en `internal/<peer>/` (internal).
+- fsc-fieldlab: de certportal `https://fsc-certportal.cluster-a.fieldlab2026.nl` tekent een CSR (`POST /api/request_certificate` met `{"csr": …}`) en geeft de group-CA (`GET /root.crt`). De OIN komt in `serialNumber`, de organisatie in `O`. De portal heeft geen authenticatie: alleen voor testen. Zijn de sleutels kwijt, vraag dan nieuwe certificaten aan; de thumbprint van de Outway verandert dan, dus er is ook een nieuw contract nodig.
+- Het contract diende een tijdelijk component in met `ghcr.io/minbzk/fbs-fsc-contract-bootstrap` (`FSC_ROL=consumer`, zie `federatie/contracts/zad-runbook.md` in moza-poc-fbs-berichtenbox); daarna accepteerde de NMC het. Het component is weer verwijderd.
+
+### Controleren
+
+- Een lege notificatie (`POST /api/notificatie` met `{}`) verstuurt geen mail, maar laat zien of de route werkt: `400 Malformed request body` komt van de NMC zelf. Een fout van FSC heeft een `ERROR_CODE_…`, bijvoorbeeld `SERVICE_NOT_FOUND` (servicenaam of pad) of `ACCESS_TOKEN_*` (contract of grant).
+- De transactie staat in het transactielog van de eigen controller, met hetzelfde transactie-ID als in de log van de Inway van de NMC.
+- De controllers hebben geen inlog: wie de URL heeft, tekent contracten namens de peer. Publiceer ze alleen als het nodig is:
+
+  ```bash
+  zadctl service config set publish-on-web --target component --component <x>-fscctl --set tls=standard
+  # weer weg
+  zadctl service config clear publish-on-web --target component --component <x>-fscctl
+  zadctl service unassign publish-on-web --component <x>-fscctl
+  ```
+
+### Valkuilen
+
+- In fsc-fieldlab kwam het contract na het indienen niet bij de NMC aan. **Opnieuw accepteren** in de eigen controller verstuurt het opnieuw.
+- De contract-bootstrap bleef `proposed` melden terwijl het contract al geldig was. Kijk naar de status in de controller.
+- `zadctl logs` geeft maar een regel of tien, en de health-probe van de manager vult die.
+- In fsc-fieldlab toont de controller van de NMC geen transacties: de operator van RINIS geeft de manager geen `txLogAPIAddress`. De Inway legt ze wel vast.
+- Statusmeldingen lopen buiten FSC om, naar `TERUGMELDADRES` + `/events`. Zonder `TERUGMELDADRES` komen er geen.
 
 ## Uitrollen op ZAD
 

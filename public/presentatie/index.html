@@ -3727,6 +3727,7 @@ html:not(.js) {
           .rp-zone { font-size: 15px; font-weight: 700; fill: #1f2937; }
           .pr-sub-t { font-size: 12.5px; font-weight: 700; letter-spacing: 0.06em; fill: #1f2937; }
           .rp-naam { font-size: 15px; font-weight: 600; fill: #111827; text-anchor: middle; }
+          .rp-sub { font-family: ui-monospace, Menlo, monospace; font-size: 10px; fill: #374151; text-anchor: middle; }
           .pr-fsc-t { font-size: 11px; font-weight: 700; fill: #a34f00; text-anchor: middle; letter-spacing: 0.04em; }
         </style>
       </defs>
@@ -3752,10 +3753,10 @@ html:not(.js) {
       <rect x="75" y="320" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="185.0" y="343.0">Inway</text>
       <rect x="75" y="365" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="185.0" y="388.0">Outway</text>
 
-      <rect x="410" y="190" width="290" height="131" rx="10" fill="#fffaf3" stroke="#a34f00" stroke-width="2" stroke-dasharray="7 5"/>
-      <text class="pr-sub-t" x="424" y="212" style="fill:#a34f00">RINIS</text>
+      <rect x="430" y="190" width="250" height="131" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-sub-t" x="445" y="212">RINIS-PLUG-IN</text>
       <rect x="445" y="230" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="555.0" y="253.0">Certportal</text>
-      <rect x="445" y="275" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="555.0" y="298.0">Manager (directory)</text>
+      <rect x="445" y="275" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="555.0" y="291">Manager</text><text class="rp-sub" x="555.0" y="305">directory</text>
 
       <rect x="775" y="190" width="250" height="222" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
       <text class="pr-sub-t" x="790" y="212">RINIS-PLUG-IN</text>
@@ -37067,7 +37068,7 @@ window.fieldlabStappen = (() => {
       dia.classList.add('is-intro');
       const eind = fig.getBoundingClientRect(), vak = dia.getBoundingClientRect();
       if (!eind.width || !vak.width) { dia.classList.remove('is-intro'); naIntro(); return; }
-      const doelHoogte = vak.height * 30 / 39;  // gelijk aan de plaat op de andere dia's (30cqw)
+      const doelHoogte = vak.height * 36 / 39;  // gelijk aan de plaat op de andere dia's (36cqw)
       const schaal = Math.min(vak.width / eind.width, doelHoogte / eind.height);
       const dx = vak.left + (vak.width - eind.width * schaal) / 2 - eind.left;
       const dy = vak.top - eind.top;

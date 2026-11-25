@@ -83,6 +83,10 @@ function toon(i: Instellingen): void {
   zetWaarde(formulier, 'outwayAdres', i.outwayAdres);
   zetWaarde(formulier, 'afzender', i.afzender);
   zetWaarde(formulier, 'terugmeldadres', i.terugmeldadres);
+  zetWaarde(formulier, 'demoEmail', '');
+  element<HTMLElement>('#demo-email-status').textContent = i.demoEmailIngesteld
+    ? 'Ingesteld. Laat het veld leeg om het adres te houden.'
+    : 'Nog niet ingesteld: in de presentatie gaat dan geen echte e-mail.';
 }
 
 function dienstGegevens(dienst: DienstNaam) {
@@ -104,6 +108,7 @@ bijVersturen(formulier, async () => {
       nmc: dienstGegevens('nmc'),
       afzender: waarde(formulier, 'afzender'),
       terugmeldadres: waarde(formulier, 'terugmeldadres'),
+      demoEmail: waarde(formulier, 'demoEmail'),
     }),
   });
   toon((await antwoord.json()) as Instellingen);

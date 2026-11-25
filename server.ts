@@ -27,6 +27,10 @@ type Instellingen = {
   nmc: Dienst;
   afzender: string;
   terugmeldadres: string;
+  // E-mailadres voor de echte e-mails in de presentatie (dia's met de pop-up). Staat op de gastenlijst van NotifyNL.
+  demoEmail: string;
+  // Schakelaar op de startdia: staan de echte e-mails aan? Standaard uit.
+  demoEmailAan: boolean;
 };
 
 type Logregel = {
@@ -62,6 +66,8 @@ const instellingen: Instellingen = {
   },
   afzender: process.env.AFZENDER_OIN ?? '00000000000000100000',
   terugmeldadres: process.env.TERUGMELDADRES ?? '',
+  demoEmail: process.env.DEMO_EMAIL ?? '',
+  demoEmailAan: process.env.DEMO_EMAIL_AAN === 'ja',
 };
 
 function neemOver(doel: Instellingen, bron: Partial<Instellingen> | undefined): void {
@@ -77,6 +83,21 @@ function neemOver(doel: Instellingen, bron: Partial<Instellingen> | undefined): 
   if (typeof bron.outwayAdres === 'string') doel.outwayAdres = bron.outwayAdres.trim();
   if (typeof bron.afzender === 'string') doel.afzender = bron.afzender.trim();
   if (typeof bron.terugmeldadres === 'string') doel.terugmeldadres = bron.terugmeldadres.trim();
+  // Leeg laten = niet wijzigen (de pagina Instellingen toont het adres niet).
+  if (typeof bron.demoEmail === 'string' && bron.demoEmail.trim()) doel.demoEmail = bron.demoEmail.trim();
+  if (typeof bron.demoEmailAan === 'boolean') doel.demoEmailAan = bron.demoEmailAan;
+}
+
+// Instellingen zoals de browser ze ziet: zonder het e-mailadres zelf, alleen of het is ingesteld.
+function openbaar(i: Instellingen): Omit<Instellingen, 'demoEmail'> & { demoEmailIngesteld: boolean } {
+  const { demoEmail, ...rest } = i;
+  return { ...rest, demoEmailIngesteld: demoEmail !== '' };
+}
+
+// E-mailadres in het logboek afschermen: c•••@domein.nl
+function afgeschermd(adres: string): string {
+  const [naam, domein] = adres.split('@');
+  return domein ? `${naam.slice(0, 1)}•••@${domein}` : '•••';
 }
 
 try {
@@ -152,6 +173,7 @@ function traceparent(): string {
 function voorLogboek(body: unknown): unknown {
   return JSON.parse(JSON.stringify(body), function (this: Record<string, unknown>, sleutel, waarde) {
     const isBijlage = typeof this.mimeType === 'string';
+    if (sleutel === 'emailAdres' && typeof waarde === 'string') return afgeschermd(waarde);
     return isBijlage && sleutel === 'inhoud' && typeof waarde === 'string'
       ? `${waarde.slice(0, 40)}… (${Math.round((waarde.length * 3) / 4 / 1024)} kB, base64)`
       : waarde;
@@ -431,14 +453,24 @@ async function verwerkApi(req: IncomingMessage, res: ServerResponse, pad: string
   }
 
   if (pad === '/api/instellingen' && methode === 'GET') {
-    stuurJson(res, 200, instellingen);
+    stuurJson(res, 200, openbaar(instellingen));
+    return true;
+  }
+
+  if (pad === '/api/demo-email-schakelaar' && methode === 'PUT') {
+    const { aan } = ((await leesBody(req)) ?? {}) as { aan?: unknown };
+    if (typeof aan === 'boolean') {
+      instellingen.demoEmailAan = aan;
+      await writeFile(instellingenBestand, JSON.stringify(instellingen, null, 2) + '\n', 'utf8');
+    }
+    stuurJson(res, 200, { aan: instellingen.demoEmailAan, ingesteld: instellingen.demoEmail !== '' });
     return true;
   }
 
   if (pad === '/api/instellingen' && methode === 'PUT') {
     neemOver(instellingen, (await leesBody(req)) as Partial<Instellingen>);
     await writeFile(instellingenBestand, JSON.stringify(instellingen, null, 2) + '\n', 'utf8');
-    stuurJson(res, 200, instellingen);
+    stuurJson(res, 200, openbaar(instellingen));
     return true;
   }
 
@@ -489,6 +521,32 @@ async function verwerkApi(req: IncomingMessage, res: ServerResponse, pad: string
     };
     const gegevens = leesHeaders(invoer.berichtgegevens ?? '');
     if (Object.keys(gegevens).length > 0) body.berichtgegevens = gegevens;
+    if (instellingen.terugmeldadres) body.callbackUrl = `${zonderSlash(instellingen.terugmeldadres)}/events`;
+    stuurJson(res, 200, await doorsturen('notificatie', instellingen.nmc, '/api/nmc/v1/decentraal/notificaties', body));
+    return true;
+  }
+
+  // Echte e-mail op het moment van de pop-up in de presentatie. De browser kiest alleen het
+  // moment; het e-mailadres en het berichttype (sjabloon in de NMC) bepaalt de server.
+  if (pad === '/api/demo-melding' && methode === 'POST') {
+    const sjablonen: Record<string, string> = { herinnering: 'Herinnering-Fieldlab', magazijn: 'Magazijn-Fieldlab' };
+    const { soort } = ((await leesBody(req)) ?? {}) as { soort?: string };
+    const berichtType = soort ? sjablonen[soort] : undefined;
+    if (!berichtType) {
+      stuurJson(res, 400, { fout: 'Onbekende soort. Kies herinnering of magazijn.' });
+      return true;
+    }
+    if (!instellingen.demoEmailAan) {
+      // Schakelaar staat uit: de pop-up verschijnt wel, maar er gaat geen e-mail weg.
+      stuurJson(res, 200, { overgeslagen: true, reden: 'Echte e-mails staan uit (schakelaar op de startdia).' });
+      return true;
+    }
+    const mist = ontbreekt(instellingen.nmc) ?? (instellingen.demoEmail ? null : 'het e-mailadres voor de demo');
+    if (mist) {
+      stuurJson(res, 409, { fout: `Voor de echte e-mail ontbreekt nog ${mist}.` });
+      return true;
+    }
+    const body: Record<string, unknown> = { emailAdres: instellingen.demoEmail, berichtType };
     if (instellingen.terugmeldadres) body.callbackUrl = `${zonderSlash(instellingen.terugmeldadres)}/events`;
     stuurJson(res, 200, await doorsturen('notificatie', instellingen.nmc, '/api/nmc/v1/decentraal/notificaties', body));
     return true;

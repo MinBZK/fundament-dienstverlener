@@ -2775,6 +2775,15 @@ body:has(.slide-video:not([hidden])) .progress { visibility: hidden; }
 .context .bevindingen li + li { margin-top: 0.45cqw; }
 .context .bevindingen li { white-space: nowrap; }
 .context .bevindingen--vrij li { white-space: normal; }
+/* Slotdia "Oké, en nu?": grotere tekst, mag over meerdere regels */
+.slide[aria-label="Oké, en nu?"] .context .bevindingen { font-size: 1.8cqw; line-height: 1.4; }
+.slide[aria-label="Oké, en nu?"] .context .bevindingen li { white-space: normal; }
+.slide[aria-label="Oké, en nu?"] .context .bevindingen li + li { margin-top: 0.8cqw; }
+.slide[aria-label="Oké, en nu?"] .context h3 { font-size: 2.6cqw; }
+.slide[aria-label="Oké, en nu?"] .context .card { display: flex; flex-direction: column; }
+.context .bevindingen--vink { list-style: none; padding-left: 0; }
+.context .bevindingen--vink li { position: relative; padding-left: 2.4cqw; }
+.context .bevindingen--vink li::before { content: "\2713"; position: absolute; left: 0; top: 0; font-weight: 800; color: #39870c; }
 .context .stempel { display: inline-block; margin: 0.9cqw 0 0.2cqw; padding: 0.35cqw 1cqw; border: 0.25cqw solid #39870c; border-radius: 0.6cqw; color: #39870c; font-size: 1.3cqw; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; transform: rotate(-4deg); }
 .context .stempel--hoek { position: absolute; top: 1.4cqw; right: 1.8cqw; margin: 0; transform: rotate(6deg); }
 
@@ -4470,13 +4479,13 @@ html:not(.js) {
 <section class="slide" aria-roledescription="dia" aria-label="Oké, en nu?">
   <p class="overline">Vooruitblik</p>
   <h2 class="title">Oké, en nu?</h2>
-  <ol class="context" style="grid-template-columns: 1.6fr 1fr; align-items: start">
-    <li class="card" style="grid-row: span 2; position: relative">
+  <ol class="context" style="grid-template-columns: 1fr 1fr; align-items: stretch">
+    <li class="card">
       <div class="card-head"><span class="ic"><nldd-icon icon="document"></nldd-icon></span><h3>Conclusies</h3></div>
-      <ul class="bevindingen">
-        <li>Technisch bewezen.</li>
+      <ul class="bevindingen bevindingen--vink">
+        <li>Technisch bewezen</li>
         <li>Door de standaard manier van werken treden we op als <strong>één overheid</strong>.</li>
-        <li>Door het fieldlab <strong>snel geschakeld</strong> met partijen en snel gerealiseerd.</li>
+        <li>Door het fieldlab is er <strong>snel geschakeld</strong> met partijen en snel gerealiseerd.</li>
       </ul>
     </li>
     <li class="card">

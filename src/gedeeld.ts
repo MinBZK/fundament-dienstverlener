@@ -13,6 +13,9 @@ export type Instellingen = {
   nmc: Dienst;
   afzender: string;
   terugmeldadres: string;
+  // Het adres zelf komt niet naar de browser; alleen of het is ingesteld.
+  demoEmailIngesteld?: boolean;
+  demoEmailAan?: boolean;
 };
 
 export function element<T extends HTMLElement>(selector: string): T {

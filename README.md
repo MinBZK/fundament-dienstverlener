@@ -61,6 +61,8 @@ Stel de adressen in op de pagina Instellingen of vooraf met omgevingsvariabelen.
 | `OUTWAY_URL`, `MAGAZIJN_GRANT_HASH`, `NMC_GRANT_HASH` | Voor de verbinding met FSC |
 | `AFZENDER_OIN` | OIN van de nagebootste dienstverlener (standaard `00000000000000100000`) |
 | `TERUGMELDADRES` | Adres waarop de NMC deze app bereikt; de app zet er `/events` achter |
+| `DEMO_EMAIL` | E-mailadres voor de echte e-mails in de presentatie (dia 8: sjabloon `Herinnering-Fieldlab`, dia 10: `Magazijn-Fieldlab`). Moet op de gastenlijst van NotifyNL staan. De app laat het adres niet zien en schermt het af in het logboek |
+| `DEMO_EMAIL_AAN` | `ja`: echte e-mails staan bij het starten aan. Standaard uit; aan- en uitzetten kan ook met de knop "Echte e-mails" op de startdia van de presentatie |
 | `WACHTWOORD`, `GEBRUIKER` | Zet de inlog aan (HTTP Basic). Zonder `WACHTWOORD` is er geen inlog. Gebruiker standaard `fieldlab`. `POST /events` blijft open voor de NMC |
 | `POORT`, `HOST` | Standaard `3000` en `127.0.0.1` |
 

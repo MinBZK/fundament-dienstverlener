@@ -3296,7 +3296,8 @@ html:not(.js) {
       <a class="start-knop" href="/werkscherm.html" target="_blank" rel="noopener">Open het werkscherm &rsaquo;</a>
     </li>
   </ul>
-  <p class="start-voet"><a href="/instellingen.html" target="_blank" rel="noopener">Instellingen</a> · adressen van magazijn en NMC, zonder of met FSC</p>
+  <p class="start-voet"><a href="/instellingen.html" target="_blank" rel="noopener">Instellingen</a> · adressen van magazijn en NMC, zonder of met FSC
+    · <button type="button" class="email-schakelaar" id="email-schakelaar" aria-pressed="false">Echte e-mails: &hellip;</button></p>
   <aside class="notes"><p>Startdia: overzicht van de demo-omgevingen, gelijk aan de startpagina van de app (/). "Open de presentatie" gaat naar de volgende dia; de andere links openen in een nieuw tabblad.</p></aside>
 </section>
 
@@ -36753,9 +36754,39 @@ window.fieldlabStappen = (() => {
   const rustig = matchMedia('(prefers-reduced-motion: reduce)');
   let timers = [], actief = null, fig = null;
   const later = (fn, ms) => timers.push(setTimeout(fn, ms));
+  // Echte e-mail via de NMC op hetzelfde moment als de pop-up (sjabloon kiest de server).
+  // herinnering = dia 8 (Herinnering-Fieldlab), bericht = dia 10 (Magazijn-Fieldlab).
+  const SOORT = { herinnering: 'herinnering', bericht: 'magazijn' };
+  // Schakelaar op de startdia: echte e-mails aan of uit (bewaard op de server, standaard uit)
+  const schakelaar = document.getElementById('email-schakelaar');
+  function toonSchakelaar(aan, ingesteld) {
+    if (!schakelaar) return;
+    schakelaar.setAttribute('aria-pressed', String(!!aan));
+    schakelaar.textContent = 'Echte e-mails: ' + (aan ? 'aan' : 'uit') + (aan && !ingesteld ? ' (geen adres ingesteld)' : '');
+  }
+  if (schakelaar && !spreker) {
+    fetch('/api/instellingen').then(r => r.json()).then(i => toonSchakelaar(i.demoEmailAan, i.demoEmailIngesteld)).catch(() => { schakelaar.textContent = 'Echte e-mails: niet beschikbaar'; });
+    schakelaar.addEventListener('click', e => {
+      e.stopPropagation();
+      const aan = schakelaar.getAttribute('aria-pressed') !== 'true';
+      fetch('/api/demo-email-schakelaar', { method: 'PUT', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ aan }) })
+        .then(r => r.json()).then(j => toonSchakelaar(j.aan, j.ingesteld)).catch(() => {});
+    });
+  }
+  const laatst = {};
+  function stuurEchteMail(slide) {
+    const soort = SOORT[slide.dataset.melding];
+    if (!soort || spreker) return;
+    if (laatst[soort] && Date.now() - laatst[soort] < 30000) return;  // niet dubbel bij heen en weer klikken
+    laatst[soort] = Date.now();
+    fetch('/api/demo-melding', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ soort }) })
+      .then(r => r.json().catch(() => ({})).then(j => { if (!r.ok || j.fout || (j.antwoord && j.antwoord.status >= 400)) console.warn('Echte e-mail niet verstuurd', r.status, j); }))
+      .catch(e => console.warn('Echte e-mail niet verstuurd', e));
+  }
   function toonPopup(slide) {
     document.getElementById('mail-melding-tekst').textContent = TEKST[slide.dataset.melding] || TEKST.bericht;
     box.hidden = false; requestAnimationFrame(() => box.classList.add('is-zichtbaar'));
+    stuurEchteMail(slide);
   }
   function verberg() {
     box.classList.remove('is-zichtbaar');
@@ -37135,6 +37166,9 @@ window.fieldlabStappen = (() => {
 .start-knop { align-self: flex-start; padding: 0.7cqw 1.2cqw; border-radius: 0.5cqw; background: #154273; color: #fff; font-size: 1.2cqw; font-weight: 600; text-decoration: none; }
 .start-knop:focus-visible, .start-voet a:focus-visible { outline: 0.25cqw solid #ffb612; outline-offset: 0.2cqw; }
 .start-voet { margin: 1.8cqw 0 0; font-size: 1.2cqw; }
+.email-schakelaar { font: inherit; font-weight: 700; cursor: pointer; padding: 0.25cqw 0.9cqw; border-radius: 2cqw; border: 0.12cqw solid #8a94a3; background: #f1f5f9; color: #334155; }
+.email-schakelaar[aria-pressed="true"] { background: #39870c; border-color: #39870c; color: #fff; }
+.email-schakelaar:focus-visible { outline: 0.25cqw solid #ffb612; outline-offset: 0.2cqw; }
 </style>
 
 <style>

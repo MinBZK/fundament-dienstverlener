@@ -42,7 +42,7 @@ De kaarten "Live demo" in de presentatie:
 | Berichten ophalen | `GET {magazijn}/berichten` met header `X-Ontvanger` (bijvoorbeeld `KVK:90000013`) |
 | Notificatie sturen | `POST {nmc}/api/nmc/v1/decentraal/notificaties` met `emailAdres`, `berichtType` en `berichtgegevens.voornaam` (het Demo template vraagt om een voornaam) |
 | Statusmelding ontvangen | `POST /events`: de NMC meldt hier de bezorgstatus |
-| LDV-overzicht (portaal) | `GET /api/portaal/ldv?betrokkene=KVK:<nummer>`: de server vraagt `GET {nmc}/api/nmc/v1/logboek/verwerkingen` op met `X-Betrokkene` (voor het bedrijf en voor het demo-e-mailadres), direct, zonder FSC |
+| LDV-overzicht (portaal) | `GET /api/portaal/ldv?betrokkene=KVK:<nummer>`: de server vraagt de logboeken dataverwerkingen op met `X-Betrokkene`, direct en zonder FSC, en voegt ze samen: NMC (`/api/nmc/v1/logboek/verwerkingen`, ook voor het demo-e-mailadres), magazijn A en B en de berichtenuitvraag (`/api/v1/logboek/verwerkingen`). Standaard de afgelopen 24 uur, maximaal 500 regels |
 
 Elke aanroep krijgt een `traceparent`. Wat het werkscherm verstuurt en ontvangt, staat in het logboek (alleen in het geheugen, maximaal 100 regels).
 

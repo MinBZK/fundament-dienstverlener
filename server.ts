@@ -463,28 +463,36 @@ async function verwerkApi(req: IncomingMessage, res: ServerResponse, pad: string
       stuurJson(res, 400, { fout: 'Geef een betrokkene mee als BSN:, RSIN: of KVK: met het nummer.' });
       return true;
     }
-    const basis = zonderSlash(process.env.NMC_DIRECT_URL || instellingen.nmc.directAdres || nmcFieldlabAdres);
-    const periode = new URLSearchParams();
-    for (const k of ['van', 'tot']) { const w = zoek.get(k); if (w) periode.set(k, w); }
-    const vragen: { header: string; over: string }[] = [{ header: betrokkene, over: betrokkene.split(':')[0] }];
-    if (instellingen.demoEmail) vragen.push({ header: `EMAIL:${instellingen.demoEmail}`, over: 'E-mailadres' });
+    // Standaard de afgelopen 24 uur; de berichtenuitvraag heeft anders honderden regels.
+    const periode = new URLSearchParams({ van: zoek.get('van') || new Date(Date.now() - 24 * 3600_000).toISOString() });
+    const tot = zoek.get('tot'); if (tot) periode.set('tot', tot);
+    const nmcBasis = zonderSlash(process.env.NMC_DIRECT_URL || instellingen.nmc.directAdres || nmcFieldlabAdres);
+    // Elke dienst leest alleen zijn eigen logboek; de app voegt de lijsten samen.
+    const vragen: { url: string; header: string; over: string; organisatie: string }[] = [
+      { url: `${nmcBasis}/api/nmc/v1/logboek/verwerkingen`, header: betrokkene, over: betrokkene.split(':')[0], organisatie: 'Notificatiedienst (NMC)' },
+      { url: `${zonderSlash(bldMagazijnAdres)}/logboek/verwerkingen`, header: betrokkene, over: betrokkene.split(':')[0], organisatie: 'Belastingdienst (berichtenmagazijn)' },
+      { url: `${zonderSlash(rvoMagazijnAdres)}/logboek/verwerkingen`, header: betrokkene, over: betrokkene.split(':')[0], organisatie: 'RVO (berichtenmagazijn)' },
+      { url: `${busAdres}/logboek/verwerkingen`, header: betrokkene, over: betrokkene.split(':')[0], organisatie: 'Berichtenuitvraag (MijnOverheid Zakelijk)' },
+    ];
+    // Decentrale notificaties staan in het logboek van de NMC onder het e-mailadres.
+    if (instellingen.demoEmail) vragen.push({ url: `${nmcBasis}/api/nmc/v1/logboek/verwerkingen`, header: `EMAIL:${instellingen.demoEmail}`, over: 'E-mailadres', organisatie: 'Notificatiedienst (NMC)' });
     const verwerkingen: Record<string, unknown>[] = [];
     const fouten: string[] = [];
     await Promise.all(vragen.map(async (v) => {
       try {
-        const a = await fetch(`${basis}/api/nmc/v1/logboek/verwerkingen${periode.size ? `?${periode}` : ''}`, {
+        const a = await fetch(`${v.url}?${periode}`, {
           headers: { 'X-Betrokkene': v.header, accept: 'application/json', traceparent: traceparent() },
           signal: AbortSignal.timeout(15_000),
         });
-        if (!a.ok) { fouten.push(`${v.over}: NMC antwoordde ${a.status}`); return; }
+        if (!a.ok) { fouten.push(`${v.organisatie}: antwoord ${a.status}`); return; }
         const d = (await a.json()) as { verwerkingen?: Record<string, unknown>[] };
-        for (const r of d.verwerkingen ?? []) verwerkingen.push({ ...r, over: v.over, organisatie: 'Notificatiedienst (NMC)' });
+        for (const r of d.verwerkingen ?? []) verwerkingen.push({ ...r, over: v.over, organisatie: v.organisatie });
       } catch (e) {
-        fouten.push(`${v.over}: ${e instanceof Error ? e.message : String(e)}`);
+        fouten.push(`${v.organisatie}: ${e instanceof Error ? e.message : String(e)}`);
       }
     }));
     verwerkingen.sort((x, y) => String(y.tijdstip).localeCompare(String(x.tijdstip)));
-    stuurJson(res, 200, { betrokkene, verwerkingen, fouten });
+    stuurJson(res, 200, { betrokkene, van: periode.get('van'), verwerkingen: verwerkingen.slice(0, 500), fouten });
     return true;
   }
 

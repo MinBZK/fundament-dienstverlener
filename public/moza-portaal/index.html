@@ -18,8 +18,45 @@
 <section id="gegevensdeling" hidden aria-labelledby="gd-titel">
 <h1 id="gd-titel" class="nl-heading nl-heading--level-1 rhc-heading">Gegevensdeling en dataverwerking</h1>
 <div class="rhc-mox-card">
-<p class="nl-paragraph rhc-paragraph">Hier ziet u welke overheidsorganisaties gegevens over uw bedrijf hebben verwerkt, en wanneer. De gegevens komen uit het <strong>Logboek Dataverwerkingen (LDV)</strong> van de Notificatiedienst.</p>
+<p class="nl-paragraph rhc-paragraph">Hier ziet u welke overheidsorganisaties gegevens over uw bedrijf hebben verwerkt, en wanneer. De gegevens komen uit het <strong>Logboek Dataverwerkingen (LDV)</strong> van elke organisatie: de berichtenmagazijnen, de berichtenuitvraag en de notificatiedienst. U ziet de afgelopen 24 uur.</p>
+<style>
+#gegevensdeling .ldv-weergave{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+#gegevensdeling .ldv-weergave button{font:inherit;padding:.45rem .9rem;border:2px solid #154273;border-radius:4px;background:#fff;color:#154273;cursor:pointer;font-weight:600}
+#gegevensdeling .ldv-weergave button[aria-pressed="true"]{background:#154273;color:#fff}
+#gegevensdeling .ldv-groepen{display:flex;flex-direction:column;gap:1rem;margin:0;padding:0;list-style:none}
+#gegevensdeling .ldv-groep{border:1px solid #cbd5e1;border-left:6px solid #154273;border-radius:4px;padding:.9rem 1.1rem;background:#fff}
+#gegevensdeling .ldv-groep--mix{border-left-color:#ffb612}
+#gegevensdeling .ldv-groep h3{margin:0;font-size:1.05rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+#gegevensdeling .ldv-badge{font-size:.75rem;font-weight:700;padding:.15rem .5rem;border-radius:999px;background:#ffb612;color:#1a1a1a}
+#gegevensdeling .ldv-orgs{margin:.25rem 0 .6rem;color:#475569;font-size:.9rem}
+#gegevensdeling .ldv-stappen{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.3rem}
+#gegevensdeling .ldv-stappen time{font-variant-numeric:tabular-nums;color:#475569;margin-right:.5rem}
+#gegevensdeling .ldv-stappen .nmc{color:#154273}
+#gegevensdeling .ldv-mislukt{color:#b3261e;font-weight:700}
+#gegevensdeling .ldv-fase{display:flex;flex-direction:column;gap:.6rem}
+#gegevensdeling .ldv-fase > h2{margin:0;font-size:1.15rem;display:flex;gap:.6rem;align-items:center}
+#gegevensdeling .ldv-nr{display:inline-grid;place-items:center;width:1.8rem;height:1.8rem;border-radius:50%;background:#154273;color:#fff;font-size:.95rem}
+#gegevensdeling .ldv-leeg{margin:0;color:#475569;font-style:italic}
+#gegevensdeling details.ldv-eerder summary{cursor:pointer;color:#154273;font-weight:600}
+#gegevensdeling details.ldv-eerder[open] summary{margin-bottom:.6rem}
+#gegevensdeling details.ldv-eerder > div{display:flex;flex-direction:column;gap:.6rem}
+#gegevensdeling details.ldv-doorloop{border:1px solid #cbd5e1;border-left:6px solid #154273;border-radius:4px;background:#fff;padding:.9rem 1.1rem}
+#gegevensdeling details.ldv-doorloop > summary{cursor:pointer;list-style:none;display:flex;flex-direction:column;gap:.35rem}
+#gegevensdeling details.ldv-doorloop > summary::-webkit-details-marker{display:none}
+#gegevensdeling .ldv-kop{font-size:1.1rem;font-weight:700;color:#154273}
+#gegevensdeling .ldv-vinkjes{display:flex;flex-wrap:wrap;gap:.4rem;margin:0;padding:0;list-style:none}
+#gegevensdeling .ldv-vinkjes li{font-size:.8rem;font-weight:600;padding:.15rem .55rem;border-radius:999px;background:#e2e8f0;color:#475569}
+#gegevensdeling .ldv-vinkjes li.is-er{background:#dff0d8;color:#2f6b0a}
+#gegevensdeling .ldv-fasen{display:flex;flex-direction:column;gap:.9rem;margin:.9rem 0 0;padding:0;list-style:none}
+</style>
+<div class="ldv-weergave" id="ldv-weergave" hidden>
+<button type="button" id="ldv-knop-momenten" aria-pressed="true">Per proces</button>
+<button type="button" id="ldv-knop-regels" aria-pressed="false">Alle regels</button>
+</div>
+<ol class="ldv-groepen" id="ldv-groepen" hidden></ol>
 <div id="ldv-filter-blok" hidden style="display:flex;flex-wrap:wrap;align-items:center;gap:.75rem">
+<label for="ldv-org" class="utrecht-form-label" style="font-weight:600">Organisatie</label>
+<select id="ldv-org" class="utrecht-select utrecht-select--html-select" style="max-width:22rem"><option value="">Alle organisaties</option></select>
 <label for="ldv-filter" class="utrecht-form-label" style="font-weight:600">Soort verwerking</label>
 <select id="ldv-filter" class="utrecht-select utrecht-select--html-select" style="max-width:22rem"><option value="">Alle verwerkingen</option></select>
 </div>
@@ -35,7 +72,7 @@
 </tr></thead>
 <tbody class="utrecht-table__body" id="ldv-rijen"></tbody>
 </table></div></div>
-<p class="nl-paragraph rhc-paragraph" style="font-size:.875em;opacity:.8">Bron: Logboek Dataverwerkingen van de Notificatiedienst op het fieldlab (live). Nieuwste bovenaan.</p>
+<p class="nl-paragraph rhc-paragraph" style="font-size:.875em;opacity:.8">Bron: de logboeken dataverwerkingen van de diensten op het fieldlab (live). Elke dienst levert zijn eigen logboek; dit overzicht voegt ze samen. Nieuwste bovenaan.</p>
 </div>
 </section>
 <section id="bericht" hidden aria-labelledby="bericht-titel">
@@ -163,7 +200,16 @@
   // --- Gegevensdeling en dataverwerking: overzicht uit het Logboek Dataverwerkingen (LDV) ---
   // De sectie staat in de HTML binnen de berichtenbox-kaart; zet hem ernaast in de hoofdkolom.
   document.querySelector('.rhc-mox-main-container')?.append($('gegevensdeling'));
-  const HANDELING = { notificatieAannemen: 'Notificatie aangenomen', decentraleNotificatieAannemen: 'E-mailnotificatie aangenomen', eventsLezen: 'Gebeurtenissen gelezen', logboekInzien: 'Logboek ingezien' };
+  const HANDELING = {
+    // Notificatiedienst (NMC)
+    notificatieAannemen: 'Notificatie aangenomen', decentraleNotificatieAannemen: 'E-mailnotificatie aangenomen', eventsLezen: 'Gebeurtenissen gelezen', logboekInzien: 'Logboek ingezien',
+    // Berichtenmagazijnen
+    'aanleveren-bericht': 'Bericht aangeleverd', 'ophalen-berichtenlijst': 'Berichtenlijst opgehaald', 'ophalen-bericht': 'Bericht opgehaald', 'ophalen-bijlage': 'Bijlage opgehaald',
+    'bijwerken-bericht-status': 'Berichtstatus bijgewerkt', 'publicatie-aanmeld': 'Bericht aangemeld bij de berichtenuitvraag', 'publicatie-notificatie': 'Doorgegeven aan de notificatiedienst', 'inzage-logboek': 'Logboek ingezien',
+    // Berichtenuitvraag
+    'uitvraag-sessie-start': 'Sessie gestart', 'uitvraag-sessie-einde': 'Sessie beëindigd', 'uitvraag-sessie-opruimen': 'Sessie opgeruimd', 'uitvraag-ophalen-sse': 'Berichten opgehaald bij de magazijnen',
+    'uitvraag-lijst': 'Berichtenlijst samengesteld', 'uitvraag-bericht': 'Bericht opgevraagd', 'uitvraag-aanmelding': 'Aanmelding van een bericht verwerkt',
+  };
   const OVER = { KVK: 'Uw bedrijf (KVK)', BSN: 'U (BSN)', RSIN: 'Uw organisatie (RSIN)', 'E-mailadres': 'Uw e-mailadres' };
   const tijd = iso => iso ? new Date(iso).toLocaleString('nl-NL', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', second: '2-digit' }) : '';
   const cel = (tekst) => { const td = document.createElement('td'); td.className = 'utrecht-table__cell'; td.textContent = tekst; return td; };
@@ -185,7 +231,8 @@
       const d = await json('/api/portaal/ldv?' + new URLSearchParams({ betrokkene: `KVK:${kvk}` }));
       ldvData = d;
       vulFilter(d.verwerkingen || []);
-      toonLdv();
+      $('ldv-weergave').hidden = !(d.verwerkingen || []).length;
+      zetWeergave(weergave);
     } catch (e) {
       $('ldv-status').textContent = `Het overzicht kon niet worden opgehaald (${e.message}).`;
     }
@@ -193,6 +240,15 @@
   let ldvData = { verwerkingen: [], fouten: [] };
   // Keuzelijst met de soorten die echt in het logboek voorkomen, met het aantal erachter
   function vulFilter(lijst) {
+    const org = $('ldv-org'), orgNu = org.value, telOrg = {};
+    lijst.forEach(v => { telOrg[v.organisatie] = (telOrg[v.organisatie] || 0) + 1; });
+    org.replaceChildren(new Option(`Alle organisaties (${lijst.length})`, ''), ...Object.keys(telOrg).sort().map(o => new Option(`${o} (${telOrg[o]})`, o)));
+    org.value = telOrg[orgNu] ? orgNu : '';
+    vulSoort(lijst);
+  }
+  // Soorten volgen de gekozen organisatie
+  function vulSoort(alles) {
+    const lijst = alles.filter(v => !$('ldv-org').value || v.organisatie === $('ldv-org').value);
     const kies = $('ldv-filter'), huidig = kies.value;
     const tel = {};
     lijst.forEach(v => { tel[v.handeling] = (tel[v.handeling] || 0) + 1; });
@@ -200,16 +256,17 @@
     Object.keys(tel).sort((a, b) => (HANDELING[a] || a).localeCompare(HANDELING[b] || b)).forEach(h => opties.push(new Option(`${HANDELING[h] || h} (${tel[h]})`, h)));
     kies.replaceChildren(...opties);
     kies.value = tel[huidig] ? huidig : '';
-    $('ldv-filter-blok').hidden = !lijst.length;
+    $('ldv-filter-blok').hidden = !alles.length;
   }
   function toonLdv() {
-    const d = ldvData, keuze = $('ldv-filter').value;
-    const lijst = (d.verwerkingen || []).filter(v => !keuze || v.handeling === keuze);
+    const d = ldvData, keuze = $('ldv-filter').value, orgKeuze = $('ldv-org').value;
+    const lijst = (d.verwerkingen || []).filter(v => (!orgKeuze || v.organisatie === orgKeuze) && (!keuze || v.handeling === keuze));
     {
       const rijen = lijst.map(v => {
         const tr = document.createElement('tr'); tr.className = 'utrecht-table__row';
         const uitkomst = v.uitkomst === 'mislukt' ? `Mislukt${v.foutcategorie ? ` (${v.foutcategorie})` : ''}` : 'Geslaagd';
-        tr.append(cel(tijd(v.tijdstip)), cel(v.organisatie || 'Notificatiedienst (NMC)'), cel(HANDELING[v.handeling] || v.handeling || ''), cel(OVER[v.over] || v.over || ''), cel(uitkomst));
+        const poging = v.poging > 1 ? ` (poging ${v.poging})` : '';
+        tr.append(cel(tijd(v.tijdstip)), cel(v.organisatie || ''), cel((HANDELING[v.handeling] || v.handeling || '') + poging), cel(OVER[v.over] || v.over || ''), cel(uitkomst));
         return tr;
       });
       $('ldv-rijen').replaceChildren(...rijen);
@@ -217,10 +274,87 @@
       const fout = (d.fouten || []).length ? ` Niet alles kon worden opgehaald: ${d.fouten.join(' · ')}.` : '';
       const totaal = (d.verwerkingen || []).length;
       $('ldv-status').textContent = !totaal ? `Er zijn nog geen verwerkingen van uw gegevens vastgelegd.${fout}`
-        : `${rijen.length} ${rijen.length === 1 ? 'verwerking' : 'verwerkingen'}${keuze ? ` van deze soort (van ${totaal})` : ' gevonden'}.${fout}`;
+        : `${rijen.length} ${rijen.length === 1 ? 'verwerking' : 'verwerkingen'}${keuze || orgKeuze ? ` met deze keuze (van ${totaal})` : ' in de afgelopen 24 uur'}.${fout}`;
     }
   }
   $('ldv-filter').addEventListener('change', toonLdv);
+
+  // --- Per proces: de drie processen waarvoor gegevens van de ondernemer zijn verwerkt ---
+  // Onder elk proces de momenten gebundeld: stappen die minder dan 15 s uit elkaar liggen.
+  const GAT_MS = 15000;
+  const INZAGE = new Set(['inzage-logboek', 'logboekInzien']);
+  const isNmc = v => /NMC/.test(v.organisatie || '');
+  const korteNaam = o => (o || '').replace(/ \(.*\)$/, '');
+  const ms = v => new Date(v.tijdstip).getTime();
+  const uurMin = iso => new Date(iso).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const metMs = iso => { const d = new Date(iso); return `${uurMin(iso)},${String(d.getMilliseconds()).padStart(3, '0')}`; };
+  const BESLUIT = new Set(['aanleveren-bericht', 'publicatie-aanmeld', 'publicatie-notificatie', 'uitvraag-aanmelding']);
+  const OPHALEN = new Set(['uitvraag-sessie-start', 'uitvraag-sessie-einde', 'uitvraag-sessie-opruimen', 'uitvraag-ophalen-sse', 'uitvraag-lijst', 'uitvraag-bericht',
+    'ophalen-berichtenlijst', 'ophalen-bericht', 'ophalen-bijlage', 'bijwerken-bericht-status']);
+  const PROCESSEN = [
+    { id: 'herinnering', titel: 'Proces versturen herinnering', uitleg: 'Wij hebben uw contactgegevens gebruikt om u een herinnering te sturen, via de notificatiedienst.', hoort: v => isNmc(v) },
+    { id: 'besluit', titel: 'Genereren en plaatsen besluit', uitleg: 'De Belastingdienst heeft een besluit voor uw bedrijf klaargezet in het berichtenmagazijn en aangemeld bij MijnOverheid Zakelijk.', hoort: v => BESLUIT.has(v.handeling) },
+    { id: 'ophalen', titel: 'Ophalen berichten', uitleg: 'MijnOverheid Zakelijk heeft uw berichten opgehaald bij de organisaties, zodat u ze kunt lezen.', hoort: v => OPHALEN.has(v.handeling) },
+  ];
+  let weergave = 'momenten';
+  const op = lijst => lijst.slice().sort((a, b) => ms(a) - ms(b));
+  function bundels(lijst) {
+    const groepen = []; let g = [];
+    for (const v of op(lijst)) { if (g.length && ms(v) - ms(g[g.length - 1]) > GAT_MS) { groepen.push(g); g = []; } g.push(v); }
+    if (g.length) groepen.push(g);
+    return groepen.reverse();  // nieuwste bundel eerst
+  }
+  function bundelKaart(g) {
+    const kaart = document.createElement('div'); kaart.className = 'ldv-groep';
+    const h = document.createElement('h3');
+    const van = uurMin(g[0].tijdstip), tot = uurMin(g[g.length - 1].tijdstip);
+    h.append(new Date(g[0].tijdstip).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' }) + ', ' + (van === tot ? van : `${van} – ${tot}`));
+    const p = document.createElement('p'); p.className = 'ldv-orgs';
+    p.textContent = `${[...new Set(g.map(v => korteNaam(v.organisatie)))].join(' · ')} — ${g.length} ${g.length === 1 ? 'verwerking' : 'verwerkingen'}`;
+    const ol = document.createElement('ol'); ol.className = 'ldv-stappen';
+    g.forEach(v => {
+      const s = document.createElement('li');
+      const tm = document.createElement('time'); tm.dateTime = v.tijdstip; tm.textContent = metMs(v.tijdstip);
+      const o = document.createElement('strong'); o.textContent = korteNaam(v.organisatie); if (isNmc(v)) o.className = 'nmc';
+      s.append(tm, o, ` — ${HANDELING[v.handeling] || v.handeling}${v.poging > 1 ? ` (poging ${v.poging})` : ''} · ${OVER[v.over] || v.over}`);
+      if (v.uitkomst === 'mislukt') { const m = document.createElement('span'); m.className = 'ldv-mislukt'; m.textContent = ` · mislukt${v.foutcategorie ? ` (${v.foutcategorie})` : ''}`; s.append(m); }
+      ol.append(s);
+    });
+    kaart.append(h, p, ol);
+    return kaart;
+  }
+  function toonMomenten() {
+    const alles = (ldvData.verwerkingen || []).filter(v => !INZAGE.has(v.handeling));
+    const blokken = PROCESSEN.map((pr, i) => {
+      const li = document.createElement('li'); li.className = 'ldv-fase';
+      const rijen = alles.filter(pr.hoort);
+      const bs = bundels(rijen);
+      const h = document.createElement('h2'); const nr = document.createElement('span'); nr.className = 'ldv-nr'; nr.textContent = String(i + 1);
+      h.append(nr, pr.titel);
+      const u = document.createElement('p'); u.className = 'ldv-orgs'; u.style.margin = '0';
+      u.textContent = pr.uitleg;
+      li.append(h, u);
+      if (!bs.length) { const l = document.createElement('p'); l.className = 'ldv-leeg'; l.textContent = 'In de afgelopen 24 uur niet voorgekomen.'; li.append(l); return li; }
+      li.append(bundelKaart(bs[0]));  // alleen de meest recente keer
+      return li;
+    });
+    $('ldv-groepen').replaceChildren(...blokken);
+    $('ldv-groepen').hidden = false;
+    const fout = (ldvData.fouten || []).length ? ` Niet alles kon worden opgehaald: ${ldvData.fouten.join(' · ')}.` : '';
+    $('ldv-status').textContent = `Voor deze 3 stappen hebben we gegevens van u verwerkt. Per stap ziet u de meest recente keer: wanneer, door welke organisatie en wat er gebeurde.${fout}`;
+  }
+  function zetWeergave(w) {
+    weergave = w;
+    $('ldv-knop-momenten').setAttribute('aria-pressed', String(w === 'momenten'));
+    $('ldv-knop-regels').setAttribute('aria-pressed', String(w === 'regels'));
+    $('ldv-groepen').hidden = w !== 'momenten';
+    $('ldv-filter-blok').hidden = w !== 'regels' || !(ldvData.verwerkingen || []).length;
+    if (w === 'momenten') { $('ldv-tabel').hidden = true; toonMomenten(); } else { toonLdv(); }
+  }
+  $('ldv-knop-momenten').addEventListener('click', () => zetWeergave('momenten'));
+  $('ldv-knop-regels').addEventListener('click', () => zetWeergave('regels'));
+
+  $('ldv-org').addEventListener('change', () => { vulSoort(ldvData.verwerkingen || []); toonLdv(); });
   function toonBerichtenbox() {
     $('gegevensdeling').hidden = true;
     [document.querySelector('.rhc-mox-main-container > h1'), document.querySelector('.rhc-mox-main-container > .rhc-mox-card')].forEach(el => { if (el) el.hidden = false; });

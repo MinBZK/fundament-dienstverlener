@@ -65,7 +65,7 @@ Stel de adressen in op de pagina Instellingen of vooraf met omgevingsvariabelen.
 | `TERUGMELDADRES` | Adres waarop de NMC deze app bereikt; de app zet er `/events` achter |
 | `DEMO_EMAIL` | E-mailadres voor de echte e-mails in de presentatie (dia 8: sjabloon `Herinnering-Fieldlab`, dia 10: `Magazijn-Fieldlab`). Moet op de gastenlijst van NotifyNL staan. De app laat het adres niet zien en schermt het af in het logboek |
 | `NMC_DIRECT_URL` | Adres van de NMC voor de tweede e-mail in de presentatie (na het magazijn), die altijd zonder FSC gaat. Standaard het directe adres bij Instellingen, anders de NMC op het fieldlab |
-| `DEMO_EMAIL_AAN` | `ja`: echte e-mails staan bij het starten aan. Standaard uit; aan- en uitzetten kan ook met de knop "Echte e-mails" op de startdia van de presentatie |
+| `DEMO_EMAIL_AAN` | `nee`: echte e-mails staan bij het starten uit. Standaard aan; aan- en uitzetten kan ook met de knop "Echte e-mails" op de startdia van de presentatie |
 | `WACHTWOORD`, `GEBRUIKER` | Zet de inlog aan (HTTP Basic). Zonder `WACHTWOORD` is er geen inlog. Gebruiker standaard `fieldlab`. `POST /events` blijft open voor de NMC |
 | `POORT`, `HOST` | Standaard `3000` en `127.0.0.1` |
 

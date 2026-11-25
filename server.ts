@@ -29,7 +29,7 @@ type Instellingen = {
   terugmeldadres: string;
   // E-mailadres voor de echte e-mails in de presentatie (dia's met de pop-up). Staat op de gastenlijst van NotifyNL.
   demoEmail: string;
-  // Schakelaar op de startdia: staan de echte e-mails aan? Standaard uit.
+  // Schakelaar op de startdia: staan de echte e-mails aan? Standaard aan (DEMO_EMAIL_AAN=nee: uit).
   demoEmailAan: boolean;
 };
 
@@ -67,7 +67,7 @@ const instellingen: Instellingen = {
   afzender: process.env.AFZENDER_OIN ?? '00000000000000100000',
   terugmeldadres: process.env.TERUGMELDADRES ?? '',
   demoEmail: process.env.DEMO_EMAIL ?? '',
-  demoEmailAan: process.env.DEMO_EMAIL_AAN === 'ja',
+  demoEmailAan: process.env.DEMO_EMAIL_AAN !== 'nee',
 };
 
 function neemOver(doel: Instellingen, bron: Partial<Instellingen> | undefined): void {
@@ -229,6 +229,9 @@ const ontvangerVorm = /^(BSN:[0-9]{9}|RSIN:[0-9]{9}|KVK:[0-9]{8}|OIN:[0-9]{20})$
 // BLD_MAGAZIJN_MODUS=fsc gaat het via de eigen Outway (grant-hash van Instellingen, magazijn).
 const bldMagazijnAdres =
   process.env.BLD_MAGAZIJN_URL ?? 'https://berichtenmagazijn-b.fbs.cluster-c.fieldlab2026.nl/api/v1';
+
+// Wanneer de echte e-mail per soort het laatst is verstuurd (tegen dubbele e-mails).
+const laatsteDemoMelding: Record<string, number> = {};
 
 // NMC op het fieldlab (Fundament, cluster-c), voor de directe melding na het magazijn.
 const nmcFieldlabAdres = 'https://nmc.cluster-c.fieldlab2026.nl';
@@ -585,6 +588,12 @@ async function verwerkApi(req: IncomingMessage, res: ServerResponse, pad: string
       stuurJson(res, 400, { fout: 'Onbekende soort. Kies herinnering of magazijn.' });
       return true;
     }
+    // Niet dubbel: meerdere tabbladen met de presentatie lopen gelijk op en vragen tegelijk.
+    const nu = Date.now();
+    if (nu - (laatsteDemoMelding[soort as string] ?? 0) < 30_000) {
+      stuurJson(res, 200, { overgeslagen: true, reden: 'Deze e-mail is zojuist al verstuurd.' });
+      return true;
+    }
     if (!instellingen.demoEmailAan) {
       // Schakelaar staat uit: de pop-up verschijnt wel, maar er gaat geen e-mail weg.
       stuurJson(res, 200, { overgeslagen: true, reden: 'Echte e-mails staan uit (schakelaar op de startdia).' });
@@ -592,6 +601,7 @@ async function verwerkApi(req: IncomingMessage, res: ServerResponse, pad: string
     }
     // Zoals in de keten: de herinnering komt van de procesapplicatie en volgt de NMC-instelling
     // (online via FSC); de melding na het magazijn gaat altijd direct, zonder FSC.
+    laatsteDemoMelding[soort as string] = nu;
     const nmc: Dienst = soort === 'magazijn'
       ? { modus: 'direct', directAdres: process.env.NMC_DIRECT_URL || instellingen.nmc.directAdres || nmcFieldlabAdres, grantHash: '', fscPad: '' }
       : instellingen.nmc;

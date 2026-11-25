@@ -59,12 +59,32 @@ Stel de adressen in op de pagina Instellingen of vooraf met omgevingsvariabelen.
 | `NMC_URL` | Adres van de NMC, zonder pad |
 | `MAGAZIJN_MODUS`, `NMC_MODUS` | `direct` (zonder FSC) of `fsc` (via de eigen Outway) |
 | `OUTWAY_URL`, `MAGAZIJN_GRANT_HASH`, `NMC_GRANT_HASH` | Voor de verbinding met FSC |
+| `MAGAZIJN_FSC_PAD`, `NMC_FSC_PAD` | Pad tussen het adres van de Outway en de aanroep (standaard `/api/v1` voor het magazijn, leeg voor de NMC) |
 | `AFZENDER_OIN` | OIN van de nagebootste dienstverlener (standaard `00000000000000100000`) |
 | `TERUGMELDADRES` | Adres waarop de NMC deze app bereikt; de app zet er `/events` achter |
 | `WACHTWOORD`, `GEBRUIKER` | Zet de inlog aan (HTTP Basic). Zonder `WACHTWOORD` is er geen inlog. Gebruiker standaard `fieldlab`. `POST /events` blijft open voor de NMC |
 | `POORT`, `HOST` | Standaard `3000` en `127.0.0.1` |
 
 Adressen op het fieldlab (cluster-c): magazijn A (RVO) `https://berichtenmagazijn-a.fbs.cluster-c.fieldlab2026.nl/api/v1`, magazijn B (Belastingdienst) `https://berichtenmagazijn-b.fbs.cluster-c.fieldlab2026.nl/api/v1`, NMC `https://nmc.cluster-c.fieldlab2026.nl`.
+
+## NMC aanroepen via FSC (testnet)
+
+De app kan al via FSC werken: met `NMC_MODUS=fsc` stuurt hij de notificatie naar `{OUTWAY_URL}{NMC_FSC_PAD}/api/nmc/v1/decentraal/notificaties`, met de header `Fsc-Grant-Hash`. Wat er nog nodig is, zit in de FSC-inrichting:
+
+1. **Aansluiten op het testnet.** Vraag bij de beheerder van de testnet-directory een peer-ID en een certificaat van de testnet-CA aan. Noteer het `group_id`.
+2. **Eigen FSC-stack draaien** (Manager, Outway, Controller en Postgres), bijvoorbeeld met de open-source FSC-implementatie.
+   - De Manager moet van buitenaf bereikbaar zijn op poort 8443 (mTLS): de Manager van de NMC stuurt zijn handtekening op het contract daarheen terug.
+   - De Outway hoeft alleen bereikbaar te zijn voor deze app (op ZAD: een extra component in hetzelfde project). Hij moet uitgaand de Inway van de NMC (443) en de Managers (8443) kunnen bereiken.
+3. **Nagaan of de NMC in de testnet-directory staat**, met servicenaam en peer-ID van de aanbieder. Staat hij er niet in, dan moet de beheerder van de NMC eerst een Inway neerzetten en de NMC publiceren. Dat ligt buiten dit project.
+4. **Contract aanvragen** in de Controller: een ServiceConnectionGrant voor de NMC-service, met de thumbprint van het certificaat van de eigen Outway.
+5. **De beheerder van de NMC accepteert het contract.** Daarna is het contract geldig.
+6. **De app instellen**, met omgevingsvariabelen of op de pagina Instellingen:
+   - `NMC_MODUS=fsc`
+   - `OUTWAY_URL`: adres van de eigen Outway
+   - `NMC_GRANT_HASH`: de grant-hash uit het geaccepteerde contract
+   - `NMC_FSC_PAD`: leeg als de Inway de NMC vanaf de root doorstuurt, anders het pad dat ervoor moet
+7. **Statusmeldingen.** De NMC stuurt CloudEvents rechtstreeks naar `TERUGMELDADRES` + `/events`, buiten FSC om. Dat adres moet voor de NMC bereikbaar blijven. Moeten ook de statusmeldingen via FSC lopen, dan is er meer nodig: een eigen Inway, `/events` publiceren als service en een contract met de NMC in de andere richting.
+8. **Testen** via het werkscherm. In het logboek staat dan "via FSC-Outway". Bij een fout geeft FSC een `ERROR_CODE_…` in het antwoord: `SERVICE_NOT_FOUND` wijst op een verkeerde servicenaam of een verkeerd pad, `ACCESS_TOKEN_*` op een probleem met het contract of de grant.
 
 ## Uitrollen op ZAD
 

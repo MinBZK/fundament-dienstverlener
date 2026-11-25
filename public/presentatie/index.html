@@ -3241,11 +3241,14 @@ html:not(.js) {
 .ronde li.is-nu { border-color: var(--accent); background: var(--ink-10); color: var(--ink); }
 .proces-focus { margin-top: 0.6cqw; }
 .proces-focus svg { max-height: 23cqw; }
-.proces-focus svg [data-fase] { opacity: 0.15; }
+/* Wat in deze stap niet meedoet: grijs en licht. Fundament blijft blauw (even licht); legenda en label blijven leesbaar */
+.proces-focus svg [data-fase],
+.proces-focus svg > :not(defs):not([data-fase]):not([data-blijft]) { filter: grayscale(1); opacity: 0.35; }
+.proces-focus svg > [data-kleur]:not([data-fase]):not([data-blijft]) { filter: none; }
 .proces-focus[data-focus~="1"] svg [data-fase="1"],
 .proces-focus[data-focus~="2"] svg [data-fase="2"],
 .proces-focus[data-focus~="3"] svg [data-fase="3"],
-.proces-focus[data-focus~="4"] svg [data-fase="4"] { opacity: 1; }
+.proces-focus[data-focus~="4"] svg [data-fase="4"] { opacity: 1; filter: none; }
 .demo-rij { display: grid; grid-template-columns: 1.1fr 1fr 1fr 1fr; gap: 1.2cqw; margin: 1.2cqw 0 0; padding: 0; list-style: none; }
 .demo-kaart { display: grid; gap: 0.6cqw; align-content: center; justify-items: start; padding: 1.2cqw 1.4cqw; border: 0.15cqw dashed var(--accent); border-radius: 1cqw; background: var(--ink-06); }
 .demo-kaart .demo-live { font-size: 0.95cqw; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
@@ -3302,10 +3305,10 @@ html:not(.js) {
   </aside>
 </section>
 
-<!-- ===== Van besluit tot kennisgeving (melding) ===== -->
-<section class="slide" data-start="1" aria-roledescription="dia" aria-label="Van besluit tot kennisgeving (melding)">
+<!-- ===== Het fundament in de praktijk ===== -->
+<section class="slide" data-start="1" aria-roledescription="dia" aria-label="Het fundament in de praktijk">
   <ol class="route" aria-label="Route van het bericht"><li data-staat="straks">Attendering</li><li data-staat="straks">Aangifte</li><li data-staat="straks">Besluit</li><li data-staat="straks">Kennisgeving (melding)</li><li data-staat="straks">Besluit lezen</li><li class="route__concept">Concept</li></ol>
-  <h2 class="title">Van besluit tot kennisgeving (melding)</h2>
+  <h2 class="title">Het fundament in de praktijk</h2>
   <figure class="plaat plaat-praktijk">
     <svg viewBox="0 0 1100 515" role="img" aria-labelledby="praktijk-titel praktijk-uitleg" xmlns="http://www.w3.org/2000/svg">
       <title id="praktijk-titel">Van besluit tot kennisgeving (melding), in vier stappen, op het fieldlab</title>
@@ -3341,12 +3344,17 @@ html:not(.js) {
       <text class="pr-zone-t" x="862" y="187">BUITEN</text>
       <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
       <g data-step="1">
-        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M430,80 H150 V228" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
-        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="150" y="239">Portaal</text>
-        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
-        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal Belastingdienst (scherm)">
+          <rect x="135" y="230" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="138" y="233" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="150" y1="249" x2="150" y2="252" stroke="#334155" stroke-width="1.6"/>
+          <line x1="144" y1="253" x2="156" y2="253" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="171" y="240">portaal</text>
+        <text class="pr-label" x="171" y="254">Belastingdienst</text>
+        <path d="M150,256 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
       <g data-step="1">
@@ -3475,8 +3483,8 @@ html:not(.js) {
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
       <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect data-kleur x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text data-kleur class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
       <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
       <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
       <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
@@ -3487,12 +3495,19 @@ html:not(.js) {
       <text class="pr-zone-t" x="862" y="187">BUITEN</text>
       <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
       <g data-fase="r1b">
-        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M430,80 H150 V228" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
-        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="150" y="239">Portaal</text>
-        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
-        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal Belastingdienst (scherm)">
+          <rect x="135" y="230" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="138" y="233" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="150" y1="249" x2="150" y2="252" stroke="#334155" stroke-width="1.6"/>
+          <line x1="144" y1="253" x2="156" y2="253" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="171" y="240">portaal</text>
+        <text class="pr-label" x="171" y="254">Belastingdienst</text>
+      </g>
+      <g data-fase="r1c">
+        <path d="M150,256 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
       <g data-fase="1">
@@ -3568,17 +3583,17 @@ html:not(.js) {
       </g>
       <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
       <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
-      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
-      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
-      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
-      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
-      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
+      <text data-blijft x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line data-blijft x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text data-blijft class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line data-blijft x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text data-blijft class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect data-blijft x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text data-blijft class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect data-blijft x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text data-blijft class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect data-blijft x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text data-blijft class="pr-leg" x="875" y="508">Niet in de demo</text>
     </svg>
   </figure>
   <aside class="notes"><p><strong>Gedachtegang</strong> De procesapplicatie signaleert dat de btw-aangifte uitblijft en wil een herinnering sturen. Alleen de procesapplicatie licht op; de verbinding met de notificatiedienst volgt op de volgende dia.</p><p><strong>Laat zien</strong> · demo: FSC-aansluiting</p><ol><li><strong>Verzoek</strong> De procesapplicatie vraagt de NMC om een e-mail naar de ondernemer.</li><li><strong>Via FSC</strong> Over de FSC-aansluiting, met een contract tussen beide partijen.</li><li><strong>NMC</strong> De notificatiedienst ontvangt het verzoek.</li></ol><p><strong>Achtergrond</strong></p>
@@ -3593,7 +3608,7 @@ html:not(.js) {
   <h2 class="title">Eerst een veilige verbinding: FSC</h2>
   <div class="ag-dia" data-demo="directory">
     <div class="ag-links">
-      <figure class="plaat plaat-praktijk proces-focus ag-plaat" data-focus="1 r1 3n">
+      <figure class="plaat plaat-praktijk proces-focus ag-plaat fsc-nadruk" data-focus="r1">
     <svg viewBox="0 0 1100 515" role="img" aria-labelledby="rondje1-titel-1-dir rondje1-uitleg-1-dir" xmlns="http://www.w3.org/2000/svg">
       <title id="rondje1-titel-1-dir">Van procesapplicatie rechtstreeks naar de notificatiedienst</title>
       <desc id="rondje1-uitleg-1-dir">Zonder berichtenmagazijn. De procesapplicatie van de dienstverlener vraagt via FSC rechtstreeks een notificatie aan bij de NMC van de notificatiedienst. De NMC laat Notify een e-mail sturen naar de mailbox van de ondernemer. De ondernemer opent de e-mail, logt in op het portaal van de dienstverlener en doet daar de btw-aangifte. De aangifte gaat naar de procesapplicatie. In het portaal staat daarna een pdf met de aangifte en het besluit. Het berichtenmagazijn doet in deze stappen niet mee.</desc>
@@ -3616,8 +3631,8 @@ html:not(.js) {
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
       <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect data-kleur x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text data-kleur class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
       <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
       <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
       <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
@@ -3628,12 +3643,19 @@ html:not(.js) {
       <text class="pr-zone-t" x="862" y="187">BUITEN</text>
       <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
       <g data-fase="r1b">
-        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M430,80 H150 V228" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
-        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="150" y="239">Portaal</text>
-        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
-        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal Belastingdienst (scherm)">
+          <rect x="135" y="230" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="138" y="233" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="150" y1="249" x2="150" y2="252" stroke="#334155" stroke-width="1.6"/>
+          <line x1="144" y1="253" x2="156" y2="253" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="171" y="240">portaal</text>
+        <text class="pr-label" x="171" y="254">Belastingdienst</text>
+      </g>
+      <g data-fase="r1c">
+        <path d="M150,256 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
       <g data-fase="1">
@@ -3708,17 +3730,17 @@ html:not(.js) {
       </g>
       <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
       <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
-      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
-      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
-      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
-      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
-      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
+      <text data-blijft x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line data-blijft x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text data-blijft class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line data-blijft x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text data-blijft class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect data-blijft x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text data-blijft class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect data-blijft x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text data-blijft class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect data-blijft x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text data-blijft class="pr-leg" x="875" y="508">Niet in de demo</text>
     </svg>
   </figure>
       <ol class="ag-flow"></ol>
@@ -3763,8 +3785,8 @@ html:not(.js) {
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
       <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect data-kleur x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text data-kleur class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
       <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
       <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
       <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
@@ -3775,12 +3797,19 @@ html:not(.js) {
       <text class="pr-zone-t" x="862" y="187">BUITEN</text>
       <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
       <g data-fase="r1b">
-        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M430,80 H150 V228" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
-        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="150" y="239">Portaal</text>
-        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
-        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal Belastingdienst (scherm)">
+          <rect x="135" y="230" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="138" y="233" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="150" y1="249" x2="150" y2="252" stroke="#334155" stroke-width="1.6"/>
+          <line x1="144" y1="253" x2="156" y2="253" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="171" y="240">portaal</text>
+        <text class="pr-label" x="171" y="254">Belastingdienst</text>
+      </g>
+      <g data-fase="r1c">
+        <path d="M150,256 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
       <g data-fase="1">
@@ -3855,17 +3884,17 @@ html:not(.js) {
       </g>
       <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
       <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
-      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
-      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
-      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
-      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
-      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
+      <text data-blijft x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line data-blijft x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text data-blijft class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line data-blijft x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text data-blijft class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect data-blijft x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text data-blijft class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect data-blijft x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text data-blijft class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect data-blijft x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text data-blijft class="pr-leg" x="875" y="508">Niet in de demo</text>
     </svg>
   </figure>
   <aside class="notes"><p><strong>Laat zien</strong> · demo: Notificatie sturen</p><ol><li><strong>Opdracht</strong> De NMC geeft Notify de opdracht een e-mail te sturen.</li><li><strong>E-mail</strong> Notify stuurt de e-mail. Notify gebruikt NotifyNL en staat buiten Fundament.</li><li><strong>Attendering</strong> “Herinnering: doe uw btw-aangifte voor Q3 2026.”</li><li><strong>2 Outlook</strong> De ondernemer opent Outlook: er staat een e-mail van Fieldlab (buiten de presentatie).</li></ol><p>De pop-up verschijnt vanzelf onderin</p><p><strong>Achtergrond</strong></p>
@@ -3879,7 +3908,7 @@ html:not(.js) {
   <h2 class="title">Btw-aangifte doen in het portaal</h2>
   <div class="ag-dia" data-demo="aangifte">
     <div class="ag-links">
-      <figure class="plaat plaat-praktijk proces-focus ag-plaat" data-focus="on r1b 1">
+      <figure class="plaat plaat-praktijk proces-focus ag-plaat" data-focus="on r1b">
     <svg viewBox="0 0 1100 515" role="img" aria-labelledby="rondje1-titel-3 rondje1-uitleg-3" xmlns="http://www.w3.org/2000/svg">
       <title id="rondje1-titel-3">Van procesapplicatie rechtstreeks naar de notificatiedienst</title>
       <desc id="rondje1-uitleg-3">Zonder berichtenmagazijn. De procesapplicatie van de dienstverlener vraagt via FSC rechtstreeks een notificatie aan bij de NMC van de notificatiedienst. De NMC laat Notify een e-mail sturen naar de mailbox van de ondernemer. De ondernemer opent de e-mail, logt in op het portaal van de dienstverlener en doet daar de btw-aangifte. De aangifte gaat naar de procesapplicatie. In het portaal staat daarna een pdf met de aangifte en het besluit. Het berichtenmagazijn doet in deze stappen niet mee.</desc>
@@ -3902,8 +3931,8 @@ html:not(.js) {
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
       <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect data-kleur x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text data-kleur class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
       <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
       <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
       <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
@@ -3914,12 +3943,19 @@ html:not(.js) {
       <text class="pr-zone-t" x="862" y="187">BUITEN</text>
       <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
       <g data-fase="r1b">
-        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M430,80 H150 V228" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
-        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="150" y="239">Portaal</text>
-        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
-        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal Belastingdienst (scherm)">
+          <rect x="135" y="230" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="138" y="233" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="150" y1="249" x2="150" y2="252" stroke="#334155" stroke-width="1.6"/>
+          <line x1="144" y1="253" x2="156" y2="253" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="171" y="240">portaal</text>
+        <text class="pr-label" x="171" y="254">Belastingdienst</text>
+      </g>
+      <g data-fase="r1c">
+        <path d="M150,256 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
       <g data-fase="1">
@@ -3994,17 +4030,17 @@ html:not(.js) {
       </g>
       <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
       <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
-      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
-      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
-      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
-      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
-      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
+      <text data-blijft x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line data-blijft x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text data-blijft class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line data-blijft x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text data-blijft class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect data-blijft x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text data-blijft class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect data-blijft x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text data-blijft class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect data-blijft x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text data-blijft class="pr-leg" x="875" y="508">Niet in de demo</text>
     </svg>
   </figure>
       <ol class="ag-flow"></ol>
@@ -4024,7 +4060,7 @@ html:not(.js) {
   
   <div class="ag-dia" data-demo="besluit">
     <div class="ag-links">
-      <figure class="plaat plaat-praktijk proces-focus ag-plaat" data-focus="1 2 2f">
+      <figure class="plaat plaat-praktijk proces-focus ag-plaat" data-focus="1 2f 2">
     <svg viewBox="0 0 1100 515" role="img" aria-labelledby="praktijk-titel-r2 praktijk-uitleg-r2" xmlns="http://www.w3.org/2000/svg">
       <title id="praktijk-titel-r2">Van besluit tot kennisgeving (melding), in vier stappen, op het fieldlab</title>
       <desc id="praktijk-uitleg-r2">Fundament is verdeeld in twee delen: de plug-in per dienstverlener en de centrale diensten waarop je aansluit. Stap 1: in de procesapplicatie van de dienstverlener ontstaat een besluit. Stap 2: de procesapplicatie zet het bericht via FSC klaar in het eigen berichtenmagazijn, dat de dienstverlener als plug-in aanzet. In de demo is dat het magazijn van de Belastingdienst; het magazijn van RVO staat vervaagd, om te laten zien dat er meer magazijnen kunnen zijn. Stap 3: het berichtenmagazijn geeft de centrale NMC van de notificatiedienst een gebeurtenisbericht. De NMC geeft Notify, buiten Fundament, opdracht een e-mail te sturen: de kennisgeving (melding) komt binnen in de mailbox van de burger of ondernemer. De burger of ondernemer staat in een strook bovenaan. Stap 4: de ondernemer opent de e-mail en logt in op het portaal MijnOverheid Zakelijk, buiten Fundament. De ondernemer leest de berichten, via een portaal, rechtstreeks uit de berichtenmagazijnen. De aangifte doet de ondernemer eerder in het portaal van de Belastingdienst, bij de dienstverlener.</desc>
@@ -4047,8 +4083,8 @@ html:not(.js) {
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
       <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect data-kleur x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text data-kleur class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
       <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
       <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
       <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
@@ -4059,12 +4095,17 @@ html:not(.js) {
       <text class="pr-zone-t" x="862" y="187">BUITEN</text>
       <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
       <g data-fase="0">
-        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M430,80 H150 V228" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
-        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="150" y="239">Portaal</text>
-        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
-        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal Belastingdienst (scherm)">
+          <rect x="135" y="230" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="138" y="233" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="150" y1="249" x2="150" y2="252" stroke="#334155" stroke-width="1.6"/>
+          <line x1="144" y1="253" x2="156" y2="253" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="171" y="240">portaal</text>
+        <text class="pr-label" x="171" y="254">Belastingdienst</text>
+        <path d="M150,256 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
       <g data-fase="1">
@@ -4140,24 +4181,24 @@ html:not(.js) {
       </g>
       <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
       <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
-      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
-      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
-      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
-      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
-      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
+      <text data-blijft x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line data-blijft x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text data-blijft class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line data-blijft x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text data-blijft class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect data-blijft x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text data-blijft class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect data-blijft x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text data-blijft class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect data-blijft x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text data-blijft class="pr-leg" x="875" y="508">Niet in de demo</text>
     </svg>
   </figure>
       <ol class="ag-flow"></ol>
     </div>
     <div class="ag-demo"><iframe loading="lazy" src="/procesapplicatie/werklijst.html?ingebed" title="Demo: werklijst medewerker Belastingdienst"></iframe></div>
   </div>
-  <aside class="notes"><p><strong>Demo in de dia</strong> Eerst de plaat groot; klik of pijl rechts, dan rechts het scenario. Rechts de werklijst van een medewerker van de Belastingdienst, met de aangifte van de dia ervoor. Klik op Behandelen: daarna loopt het vanzelf door verwerking, besluit en plaatsen in het berichtenmagazijn. Bekijk beschikking opent de pdf in een venster. De stappen links lopen mee.</p><p><strong>Laat zien</strong> · demo: Mock-dienstverlener</p><ol><li><strong>5 Pdf met aangifte en besluit</strong> De procesapplicatie verwerkt de aangifte en maakt de pdf (in het portaal: stap 2 t/m 5).</li><li><strong>6 Besluit</strong> De procesapplicatie maakt een besluit op de aangifte.</li><li><strong>7 Magazijn</strong> Het besluit gaat via FSC in het magazijn.</li><li><strong>Controleren</strong> In de demo-bediening: het bericht staat in het magazijn.</li></ol><p><strong>Achtergrond</strong></p><p>Stap 5: de procesapplicatie verwerkt de aangifte van stap 4 en maakt de pdf met aangifte en besluit. Begrip: een besluit is een inhoudelijk bericht; het klaarzetten in het magazijn is de bekendmaking. Stap 6: uit de aangifte van stap 4 komt een besluit in de procesapplicatie. Stap 7: de procesapplicatie zet het besluit via FSC in het magazijn.</p><p>Eerst de plaat: alleen deze stap is in beeld. Dan "Open de demo", de drie stappen laten zien, terug naar de presentatie. Demo-stappen aanvullen na het bekijken van de democonsole.</p></aside>
+  <aside class="notes"><p><strong>Demo in de dia</strong> Eerst de plaat groot; die licht vanzelf op als proces: procesapplicatie, FSC-lijn, magazijn. Klik of pijl rechts: procesapplicatie openen. Rechts verschijnt de werklijst van een medewerker van de Belastingdienst, met de aangifte van de dia ervoor; die drukt zelf op Behandelen en loopt vanzelf door verwerking, besluit en plaatsen in het berichtenmagazijn. Bekijk beschikking opent de pdf in een venster. De stappen links lopen mee.</p><p><strong>Laat zien</strong> · demo: Mock-dienstverlener</p><ol><li><strong>5 Pdf met aangifte en besluit</strong> De procesapplicatie verwerkt de aangifte en maakt de pdf (in het portaal: stap 2 t/m 5).</li><li><strong>6 Besluit</strong> De procesapplicatie maakt een besluit op de aangifte.</li><li><strong>7 Magazijn</strong> Het besluit gaat via FSC in het magazijn.</li><li><strong>Controleren</strong> In de demo-bediening: het bericht staat in het magazijn.</li></ol><p><strong>Achtergrond</strong></p><p>Stap 5: de procesapplicatie verwerkt de aangifte van stap 4 en maakt de pdf met aangifte en besluit. Begrip: een besluit is een inhoudelijk bericht; het klaarzetten in het magazijn is de bekendmaking. Stap 6: uit de aangifte van stap 4 komt een besluit in de procesapplicatie. Stap 7: de procesapplicatie zet het besluit via FSC in het magazijn.</p><p>Eerst de plaat: alleen deze stap is in beeld. Dan "Open de demo", de drie stappen laten zien, terug naar de presentatie. Demo-stappen aanvullen na het bekijken van de democonsole.</p></aside>
 </section>
 
 <!-- ===== Kennisgeving (melding): het besluit staat klaar ===== -->
@@ -4187,8 +4228,8 @@ html:not(.js) {
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
       <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect data-kleur x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text data-kleur class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
       <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
       <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
       <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
@@ -4199,12 +4240,17 @@ html:not(.js) {
       <text class="pr-zone-t" x="862" y="187">BUITEN</text>
       <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
       <g data-fase="0">
-        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M430,80 H150 V228" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
-        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="150" y="239">Portaal</text>
-        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
-        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal Belastingdienst (scherm)">
+          <rect x="135" y="230" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="138" y="233" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="150" y1="249" x2="150" y2="252" stroke="#334155" stroke-width="1.6"/>
+          <line x1="144" y1="253" x2="156" y2="253" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="171" y="240">portaal</text>
+        <text class="pr-label" x="171" y="254">Belastingdienst</text>
+        <path d="M150,256 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
       <g data-fase="1">
@@ -4280,17 +4326,17 @@ html:not(.js) {
       </g>
       <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
       <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
-      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
-      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
-      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
-      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
-      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
+      <text data-blijft x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line data-blijft x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text data-blijft class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line data-blijft x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text data-blijft class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect data-blijft x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text data-blijft class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect data-blijft x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text data-blijft class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect data-blijft x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text data-blijft class="pr-leg" x="875" y="508">Niet in de demo</text>
     </svg>
   </figure>
   <aside class="notes"><p><strong>Op de dia</strong> Bij het openen lichten het gebeurtenisbericht en de NMC, dan Notify en dan de mailbox een voor een op. Bij de mailbox komt onderin de pop-up “Er staat een bericht voor u klaar.”</p><p><strong>Laat zien</strong> · demo: Demo-bediening en mailbox</p><ol><li><strong>8 Gebeurtenisbericht</strong> Het magazijn geeft de NMC een gebeurtenisbericht.</li><li><strong>Opdracht</strong> De NMC geeft Notify de opdracht.</li><li><strong>9 Kennisgeving (melding)</strong> Notify mailt: er staat een bericht voor u klaar.</li></ol><p><strong>Achtergrond</strong></p><p>Stap 8: het magazijn geeft de NMC een gebeurtenisbericht: er staat een bericht klaar. Stap 9: de NMC laat Notify een e-mail sturen. Op deze dia verschijnt onderin de melding “Er staat een bericht voor u klaar”: het besluit staat klaar.</p><p>Eerst de plaat: alleen deze stap is in beeld. Dan "Open de demo", de drie stappen laten zien, terug naar de presentatie. Demo-stappen aanvullen na het bekijken van de democonsole.</p></aside>
@@ -4326,8 +4372,8 @@ html:not(.js) {
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
       <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect data-kleur x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text data-kleur class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
       <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
       <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
       <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
@@ -4338,12 +4384,17 @@ html:not(.js) {
       <text class="pr-zone-t" x="862" y="187">BUITEN</text>
       <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
       <g data-fase="0">
-        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M430,80 H150 V228" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
-        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="150" y="239">Portaal</text>
-        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
-        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal Belastingdienst (scherm)">
+          <rect x="135" y="230" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="138" y="233" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="150" y1="249" x2="150" y2="252" stroke="#334155" stroke-width="1.6"/>
+          <line x1="144" y1="253" x2="156" y2="253" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="171" y="240">portaal</text>
+        <text class="pr-label" x="171" y="254">Belastingdienst</text>
+        <path d="M150,256 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
       <g data-fase="1">
@@ -4417,15 +4468,15 @@ html:not(.js) {
       </g>
       <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
       <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
-      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
-      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
-      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
-      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <text data-blijft x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line data-blijft x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text data-blijft class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line data-blijft x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text data-blijft class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect data-blijft x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text data-blijft class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect data-blijft x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text data-blijft class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
     </svg>
   </figure>
       <ol class="ag-flow"></ol>
@@ -4481,7 +4532,7 @@ html:not(.js) {
   <h2 class="title">Eerst een veilige verbinding: FSC</h2>
   <div class="ag-dia" data-demo="fsc">
     <div class="ag-links">
-      <figure class="plaat plaat-praktijk proces-focus ag-plaat" data-focus="1 2 2f r1 3n">
+      <figure class="plaat plaat-praktijk proces-focus ag-plaat fsc-nadruk" data-focus="2f r1">
     <svg viewBox="0 0 1100 515" role="img" aria-labelledby="fsc-titel fsc-uitleg" xmlns="http://www.w3.org/2000/svg">
       <title id="fsc-titel">De twee FSC-verbindingen van de procesapplicatie</title>
       <desc id="fsc-uitleg">De procesapplicatie van de dienstverlener heeft twee FSC-verbindingen: een naar het eigen berichtenmagazijn op Fundament (plug-in) en een naar de NMC van de notificatiedienst. Beide pijlen zijn uitgelicht.</desc>
@@ -4504,8 +4555,8 @@ html:not(.js) {
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
       <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect data-kleur x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text data-kleur class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
       <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
       <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
       <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
@@ -4516,12 +4567,19 @@ html:not(.js) {
       <text class="pr-zone-t" x="862" y="187">BUITEN</text>
       <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
       <g data-fase="r1b">
-        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M430,80 H150 V228" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
-        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="150" y="239">Portaal</text>
-        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
-        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal Belastingdienst (scherm)">
+          <rect x="135" y="230" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="138" y="233" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="150" y1="249" x2="150" y2="252" stroke="#334155" stroke-width="1.6"/>
+          <line x1="144" y1="253" x2="156" y2="253" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="171" y="240">portaal</text>
+        <text class="pr-label" x="171" y="254">Belastingdienst</text>
+      </g>
+      <g data-fase="r1c">
+        <path d="M150,256 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
       <g data-fase="1">
@@ -4596,17 +4654,17 @@ html:not(.js) {
       </g>
       <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
       <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
-      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
-      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
-      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
-      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
-      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
+      <text data-blijft x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line data-blijft x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text data-blijft class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line data-blijft x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text data-blijft class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect data-blijft x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text data-blijft class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect data-blijft x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text data-blijft class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect data-blijft x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text data-blijft class="pr-leg" x="875" y="508">Niet in de demo</text>
     </svg>
   </figure>
       <ol class="ag-flow"></ol>
@@ -4789,8 +4847,8 @@ html:not(.js) {
       <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
       <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
       <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
-      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect data-kleur x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text data-kleur class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
       <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
       <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
       <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
@@ -4801,12 +4859,17 @@ html:not(.js) {
       <text class="pr-zone-t" x="862" y="187">BUITEN</text>
       <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
       <g data-fase="0">
-        <path d="M430,80 H150 V215" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <path d="M430,80 H150 V228" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="290" y="74" text-anchor="middle">inloggen</text>
-        <rect x="60" y="215" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
-        <text class="pr-naam" x="150" y="239">Portaal</text>
-        <text class="pr-mono" x="150" y="258">Belastingdienst</text>
-        <path d="M150,271 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
+        <g aria-label="portaal Belastingdienst (scherm)">
+          <rect x="135" y="230" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="138" y="233" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="150" y1="249" x2="150" y2="252" stroke="#334155" stroke-width="1.6"/>
+          <line x1="144" y1="253" x2="156" y2="253" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <text class="pr-label" x="171" y="240">portaal</text>
+        <text class="pr-label" x="171" y="254">Belastingdienst</text>
+        <path d="M150,256 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl)"/>
         <text class="pr-label" x="158" y="296">aangifte</text>
       </g>
       <g data-fase="1">
@@ -4882,17 +4945,17 @@ html:not(.js) {
       </g>
       <text class="pr-zone-t" x="36" y="187" style="paint-order:stroke;stroke:#eef5fc;stroke-width:9px;stroke-linejoin:round">DIENSTVERLENER</text>
       <text class="pr-zone-s" x="36" y="205" style="paint-order:stroke;stroke:#eef5fc;stroke-width:7px;stroke-linejoin:round">eigen omgeving</text>
-      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-      <line x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
-      <text class="pr-leg" x="80" y="508">FSC-verbinding</text>
-      <line x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
-      <text class="pr-leg" x="255" y="508">Andere verbinding</text>
-      <rect x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
-      <rect x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
-      <rect x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
-      <text class="pr-leg" x="875" y="508">Niet in de demo</text>
+      <text data-blijft x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+      <line data-blijft x1="40" y1="503" x2="72" y2="503" stroke="#a34f00" stroke-width="4"/>
+      <text data-blijft class="pr-leg" x="80" y="508">FSC-verbinding</text>
+      <line data-blijft x1="215" y1="503" x2="247" y2="503" stroke="#334155" stroke-width="1.6" marker-end="url(#pr-pijl)"/>
+      <text data-blijft class="pr-leg" x="255" y="508">Andere verbinding</text>
+      <rect data-blijft x="415" y="496" width="22" height="14" rx="3" fill="#fff7ed" stroke="#e3a86b"/>
+      <text data-blijft class="pr-leg" x="445" y="508">Plug-in, per dienstverlener</text>
+      <rect data-blijft x="640" y="496" width="22" height="14" rx="3" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text data-blijft class="pr-leg" x="670" y="508">Centraal, je sluit aan</text>
+      <rect data-blijft x="845" y="496" width="22" height="14" rx="3" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3" opacity="0.4"/>
+      <text data-blijft class="pr-leg" x="875" y="508">Niet in de demo</text>
     </svg>
   </figure>
   <aside class="notes"><p><strong>Laat zien</strong> · demo: Fundament-console</p><ol><li><strong>Cluster openen</strong> Tab Plugins, kies "berichtenmagazijn".</li><li><strong>Invullen</strong> OIN en de naam die ontvangers zien.</li><li><strong>Status</strong> Van "installing" naar "running".</li></ol><p>[link Fundament-console aanvullen]</p><p><strong>Achtergrond</strong></p><p>Voorbereiding voor stap 7: de dienstverlener zet de plug-in berichtenmagazijn aan. Dat gebeurt één keer.</p><p>Eerst de plaat: alleen deze stap is in beeld. Dan "Open de demo", de drie stappen laten zien, terug naar de presentatie. Demo-stappen aanvullen na het bekijken van de democonsole.</p></aside>
@@ -36574,10 +36637,11 @@ document.querySelectorAll(&quot;svg .cont[data-term] text, svg text.lbl[data-ter
 <style>
 .proces-focus[data-focus~="r1"] svg [data-fase="r1"],
 .proces-focus[data-focus~="r1b"] svg [data-fase="r1b"],
+.proces-focus[data-focus~="r1c"] svg [data-fase="r1c"],
 .proces-focus[data-focus~="3n"] svg [data-fase="3n"],
 .proces-focus[data-focus~="3m"] svg [data-fase="3m"],
 .proces-focus[data-focus~="3s"] svg [data-fase="3s"],
-.proces-focus[data-focus~="4u"] svg [data-fase="4u"] { opacity: 1; }
+.proces-focus[data-focus~="4u"] svg [data-fase="4u"] { opacity: 1; filter: none; }
 .demo-kaart .fsc-overlay-open--kaart { margin: 0; padding: 0.6cqw 1.2cqw; border-radius: 0.5cqw; font-size: 1.2cqw; }
 .mail-melding {
   position: fixed; right: 1.5rem; bottom: 4.5rem; z-index: 50; width: min(26rem, calc(100vw - 3rem));
@@ -36697,9 +36761,9 @@ window.fieldlabStappen = (() => {
 </style>
 
 <style>
-.proces-focus svg [data-fase] { transition: opacity .45s ease; }
+.proces-focus svg [data-fase] { transition: opacity .45s ease, filter .45s ease; }
 .proces-focus[data-focus~="3m1"] svg [data-fase="3m1"],
-.proces-focus[data-focus~="3m2"] svg [data-fase="3m2"] { opacity: 1; }
+.proces-focus[data-focus~="3m2"] svg [data-fase="3m2"] { opacity: 1; filter: none; }
 .proces-focus svg [data-fase].is-nu rect { stroke: #154273; stroke-width: 3.5; }
 @media (prefers-reduced-motion: reduce) { .proces-focus svg [data-fase] { transition: none; } }
 
@@ -36787,6 +36851,9 @@ window.fieldlabStappen = (() => {
           tech: ['Aangifte', [['Gegevens', 'KVK-nummer (8 cijfers), tijdvak, bedrag'], ['Naar', 'de procesapplicatie, in de eigen omgeving van de dienstverlener']]] },
       ],
       klaar: ['Aangifte verzonden', [['Hierna', 'de Belastingdienst verwerkt de aangifte: verderop, in de werklijst']]],
+      // Plaat: eerst inloggen op het portaal; na verzenden de aangifte naar de procesapplicatie
+      focus: ['on r1b', 'on r1b'],
+      klaarFocus: 'on r1b r1c 1',
       volg(doc, api) {
         doc.addEventListener('input', e => { if (api.nu() < 1 && e.target.closest && e.target.closest('#form-aangifte')) api.zet(1); }, true);
         api.kijk(() => {
@@ -36806,7 +36873,7 @@ window.fieldlabStappen = (() => {
     },
     besluit: {
       stappen: [
-        { nr: '5', titel: 'Verwerking', tekst: 'Klik op Behandelen: de controles lopen en de verwerking wordt goedgekeurd.',
+        { nr: '5', titel: 'Verwerking', tekst: 'De procesapplicatie opent de aangifte; de controles lopen en de verwerking wordt goedgekeurd.',
           tech: ['Verwerking', [['In werkelijkheid', 'automatisch; in de demo keurt een medewerker elke stap goed'], ['Controles', 'nagebootst: ontvangen, rekenkundige controle, vergelijking met eerdere aangiften']]] },
         { nr: '6', titel: 'Besluit', tekst: 'Het besluit (de beschikking) wordt vastgesteld en staat klaar als pdf.',
           tech: ['Besluit', [['Begrip', 'een besluit is een inhoudelijk bericht'], ['Bekendmaking', 'door het klaar te zetten in het magazijn']]] },
@@ -36820,8 +36887,18 @@ window.fieldlabStappen = (() => {
         if (stap1) stap1.style.display = 'none';
         doc.defaultView.zetAangifte?.(aangifte);
       },
-      // De werklijst van de medewerker krijgt de aangifte van de dia ervoor
-      naIntro(doc) { doc.defaultView.zetAangifte?.(aangifte); },
+      // Bij het openen loopt de plaat als proces: procesapplicatie, FSC-lijn, magazijn
+      doorloop: '1 2f 2',
+      // Procesapplicatie openen: de werklijst krijgt de aangifte van de dia ervoor en start vanzelf
+      naIntro(doc) {
+        doc.defaultView.zetAangifte?.(aangifte);
+        const knop = doc.getElementById('knop-behandelen');
+        if (!knop || knop.textContent.trim() !== 'Behandelen') return;  // al gestart
+        setTimeout(() => {
+          knop.classList.add('is-auto');
+          setTimeout(() => { knop.classList.remove('is-auto'); knop.click(); }, 700);
+        }, 600);
+      },
       volg(doc, api) {
         doc.getElementById('knop-plaatsen')?.addEventListener('click', () => { if (api.nu() < 2) api.zet(2); });
         doc.addEventListener('click', e => {
@@ -36887,12 +36964,14 @@ window.fieldlabStappen = (() => {
         if (k === i) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
       });
       techTonen(cfg.stappen[Math.max(0, i)].tech);
+      if (cfg.focus && fig) fig.dataset.focus = cfg.focus[Math.max(0, i)];
     }
     function klaar() {
       if (nu === cfg.stappen.length) return;
       nu = cfg.stappen.length;
       flow.querySelectorAll('.ag-stap').forEach(b => { b.dataset.staat = 'gedaan'; b.removeAttribute('aria-current'); });
       techTonen(cfg.klaar);
+      if (cfg.klaarFocus && fig) fig.dataset.focus = cfg.klaarFocus;
     }
     const api = { zet, klaar, nu: () => nu, kijk: fn => { new MutationObserver(fn).observe(doc.body, { subtree: true, attributes: true, attributeFilter: ['hidden'], childList: true }); fn(); } };
     if (!cfg.uitleg) zet(nu);
@@ -36917,7 +36996,20 @@ window.fieldlabStappen = (() => {
     const naIntro = () => { if (cfg.naIntro && frame) opLaden.then(() => setTimeout(() => doc && cfg.naIntro(doc), 400)); };
 
     // Overgang: eerst de plaat groot, dan naar linksboven
-    function reset() { window.fieldlabStappen?.wis(slide); timers.forEach(clearTimeout); timers = []; fig.style.transition = 'none'; fig.style.transform = ''; dia.classList.remove('is-intro'); }
+    function reset() {
+      window.fieldlabStappen?.wis(slide); timers.forEach(clearTimeout); timers = []; fig.style.transition = 'none'; fig.style.transform = ''; dia.classList.remove('is-intro');
+      if (cfg.doorloop) { fig.dataset.focus = cfg.doorloop; fig.querySelectorAll('[data-fase].is-nu').forEach(g => g.classList.remove('is-nu')); }
+    }
+    // De plaat licht stap voor stap op, als een proces (lijnen zonder kader)
+    function doorloop() {
+      const stappen = cfg.doorloop.split(' ');
+      fig.dataset.focus = '';
+      stappen.forEach((st, i) => timers.push(setTimeout(() => {
+        fig.querySelectorAll('[data-fase].is-nu').forEach(g => g.classList.remove('is-nu'));
+        fig.dataset.focus = stappen.slice(0, i + 1).join(' ');
+        if (st !== '2f') fig.querySelector(`[data-fase="${st}"]`)?.classList.add('is-nu');
+      }, 600 + i * 1300)));
+    }
     function intro() {
       reset();
       if (rustig.matches) { naIntro(); return; }
@@ -36930,10 +37022,12 @@ window.fieldlabStappen = (() => {
       const dy = vak.top - eind.top;
       fig.style.transform = `translate(${dx}px, ${dy}px) scale(${schaal})`;
       fig.getBoundingClientRect();
+      if (cfg.doorloop) doorloop();
       // Blijft groot staan; de volgende klik of pijl rechts schuift hem naar linksboven
       window.fieldlabStappen?.zet(slide, [() => {
         fig.style.transition = 'transform .9s cubic-bezier(.4, 0, .2, 1)';
         fig.style.transform = '';
+        if (cfg.doorloop) { timers.forEach(clearTimeout); timers = []; fig.dataset.focus = cfg.doorloop; fig.querySelectorAll('[data-fase].is-nu').forEach(g => g.classList.remove('is-nu')); }
         dia.classList.remove('is-intro');
         timers.push(setTimeout(naIntro, 300));
       }]);
@@ -37053,8 +37147,8 @@ async function toonPdf(url, titel) {
 
 <style>
 /* OpenFSC: beide FSC-pijlen uitgelicht; placeholder voor de demo */
-.fsc-nadruk svg [data-fase="2"] path[stroke="#a34f00"], .fsc-nadruk svg [data-fase="r1"] path { stroke-width: 7; }
-.fsc-nadruk svg [data-fase="2"] rect[stroke="#a34f00"], .fsc-nadruk svg [data-fase="r1"] rect { fill: #ffb612; }
+.fsc-nadruk svg [data-fase="2"] path[stroke="#a34f00"], .fsc-nadruk svg [data-fase="2f"] path, .fsc-nadruk svg [data-fase="r1"] path { stroke-width: 7; }
+.fsc-nadruk svg [data-fase="2"] rect[stroke="#a34f00"], .fsc-nadruk svg [data-fase="2f"] rect, .fsc-nadruk svg [data-fase="r1"] rect { fill: #ffb612; }
 .ag-demo--leeg { display: grid; place-items: center; text-align: center; border-style: dashed; border-color: #8a94a3; background: repeating-linear-gradient(45deg, #f6f8fb, #f6f8fb 1cqw, #eef2f7 1cqw, #eef2f7 2cqw); color: #1a1a1a; }
 .ag-demo--leeg strong { display: block; font-size: 2cqw; color: #154273; }
 .ag-demo--leeg p { margin: 0.6cqw 0 0; font-size: 1.3cqw; }
@@ -37063,7 +37157,7 @@ async function toonPdf(url, titel) {
 
 <style>
 .proces-focus[data-focus~="2f"] svg [data-fase="2f"],
-.proces-focus[data-focus~="mb"] svg [data-fase="mb"] { opacity: 1; }
+.proces-focus[data-focus~="mb"] svg [data-fase="mb"] { opacity: 1; filter: none; }
 .tech-highlight { display: flex; flex-wrap: wrap; gap: 1.4cqw; margin: 2.6cqw 0 0; padding: 0; list-style: none; }
 .tech-highlight li { padding: 0.9cqw 2cqw; border-radius: 3cqw; background: #154273; color: #fff; font-size: 2.1cqw; font-weight: 700; }
 .ag-demo--fsc { display: flex; align-items: center; justify-content: center; background: #fff; }
@@ -37113,7 +37207,7 @@ async function toonPdf(url, titel) {
 </script>
 
 <style>
-.proces-focus[data-focus~="on"] svg [data-fase="on"] { opacity: 1; }
+.proces-focus[data-focus~="on"] svg [data-fase="on"] { opacity: 1; filter: none; }
 </style>
 
 <style>

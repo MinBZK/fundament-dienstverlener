@@ -42,7 +42,7 @@ export function toonUitkomst(el, gelukt, mislukt, dienst, uitkomst) {
     return melding(el, 'fout', `${mislukt} · ${nu}`, `${dienst} antwoordde ${status} (${via}). ${uitleg}`.trim());
   }
   const nummer = antwoord?.berichtId ?? antwoord?.notificatieId ?? antwoord?.id;
-  melding(el, 'goed', `${gelukt} · ${nu}`, `${dienst} antwoordde ${status} (${via}).${nummer ? ` Kenmerk: ${nummer}.` : ''}`);
+  melding(el, 'goed', `${gelukt} · ${nu}`, `${dienst} antwoordde ${status}.${nummer ? ` Kenmerk: ${nummer}.` : ''}`);
 }
 
 export async function bezig(knop, actie) {

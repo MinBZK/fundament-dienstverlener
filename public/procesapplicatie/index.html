@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Gemaakt met ondersteuning van AI (concept). Nagebootste procesapplicatie voor het Fieldlab Soevereine basis: scherm van de ondernemer. -->
-<title>Btw-aangifte doen · Mijn Belastingdienst Zakelijk (fieldlab-demo)</title>
+<title>Btw-aangifte · Mijn Belastingdienst Zakelijk (fieldlab-demo)</title>
 <link rel="icon" href="/favicon.svg">
 <link rel="stylesheet" href="stijl.css">
 </head>
@@ -40,11 +40,11 @@
 </nav>
 
 <div class="wrap">
-  <nav class="kruimel" aria-label="Kruimelpad"><ol><li><a href="#">Mijn Belastingdienst Zakelijk</a></li><li><a href="#">Aangiften</a></li><li aria-current="page">Btw-aangifte doen</li></ol></nav>
+  <nav class="kruimel" aria-label="Kruimelpad"><ol><li><a href="#">Mijn Belastingdienst Zakelijk</a></li><li><a href="#">Aangiften</a></li><li aria-current="page">Btw-aangifte</li></ol></nav>
 
   <div class="pagina">
     <main id="hoofdinhoud">
-      <h1>Btw-aangifte doen</h1>
+      <h1>Btw-aangifte</h1>
       <p class="inleiding">Doe aangifte omzetbelasting over het tijdvak. Na het verzenden verwerken wij uw aangifte. Het besluit zetten wij klaar in MijnOverheid Zakelijk; u krijgt daarover een e-mail.</p>
 
       <section class="kaart" id="stap-aangifte" aria-labelledby="kop-aangifte">
@@ -59,9 +59,10 @@
             <div class="veld">
               <label for="tijdvak">Tijdvak</label>
               <select id="tijdvak" name="tijdvak">
+                <option value="" selected disabled>Kies een tijdvak</option>
                 <option>1e kwartaal 2026</option>
                 <option>2e kwartaal 2026</option>
-                <option selected>3e kwartaal 2026</option>
+                <option>3e kwartaal 2026</option>
                 <option>4e kwartaal 2026</option>
               </select>
             </div>
@@ -69,7 +70,7 @@
               <label for="bedrag">Aangegeven btw</label>
               <span class="hint" id="bedrag-hint">In euro, bijvoorbeeld 1.250,00</span>
               <span class="euro" aria-hidden="true">&euro;</span>
-              <input id="bedrag" name="bedrag" inputmode="decimal" autocomplete="off" aria-describedby="bedrag-hint" value="1.250,00">
+              <input id="bedrag" name="bedrag" inputmode="decimal" autocomplete="off" aria-describedby="bedrag-hint" value="">
             </div>
             <div class="melding melding--fout" id="fout-aangifte" role="alert" hidden><span class="melding__ic">!</span><div><strong>Controleer uw aangifte</strong><p id="fout-tekst"></p></div></div>
             <div class="knoppen"><button type="submit" class="knop" id="knop-verzenden">Aangifte verzenden</button></div>

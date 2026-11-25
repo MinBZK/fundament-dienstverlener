@@ -452,6 +452,42 @@ async function verwerkApi(req: IncomingMessage, res: ServerResponse, pad: string
     return true;
   }
 
+  // Logboek Dataverwerkingen (LDV) van de NMC, voor "Gegevensdeling en dataverwerking" in het
+  // MOZa-portaal. De server vraagt het op (direct, zonder FSC), voor het bedrijf én voor het
+  // demo-e-mailadres (decentrale notificaties staan in het logboek onder EMAIL:). Het adres
+  // zelf gaat niet naar de browser.
+  if (pad === '/api/portaal/ldv' && methode === 'GET') {
+    const zoek = new URL(req.url ?? '/', 'http://x').searchParams;
+    const betrokkene = zoek.get('betrokkene') ?? '';
+    if (!/^(BSN:[0-9]{9}|RSIN:[0-9]{9}|KVK:[0-9]{8})$/.test(betrokkene)) {
+      stuurJson(res, 400, { fout: 'Geef een betrokkene mee als BSN:, RSIN: of KVK: met het nummer.' });
+      return true;
+    }
+    const basis = zonderSlash(process.env.NMC_DIRECT_URL || instellingen.nmc.directAdres || nmcFieldlabAdres);
+    const periode = new URLSearchParams();
+    for (const k of ['van', 'tot']) { const w = zoek.get(k); if (w) periode.set(k, w); }
+    const vragen: { header: string; over: string }[] = [{ header: betrokkene, over: betrokkene.split(':')[0] }];
+    if (instellingen.demoEmail) vragen.push({ header: `EMAIL:${instellingen.demoEmail}`, over: 'E-mailadres' });
+    const verwerkingen: Record<string, unknown>[] = [];
+    const fouten: string[] = [];
+    await Promise.all(vragen.map(async (v) => {
+      try {
+        const a = await fetch(`${basis}/api/nmc/v1/logboek/verwerkingen${periode.size ? `?${periode}` : ''}`, {
+          headers: { 'X-Betrokkene': v.header, accept: 'application/json', traceparent: traceparent() },
+          signal: AbortSignal.timeout(15_000),
+        });
+        if (!a.ok) { fouten.push(`${v.over}: NMC antwoordde ${a.status}`); return; }
+        const d = (await a.json()) as { verwerkingen?: Record<string, unknown>[] };
+        for (const r of d.verwerkingen ?? []) verwerkingen.push({ ...r, over: v.over, organisatie: 'Notificatiedienst (NMC)' });
+      } catch (e) {
+        fouten.push(`${v.over}: ${e instanceof Error ? e.message : String(e)}`);
+      }
+    }));
+    verwerkingen.sort((x, y) => String(y.tijdstip).localeCompare(String(x.tijdstip)));
+    stuurJson(res, 200, { betrokkene, verwerkingen, fouten });
+    return true;
+  }
+
   if (pad.startsWith('/api/portaal/berichten') && methode === 'GET') {
     await ophalenUitMagazijn(req, res, pad.slice('/api/portaal'.length));
     return true;

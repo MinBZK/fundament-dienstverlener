@@ -2775,6 +2775,8 @@ body:has(.slide-video:not([hidden])) .progress { visibility: hidden; }
 .context .bevindingen li + li { margin-top: 0.45cqw; }
 .context .bevindingen li { white-space: nowrap; }
 .context .bevindingen--vrij li { white-space: normal; }
+.context .stempel { display: inline-block; margin: 0.9cqw 0 0.2cqw; padding: 0.35cqw 1cqw; border: 0.25cqw solid #39870c; border-radius: 0.6cqw; color: #39870c; font-size: 1.3cqw; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; transform: rotate(-4deg); }
+.context .stempel--hoek { position: absolute; top: 1.4cqw; right: 1.8cqw; margin: 0; transform: rotate(6deg); }
 
 /* ---------- Band onder een rij stappen (bijvoorbeeld open samenwerken) ---------- */
 
@@ -4426,6 +4428,138 @@ html:not(.js) {
   <aside class="notes"><p><strong>Demo in de dia</strong> Eerst de plaat groot; klik of pijl rechts, dan rechts de berichtenbox van MijnOverheid Zakelijk (layout van het proefportaal). Klik op het besluit van de Belastingdienst: het bericht opent en stap 10 krijgt een vinkje. Klik op de bijlage: de pdf opent in een venster, met de gegevens van de aangifte.</p><p><strong>Laat zien</strong> · demo: Portaal</p><ol><li><strong>Inloggen</strong> Vanuit de e-mail naar het portaal.</li><li><strong>10 Besluit lezen</strong> Het portaal haalt het besluit op uit het magazijn.</li><li><strong>Gelezen</strong> In de demo-bediening: status "gelezen".</li></ol><p><strong>Achtergrond</strong></p><p>Stap 10: de ondernemer logt vanuit de e-mail in op het portaal en leest het besluit uit het magazijn.</p><p>Eerst de plaat: alleen deze stap is in beeld. Dan "Open de demo", de drie stappen laten zien, terug naar de presentatie. Demo-stappen aanvullen na het bekijken van de democonsole.</p></aside>
 </section>
 
+<!-- ===== Van besluit tot kennisgeving (melding), terugblik ===== -->
+<section class="slide" aria-roledescription="dia" aria-label="Van besluit tot kennisgeving (melding), terugblik">
+  <ol class="route" aria-label="Route van het bericht"><li data-staat="straks">Attendering</li><li data-staat="straks">Aangifte</li><li data-staat="straks">Besluit</li><li data-staat="straks">Kennisgeving (melding)</li><li data-staat="straks">Besluit lezen</li></ol>
+  <h2 class="title">Van besluit tot kennisgeving (melding)</h2>
+  <figure class="plaat plaat-praktijk">
+    <svg viewBox="0 0 1100 495" role="img" aria-labelledby="praktijk-titel-slot praktijk-uitleg-slot" xmlns="http://www.w3.org/2000/svg">
+      <title id="praktijk-titel-slot">Van besluit tot kennisgeving (melding), in vier stappen, op het fieldlab</title>
+      <desc id="praktijk-uitleg-slot">Fundament is verdeeld in twee delen: de plug-in per dienstverlener en de centrale diensten waarop je aansluit. Stap 1: in de procesapplicatie van de dienstverlener ontstaat een besluit. Stap 2: de procesapplicatie zet het bericht klaar in het eigen berichtenmagazijn, dat de dienstverlener als plug-in aanzet. In de demo is dat het magazijn van de Belastingdienst; het magazijn van RVO staat vervaagd, om te laten zien dat er meer magazijnen kunnen zijn. Stap 3: het berichtenmagazijn geeft de centrale NMC van de notificatiedienst een gebeurtenisbericht. De NMC geeft Notify, buiten Fundament, opdracht een e-mail te sturen: de kennisgeving (melding) komt binnen in de mailbox van de burger of ondernemer. De burger of ondernemer staat in een strook bovenaan. Stap 4: de ondernemer opent de e-mail en logt in op het portaal MijnOverheid Zakelijk, buiten Fundament. De ondernemer leest de berichten, via een portaal, rechtstreeks uit de berichtenmagazijnen. De aangifte doet de ondernemer eerder in het portaal van de Belastingdienst, bij de dienstverlener.</desc>
+      <defs>
+        <marker id="pr-pijl-slot" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker>
+        <marker id="pr-pijl-fsc-slot" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a34f00"/></marker>
+        <style>
+          .pr-zone-t { font-size: 15px; font-weight: 700; letter-spacing: 0.08em; fill: #1f2937; }
+          .pr-sub-t { font-size: 12.5px; font-weight: 700; letter-spacing: 0.06em; fill: #1f2937; }
+          .pr-zone-s { font-size: 12px; font-style: italic; fill: #475569; }
+          .pr-naam { font-size: 16px; font-weight: 600; fill: #111827; text-anchor: middle; }
+          .pr-mono { font-family: ui-monospace, Menlo, monospace; font-size: 11px; fill: #374151; text-anchor: middle; }
+          .pr-label { font-family: ui-monospace, Menlo, monospace; font-size: 11px; fill: #374151; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
+          .pr-fsc-t { font-size: 11px; font-weight: 700; fill: #a34f00; text-anchor: middle; letter-spacing: 0.04em; }
+          .pr-nr { font-size: 13px; font-weight: 700; fill: #fff; text-anchor: middle; }
+          .pr-leg { font-size: 13px; fill: #374151; }
+        </style>
+      </defs>
+
+      <rect x="20" y="15" width="1060" height="105" rx="12" fill="#fdf6e9" stroke="#e3c58f"/>
+      <text class="pr-zone-t" x="550" y="38" text-anchor="middle">BURGER / ONDERNEMER</text>
+      <rect x="20" y="160" width="260" height="325" rx="12" fill="#eef5fc" stroke="#a9c8e8"/>
+      <rect x="300" y="148" width="530" height="340" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text class="pr-zone-t" x="316" y="179" style="font-size:24px;fill:#154273;letter-spacing:.1em">FUNDAMENT</text>
+      <rect x="315" y="200" width="210" height="272" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-sub-t" x="329" y="220">PLUG-IN</text>
+      <text class="pr-zone-s" x="329" y="236">per dienstverlener</text>
+      <rect x="575" y="200" width="240" height="272" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="pr-sub-t" x="589" y="220">CENTRAAL</text>
+      <text class="pr-zone-s" x="589" y="236">je sluit aan</text>
+      <rect x="850" y="160" width="230" height="325" rx="12" fill="#f8fafc" stroke="#b8bfc9"/>
+      <text class="pr-zone-t" x="862" y="187">BUITEN</text>
+      <text class="pr-zone-t" x="862" y="205">FUNDAMENT</text>
+      <g>
+        <path d="M430,73 H150 V169" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M150,191 V228" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl-slot)"/>
+        <g aria-label="portaal Belastingdienst (scherm)">
+          <rect x="135" y="230" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="138" y="233" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="150" y1="249" x2="150" y2="252" stroke="#334155" stroke-width="1.6"/>
+          <line x1="144" y1="253" x2="156" y2="253" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <path d="M150,256 V312" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl-slot)"/>
+      </g>
+      <g>
+        <rect x="60" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="150" y="345">Procesapplicatie</text>
+        <circle cx="60" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="60" y="317">1</text>
+      </g>
+      <g>
+        <path d="M240,340 H335" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl-slot)"/>
+      </g>
+      <g>
+        <rect x="335" y="308" width="170" height="64" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="420" y="336">Magazijn</text>
+        <text class="pr-mono" x="420" y="355">Belastingdienst</text>
+        <circle cx="505" cy="308" r="13" fill="#154273"/><text class="pr-nr" x="505" y="313">2</text>
+        <rect x="335" y="404" width="170" height="64" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="420" y="432">Magazijn</text>
+        <text class="pr-mono" x="420" y="451">RVO</text>
+        
+      </g>
+      <g>
+        <path d="M505,340 H543 A7,7 0 0 1 557,340 H605" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl-slot)"/>
+      </g>
+      <g>
+        <rect x="605" y="312" width="180" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="695" y="345">Notificatiedienst</text>
+        
+        <circle cx="785" cy="312" r="13" fill="#154273"/><text class="pr-nr" x="785" y="317">3</text>
+      </g>
+      <g>
+        <path d="M785,340 H905" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl-slot)"/>
+        <rect x="905" y="312" width="160" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="985" y="345">Notificatiedienst</text>
+        
+      </g>
+      <g>
+        <path d="M985,312 V73 H670" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl-slot)"/>
+        <g aria-label="e-mail">
+          <rect x="972" y="214" width="26" height="18" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <path d="M973,215 L985,225 L997,215" fill="none" stroke="#334155" stroke-width="1.6"/>
+        </g>
+      </g>
+      <g>
+        <rect x="430" y="45" width="240" height="56" rx="8" fill="#fff" stroke="#b8bfc9"/>
+        <text class="pr-naam" x="550" y="78">Ondernemer</text>
+        
+      </g>
+      <g>
+        <path d="M550,101 V436 H505" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl-slot)"/>
+        <path d="M550,290 H420 V308" fill="none" stroke="#334155" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#pr-pijl-slot)"/>
+        <g aria-label="portaal (scherm)">
+          <rect x="535" y="121" width="30" height="19" rx="2" fill="#fff" stroke="#334155" stroke-width="1.6"/>
+          <rect x="538" y="124" width="24" height="13" rx="1" fill="#dbe7f3"/>
+          <line x1="550" y1="140" x2="550" y2="143" stroke="#334155" stroke-width="1.6"/>
+          <line x1="544" y1="144" x2="556" y2="144" stroke="#334155" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+        <circle cx="550" cy="185" r="13" fill="#154273"/><text class="pr-nr" x="550" y="190">4</text>
+      </g>
+      <g>
+        <path d="M150,368 V376 Q150,388 162,388 H543 A7,7 0 0 1 557,388 H683 Q695,388 695,376 V368" fill="none" stroke="#a34f00" stroke-width="4" stroke-linejoin="round" marker-end="url(#pr-pijl-fsc-slot)"/>
+        <rect x="400" y="379" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+        <text class="pr-fsc-t" x="418" y="392">FSC</text>
+      </g>
+      <text class="pr-zone-t" x="36" y="185">DIENSTVERLENER</text>
+      <text class="pr-zone-s" x="36" y="201">eigen omgeving</text>
+      <text x="1070" y="478" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+    </svg>
+  </figure>
+  <aside class="notes"><p><strong>Stappen op de plaat</strong></p><ol >
+    <li><strong>1 Besluit.</strong> Uit een proces komt een inhoudelijk bericht, bijvoorbeeld een vergunning.</li>
+    <li><strong>2 Bericht klaarzetten.</strong> Via FSC in het eigen magazijn: de plug-in. In de demo: Belastingdienst. Er kunnen meer magazijnen zijn, zoals RVO.</li>
+    <li><strong>3 Kennisgeving (melding).</strong> Binnen 48 uur een e-mail via de centrale notificatiedienst. Het bericht zelf gaat niet mee.</li>
+    <li><strong>4 Bericht lezen.</strong> De ondernemer leest het bericht via een portaal, rechtstreeks uit de magazijnen.</li>
+  </ol>
+    <p>Samengevoegd uit twee dia's (23-11-2026): de functionele route met begrippen en de dia "Van bericht tot seintje" van een collega (bron daarvan: toelichting BA doel 5, 23 november 2026).</p>
+    <p>Plug-in of centraal: #1538, tabel "Centraal versus per organisatie". Centraal, één keer: "Berichtenbox (berichtenuitvraag)", "Stelselregister (magazijnregister)", "Profielservice (nagebootst)", "Notificatiedienst (echt)", "Printstraat (nagebootst)", "Business wallet (nagebootst)". Per organisatie, via de plug-in: "Berichtenmagazijn", "Eigen database voor magazijn en logboek", "Aanmelding in het magazijnregister", "FSC-aansluiting", "Instellingen richting profiel en notificatie", "Statuspagina in de Fundament-console". De notificatiedienst is dus geen plug-in: je sluit erop aan.</p>
+    <p>1. Bij de dienstverlener ontstaat een besluit, in de eigen omgeving van de dienstverlener.</p>
+    <p>2. De procesapplicatie zet het bericht klaar in het eigen berichtenmagazijn (optie A op de pagina "Begrippen in de praktijk"). Elke dienstverlener die de plug-in aanzet, krijgt een eigen magazijn. Op het fieldlab staan er twee: van RVO en van de Belastingdienst. Bij een besluit is het klaarzetten de bekendmaking: "door toezending of uitreiking" (Awb 3:41, https://wetten.overheid.nl/BWBR0005537/2026-08-15/#Hoofdstuk3_Afdeling3.6_Artikel3:41). "Een besluit treedt niet in werking voordat het is bekendgemaakt." (Awb 3:40, https://wetten.overheid.nl/BWBR0005537/2026-08-15/#Hoofdstuk3_Afdeling3.6_Artikel3:40) Optie B (centraal in de Berichtenbox voor Burgers en Ondernemers) staat niet op de plaat.</p>
+    <p>3. Staat het bericht klaar, dan geeft het berichtenmagazijn de notificatiedienst een gebeurtenisbericht. Berichtenmagazijn – NMC is de hoofdlijn, zonder FSC; eventueel loopt er ook een FSC-verbinding van de procesapplicatie rechtstreeks naar de NMC. De NMC zorgt dat Notify een e-mail verstuurt; Notify staat buiten Fundament. In de demo komt de e-mail binnen op moza@minbzk.nl. Kennisgeving (melding) binnen 48 uur (Awb 2:10 lid 1, https://wetten.overheid.nl/BWBR0005537/2026-08-15/#Hoofdstuk2_Afdeling2.3_Paragraaf2.3.2_Artikel2:10). Let op: op de pagina "Begrippen in de praktijk" start de dienstverlener de kennisgeving (melding) zelf (via de OMC); op het fieldlab doet het berichtenmagazijn dat (#1538).</p>
+    <p>4. Het portaal staat conceptueel los van de ondernemer, als onderdeel van de dienstverlener (keuze gebruiker, 23-11-2026). Het leest de magazijnen uit; de ondernemer logt in en leest het bericht. Let op: #1538 noemt de "Berichtenbox (berichtenuitvraag)" als centrale dienst ("de berichtenbox toont het bericht"); op deze plaat neemt het portaal van de dienstverlener die rol.</p>
+    <p>Aangepast 23-11-2026 (keuze gebruiker): de demo laat alleen de Belastingdienst zien; RVO staat vervaagd als teken dat er meer magazijnen kunnen zijn. De eventuele FSC-lijn van procesapplicatie naar NMC is weggehaald. Optie A: de burger/ondernemer staat in een strook bovenaan, over de hele breedte. De e-mail gaat omhoog naar de mailbox, de ondernemer logt van daaruit in op het portaal. Zo loopt de keten in een cirkel terug naar de dienstverlener, zonder lijn door Fundament. Het magazijn is hoger, zodat "uitlezen" en FSC er elk recht in lopen.</p>
+    <p>Niet op de plaat: contactherstel (komt de e-mail niet aan, dan een contactherstelmelding per brief via de printstraat; Awb 2:11 lid 2, https://wetten.overheid.nl/BWBR0005537/2026-08-15/#Hoofdstuk2_Afdeling2.3_Paragraaf2.3.2_Artikel2:11) en de attendering (geen inhoudelijk bericht; de informatie staat in de e-mail zelf). Bron begrippen: pagina "Begrippen in de praktijk" (MOZa-site, branch feature/begrippen-in-de-praktijk, nog niet online).</p>
+  </aside>
+</section>
+
 <!-- ===== Credits ===== -->
 <section class="slide" aria-roledescription="dia" aria-label="Credits">
   <p class="overline">Dank</p>
@@ -4460,24 +4594,19 @@ html:not(.js) {
   <p class="overline">Vooruitblik</p>
   <h2 class="title">Oké, en nu?</h2>
   <ol class="context" style="grid-template-columns: 1.6fr 1fr; align-items: start">
-    <li class="card" style="grid-row: span 2">
+    <li class="card" style="grid-row: span 2; position: relative">
       <div class="card-head"><span class="ic"><nldd-icon icon="document"></nldd-icon></span><h3>Conclusies</h3></div>
       <ul class="bevindingen">
-        <li>Een <strong>volwaardig alternatief</strong> om MOZa-componenten te laten draaien.</li>
-        <li>Het werkt als een <strong>standaard cloudomgeving</strong>: dat is goed gedaan.</li>
-        <li>Het is <strong>zeer geschikt om met AI te bouwen</strong>: dat ging snel.</li>
-        <li>Veelgebruikte bouwstenen zijn <strong>direct beschikbaar</strong> als plug-in.</li>
-        <li>Plug-ins <strong>versnellen de adoptie</strong>.</li>
-        <li>Ook <strong>eigen oplossingen</strong> waren eenvoudig toe te voegen.</li>
-        <li>Onze berichtenvoorziening (FBS) stond er <strong>zonder moeite</strong> op.</li>
-        <li>In <strong>eigen beheer</strong>: we kunnen het aanpassen aan onze wensen.</li>
-        <li>Door het fieldlab konden we <strong>snel schakelen</strong> met de nodige partijen.</li>
+        <li>Technisch bewezen.</li>
+        <li>Door de standaard manier van werken treden we op als <strong>één overheid</strong>.</li>
+        <li>Door het fieldlab <strong>snel geschakeld</strong> met partijen en snel gerealiseerd.</li>
       </ul>
     </li>
     <li class="card">
       <div class="card-head"><span class="ic"><nldd-icon icon="arrow-right"></nldd-icon></span><h3>What&rsquo;s next?</h3></div>
       <ul class="bevindingen bevindingen--vrij">
-        <li>De komende periode onderzoeken we verder hoe we Fundament kunnen inzetten voor de verschillende MOZa-componenten.</li>
+        <li><strong>Adoptie van en met organisaties:</strong> Fundament als productiewaardig alternatief.</li>
+        <li><strong>Verder uitbouwen</strong> met andere ketens en standaarden, bijvoorbeeld UWV met BKWI, en Federatieve toegangsverlening (FTV).</li>
       </ul>
     </li>
   </ol>
@@ -36904,7 +37033,7 @@ window.fieldlabStappen = (() => {
     directory: {
       uitleg: true,  // geen voortgang: genummerde uitleg, niet aanklikbaar
       stappen: [
-        { nr: '', titel: 'Aanmelden bij de Directory', tekst: '',
+        { nr: '', titel: 'Aanmelden bij de Directory', tekst: 'Adressenboek',
           tech: ['Directory', [['Beheer', 'RINIS beheert de Directory']]] },
         { nr: '', titel: 'Dienst publiceren', tekst: '',
           tech: ['Publiceren', [['Grant', 'ServicePublicationGrant']]] },

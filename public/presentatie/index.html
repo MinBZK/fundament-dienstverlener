@@ -3575,77 +3575,10 @@ html:not(.js) {
   </aside>
 </section>
 
-<!-- ===== OpenFSC op Fundament ===== -->
-<section class="slide" aria-roledescription="dia" aria-label="Attendering: OpenFSC als plug-in op het Fundament">
-  <ol class="route" aria-label="Route van het bericht"><li data-staat="nu" aria-current="step">Attendering</li><li data-staat="straks">Aangifte</li><li data-staat="straks">Besluit</li><li data-staat="straks">Kennisgeving (melding)</li><li data-staat="straks">Besluit lezen</li></ol>
-  <h2 class="title">OpenFSC als plug-in op het Fundament</h2>
-  <figure class="plaat plaat-praktijk">
-    <svg viewBox="0 0 1100 495" role="img" aria-labelledby="rinis-titel rinis-uitleg" xmlns="http://www.w3.org/2000/svg">
-      <title id="rinis-titel">OpenFSC als plug-in op het Fundament</title>
-      <desc id="rinis-uitleg">Links, buiten Fundament, de dienstverlener met een procesapplicatie en eigen OpenFSC-onderdelen: Manager, Outway en Inway, met een transaction log. Rechts Fundament. Daarop staat in het midden het deel van RINIS: de certportal en de Manager van de directory. Rechts op Fundament de aanbieder, die FSC krijgt via een RINIS-plug-in: Manager, cert-manager, Inway en Outway, met een transaction log. De certportal geeft certificaten aan beide kanten; via de directory melden beide Managers zich aan en vinden ze diensten. Het FSC-verkeer loopt rechtstreeks van de Outway van de dienstverlener naar de Inway van de aanbieder.</desc>
-      <defs>
-        <marker id="rp-pijl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker>
-        <marker id="rp-pijl-fsc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a34f00"/></marker>
-        <style>
-          .rp-kop { font-size: 20px; font-weight: 700; letter-spacing: 0.1em; }
-          .pr-sub-t { font-size: 12.5px; font-weight: 700; letter-spacing: 0.06em; fill: #1f2937; }
-          .rp-naam { font-size: 15px; font-weight: 600; fill: #111827; text-anchor: middle; }
-          .pr-fsc-t { font-size: 11px; font-weight: 700; fill: #a34f00; text-anchor: middle; letter-spacing: 0.04em; }
-          .pr-leg { font-size: 13px; fill: #374151; }
-        </style>
-      </defs>
-      <rect x="20" y="20" width="330" height="460" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="4"/>
-      <text class="rp-kop" x="36" y="51" style="fill:#475569">BUITEN FUNDAMENT</text>
-      <rect x="380" y="20" width="700" height="460" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
-      <text class="rp-kop" x="396" y="51" style="fill:#154273">FUNDAMENT</text>
-
-      <rect x="35" y="75" width="300" height="390" rx="10" fill="#eef5fc" stroke="#a9c8e8"/>
-      <text class="pr-sub-t" x="49" y="98">DIENSTVERLENER</text>
-      <rect x="75" y="150" width="220" height="46" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="185.0" y="178.0">Procesapplicatie</text>
-      <path d="M185.0,196 V238" stroke="#334155" stroke-width="1.6"/>
-      <rect x="60" y="238" width="250" height="174" rx="10" fill="#fff" stroke="#94a3b8"/>
-      <text class="pr-sub-t" x="75" y="259">OPENFSC</text>
-      <rect x="75" y="275" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="185.0" y="298.0">Manager</text>
-      <rect x="75" y="320" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="185.0" y="343.0">Outway</text>
-      <rect x="75" y="365" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="185.0" y="388.0">Inway</text>
-      <path d="M185.0,412 V425" stroke="#334155" stroke-width="1.6" fill="none" stroke-linejoin="round" marker-end="url(#rp-pijl)"/>
-      <rect x="75" y="425" width="220" height="30" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="185.0" y="445.0">Transaction log</text>
-
-      <rect x="410" y="190" width="290" height="135" rx="10" fill="#fffaf3" stroke="#a34f00" stroke-width="2" stroke-dasharray="7 5"/>
-      <text class="pr-sub-t" x="424" y="212" style="fill:#a34f00">RINIS</text>
-      <rect x="445" y="230" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="555.0" y="253.0">Manager (directory)</text>
-      <rect x="445" y="275" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="555.0" y="298.0">Certportal</text>
-
-      <rect x="735" y="75" width="330" height="390" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
-      <text class="pr-sub-t" x="749" y="98">AANBIEDER</text>
-      <rect x="775" y="190" width="250" height="222" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
-      <text class="pr-sub-t" x="790" y="212">RINIS-PLUG-IN</text>
-      <rect x="790" y="230" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/><text class="rp-naam" x="900.0" y="253.0">Manager</text>
-      <rect x="790" y="275" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/><text class="rp-naam" x="900.0" y="298.0">cert-manager</text>
-      <rect x="790" y="320" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="900.0" y="343.0">Inway</text>
-      <rect x="790" y="365" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="900.0" y="388.0">Outway</text>
-      <path d="M900.0,412 V425" stroke="#334155" stroke-width="1.6" fill="none" stroke-linejoin="round" marker-end="url(#rp-pijl)"/>
-      <rect x="790" y="425" width="220" height="30" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="900.0" y="445.0">Transaction log</text>
-
-      <path d="M445,248 H365 V286 H295" stroke="#334155" stroke-width="1.6" fill="none" stroke-linejoin="round" marker-start="url(#rp-pijl)" marker-end="url(#rp-pijl)"/>
-      <path d="M665,248 H790" stroke="#334155" stroke-width="1.6" fill="none" stroke-linejoin="round" marker-start="url(#rp-pijl)" marker-end="url(#rp-pijl)"/>
-      <path d="M445,300 H295" stroke="#334155" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-dasharray="5 4" marker-end="url(#rp-pijl)"/>
-      <path d="M665,293 H790" stroke="#334155" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-dasharray="5 4" marker-end="url(#rp-pijl)"/>
-      <path d="M295,338 H790" fill="none" stroke="#a34f00" stroke-width="4" marker-start="url(#rp-pijl-fsc)" marker-end="url(#rp-pijl-fsc)"/>
-      <rect x="537" y="329" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
-      <text class="pr-fsc-t" x="555" y="342">FSC</text>
-      <text x="1070" y="474" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
-    </svg>
-  </figure>
-  <aside class="notes">
-    <p>Bron: plaatje in #1626 (Fieldlab doel 1), gebaseerd op de FSC-plaat van team Turing op Toon. RINIS levert als het goed is een plug-in voor Inway en Outway, en hopelijk de Manager. Directory: nog uitzoeken met RINIS.</p>
-  </aside>
-</section>
-
 <!-- ===== Attendering: FSC Directory (nieuw) ===== -->
 <section class="slide" aria-roledescription="dia" aria-label="Attendering: FSC Directory">
   <ol class="route" aria-label="Route van het bericht"><li data-staat="nu" aria-current="step">Attendering</li><li data-staat="straks">Aangifte</li><li data-staat="straks">Besluit</li><li data-staat="straks">Kennisgeving (melding)</li><li data-staat="straks">Besluit lezen</li><li class="route__concept">Concept</li></ol>
-  <h2 class="title">Eerst een veilige verbinding: FSC</h2>
+  <h2 class="title">Eerst een veilige verbinding</h2>
   <div class="ag-dia" data-demo="directory">
     <div class="ag-links">
       <figure class="plaat plaat-praktijk proces-focus ag-plaat fsc-nadruk" data-focus="r1">
@@ -3775,6 +3708,79 @@ html:not(.js) {
     <p><strong>Toelichting door RINIS (OpenFSC).</strong> FSC (Federatieve Service Connectiviteit) is een afsprakenstelsel voor een beveiligde verbinding tussen overheidsorganisaties. Organisaties leggen in digitale contracten vast wie welke gegevens mag opvragen, en herkennen elkaar aan hun PKIoverheid-certificaat.</p>
     <p><strong>Laat zien</strong> · demo: OpenFSC Directory</p><ol><li><strong>Aanmelden</strong> De Manager van elke partij meldt zich aan bij de Directory; die controleert het certificaat.</li><li><strong>Dienst publiceren</strong> De notificatiedienst publiceert de dienst notificaties in de Directory.</li><li><strong>Contract</strong> De dienstverlener vraagt toegang; beide Managers tekenen. Dat levert de grant op.</li><li><strong>Veilig aanroepen</strong> De Outway haalt een token bij de Manager van de NMC en stuurt het verzoek over mTLS naar de Inway.</li></ol>
     <p><strong>Achtergrond</strong></p><p>Rechts nu de Directory van het MOZa FSC-testnet (MinBZK/moza-fsc-testnet, group moza-fbs-test): https://dirui-test-mft-tp9.rig.prd1.gn2.quattro.rijksapps.nl/. De URL van de RINIS-directory volgt op 25 november; vervang dan de src van de iframe (commentaar DIRECTORY-URL). Tekst over FSC uit de uitwerking van team Turing (toon.rijks.app/team-turing/…fsc-notificatiedienst).</p>
+  </aside>
+</section>
+
+<!-- ===== OpenFSC op Fundament ===== -->
+<section class="slide" aria-roledescription="dia" aria-label="Attendering: OpenFSC als plug-in op het Fundament">
+  <ol class="route" aria-label="Route van het bericht"><li data-staat="nu" aria-current="step">Attendering</li><li data-staat="straks">Aangifte</li><li data-staat="straks">Besluit</li><li data-staat="straks">Kennisgeving (melding)</li><li data-staat="straks">Besluit lezen</li></ol>
+  <h2 class="title">OpenFSC als plug-in op het Fundament</h2>
+  <figure class="plaat plaat-praktijk">
+    <svg viewBox="0 0 1100 495" role="img" aria-labelledby="rinis-titel rinis-uitleg" xmlns="http://www.w3.org/2000/svg">
+      <title id="rinis-titel">OpenFSC als plug-in op het Fundament</title>
+      <desc id="rinis-uitleg">Links, buiten Fundament, de dienstverlener: de Belastingdienst met de procesapplicatie en eigen OpenFSC-onderdelen: Manager, cert-manager, Inway en Outway, met een transaction log. Rechts Fundament. Daarop in het midden het deel van RINIS: de Manager van de directory en de certportal. Rechts op Fundament de aanbieder, de notificatiedienst, die FSC krijgt via een RINIS-plug-in: Manager, cert-manager, Outway en Inway, met een transaction log. De dienstverlener heeft ook een cert-manager. Via de directory melden beide Managers zich aan en vinden ze diensten; de certportal geeft de certificaten. Het FSC-verkeer loopt rechtstreeks van de Outway van de dienstverlener naar de Inway van de aanbieder.</desc>
+      <defs>
+        <marker id="rp-pijl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker>
+        <marker id="rp-pijl-fsc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a34f00"/></marker>
+        <style>
+          .rp-kop { font-size: 20px; font-weight: 700; letter-spacing: 0.1em; }
+          .rp-zone { font-size: 15px; font-weight: 700; fill: #1f2937; }
+          .pr-sub-t { font-size: 12.5px; font-weight: 700; letter-spacing: 0.06em; fill: #1f2937; }
+          .rp-naam { font-size: 15px; font-weight: 600; fill: #111827; text-anchor: middle; }
+          .pr-fsc-t { font-size: 11px; font-weight: 700; fill: #a34f00; text-anchor: middle; letter-spacing: 0.04em; }
+        </style>
+      </defs>
+      <rect x="20" y="20" width="330" height="460" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="4"/>
+      <text class="rp-kop" x="36" y="51" style="fill:#475569">BUITEN FUNDAMENT</text>
+      <rect x="380" y="20" width="700" height="460" rx="12" fill="#e6eef7" stroke="#154273" stroke-width="4"/>
+      <text class="rp-kop" x="396" y="51" style="fill:#154273">FUNDAMENT</text>
+
+      <rect x="35" y="75" width="300" height="390" rx="10" fill="#eef5fc" stroke="#a9c8e8"/>
+      <text class="rp-zone" x="185" y="98" text-anchor="middle">Dienstverlener: Belastingdienst</text>
+      <rect x="735" y="75" width="330" height="390" rx="10" fill="#eef6f0" stroke="#a8cdb2"/>
+      <text class="rp-zone" x="900" y="98" text-anchor="middle">Aanbieder: Notificatiedienst</text>
+
+      <rect x="75" y="112" width="220" height="44" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="185.0" y="139.0">Procesapplicatie</text>
+      <path d="M185.0,156 V190" stroke="#334155" stroke-width="1.6"/>
+      <rect x="790" y="112" width="220" height="44" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="900.0" y="139.0">Notificatiedienst</text>
+      <path d="M900.0,156 V190" stroke="#334155" stroke-width="1.6"/>
+
+      <rect x="60" y="190" width="250" height="222" rx="10" fill="#fff" stroke="#94a3b8"/>
+      <text class="pr-sub-t" x="75" y="212">OPENFSC</text>
+      <rect x="75" y="230" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="185.0" y="253.0">cert-manager</text>
+      <rect x="75" y="275" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="185.0" y="298.0">Manager</text>
+      <rect x="75" y="320" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="185.0" y="343.0">Inway</text>
+      <rect x="75" y="365" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="185.0" y="388.0">Outway</text>
+
+      <rect x="410" y="190" width="290" height="131" rx="10" fill="#fffaf3" stroke="#a34f00" stroke-width="2" stroke-dasharray="7 5"/>
+      <text class="pr-sub-t" x="424" y="212" style="fill:#a34f00">RINIS</text>
+      <rect x="445" y="230" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="555.0" y="253.0">Certportal</text>
+      <rect x="445" y="275" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="555.0" y="298.0">Manager (directory)</text>
+
+      <rect x="775" y="190" width="250" height="222" rx="10" fill="#fff7ed" stroke="#e3a86b"/>
+      <text class="pr-sub-t" x="790" y="212">RINIS-PLUG-IN</text>
+      <rect x="790" y="230" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/><text class="rp-naam" x="900.0" y="253.0">cert-manager</text>
+      <rect x="790" y="275" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9" stroke-dasharray="4 3"/><text class="rp-naam" x="900.0" y="298.0">Manager</text>
+      <rect x="790" y="320" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="900.0" y="343.0">Outway</text>
+      <rect x="790" y="365" width="220" height="36" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="900.0" y="388.0">Inway</text>
+
+      <path d="M185.0,412 V425" stroke="#334155" stroke-width="1.6" fill="none" stroke-linejoin="round" marker-end="url(#rp-pijl)"/>
+      <rect x="75" y="425" width="220" height="30" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="185.0" y="445.0">Transaction log</text>
+      <path d="M900.0,412 V425" stroke="#334155" stroke-width="1.6" fill="none" stroke-linejoin="round" marker-end="url(#rp-pijl)"/>
+      <rect x="790" y="425" width="220" height="30" rx="8" fill="#fff" stroke="#b8bfc9"/><text class="rp-naam" x="900.0" y="445.0">Transaction log</text>
+
+      <path d="M445,248.0 H295" stroke="#334155" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-dasharray="5 4" marker-end="url(#rp-pijl)"/>
+      <path d="M665,248.0 H790" stroke="#334155" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-dasharray="5 4" marker-end="url(#rp-pijl)"/>
+      <path d="M445,293.0 H295" stroke="#334155" stroke-width="1.6" fill="none" stroke-linejoin="round" marker-start="url(#rp-pijl)" marker-end="url(#rp-pijl)"/>
+      <path d="M665,293.0 H790" stroke="#334155" stroke-width="1.6" fill="none" stroke-linejoin="round" marker-start="url(#rp-pijl)" marker-end="url(#rp-pijl)"/>
+      <path d="M295,383.0 H790" fill="none" stroke="#a34f00" stroke-width="4" marker-start="url(#rp-pijl-fsc)" marker-end="url(#rp-pijl-fsc)"/>
+      <rect x="537" y="374.0" width="36" height="18" rx="9" fill="#fcefe2" stroke="#a34f00"/>
+      <text class="pr-fsc-t" x="555" y="387.0">FSC</text>
+      <text x="1070" y="474" text-anchor="end" style="font-size:11px;fill:#475569">Powered by AI</text>
+    </svg>
+  </figure>
+  <aside class="notes">
+    <p>Bron: plaatje in #1626 (Fieldlab doel 1), gebaseerd op de FSC-plaat van team Turing op Toon. RINIS levert als het goed is een plug-in voor Inway en Outway, en hopelijk de Manager. Directory: nog uitzoeken met RINIS.</p>
   </aside>
 </section>
 
@@ -36855,13 +36861,13 @@ window.fieldlabStappen = (() => {
     directory: {
       uitleg: true,  // geen voortgang: genummerde uitleg, niet aanklikbaar
       stappen: [
-        { nr: '', titel: 'Aanmelden bij de Directory', tekst: 'De Manager van elke partij meldt zich aan; de Directory controleert het PKIoverheid-certificaat.',
+        { nr: '', titel: 'Aanmelden bij de Directory', tekst: '',
           tech: ['Directory', [['Beheer', 'RINIS beheert de Directory']]] },
-        { nr: '', titel: 'Dienst publiceren', tekst: 'De notificatiedienst publiceert de dienst notificaties, zodat anderen hem kunnen vinden.',
+        { nr: '', titel: 'Dienst publiceren', tekst: '',
           tech: ['Publiceren', [['Grant', 'ServicePublicationGrant']]] },
-        { nr: '', titel: 'Contract', tekst: 'De dienstverlener vraagt toegang; beide Managers tekenen. Zo ligt vast wie wat mag.',
+        { nr: '', titel: 'Contract', tekst: '',
           tech: ['Contract', [['Grant', 'ServiceConnectionGrant']]] },
-        { nr: '', titel: 'Veilig aanroepen', tekst: 'De Outway stuurt het verzoek met een token over mTLS naar de Inway. Elke transactie wordt vastgelegd.',
+        { nr: '', titel: 'Veilig aanroepen', tekst: '',
           tech: ['Aanroep', [['Log', 'transaction log aan beide kanten']]] },
       ],
       klaar: ['FSC', [['Klaar', 'verbinding via FSC']]],

@@ -36915,7 +36915,13 @@ window.fieldlabStappen = (() => {
   function toonPopup(slide) {
     document.getElementById('mail-melding-tekst').textContent = TEKST[slide.dataset.melding] || TEKST.bericht;
     box.hidden = false; requestAnimationFrame(() => box.classList.add('is-zichtbaar'));
-    stuurEchteMail(slide);
+  }
+  // De e-mail doet er ongeveer 5 s over (NMC en NotifyNL): verstuur hem zoveel eerder,
+  // zodat hij ongeveer tegelijk met de pop-up binnenkomt.
+  const MAIL_VOORSPRONG_MS = 5000;
+  function popupMetMail(slide, popupMs) {
+    later(() => stuurEchteMail(slide), Math.max(0, popupMs - MAIL_VOORSPRONG_MS));
+    later(() => toonPopup(slide), popupMs);
   }
   function verberg() {
     box.classList.remove('is-zichtbaar');
@@ -36941,9 +36947,9 @@ window.fieldlabStappen = (() => {
         f.dataset.focus = stappen.slice(0, i + 1).join(' ');
         f.querySelector(`[data-fase="${st}"]`)?.classList.add('is-nu');
       }, 600 + i * 1300));
-      if (slide.dataset.melding) later(() => toonPopup(slide), 600 + stappen.length * 1300 - 500);
+      if (slide.dataset.melding) popupMetMail(slide, 600 + stappen.length * 1300 - 500);
     } else if (slide.dataset.melding) {
-      later(() => toonPopup(slide), 1500);
+      popupMetMail(slide, 1500);
     }
   }
   function check() {

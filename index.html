@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fundament Dienstverlener · MijnOverheid Zakelijk</title>
+    <title>MOZa Dienstverlener · MijnOverheid Zakelijk</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="stylesheet" href="/src/stijl.css">
     <link rel="stylesheet" href="/src/start.css">
@@ -12,10 +12,11 @@
   <body>
     <div class="start">
       <main class="start-inhoud">
-        <p class="start-overline">MijnOverheid Zakelijk · Fieldlab Soevereine basis</p>
-        <h1 class="start-titel">Fundament Dienstverlener</h1>
-        <p class="start-lead">Presentatie en werkende demo van het Fieldlab Soevereine basis.</p>
+        <p class="start-overline">MijnOverheid Zakelijk · Mock-dienstverlener</p>
+        <h1 class="start-titel">MOZa Dienstverlener</h1>
+        <p class="start-lead">Dit is een mock-dienstverlener: een nagebootste dienstverlener die we gebruiken voor testdoeleinden.</p>
 
+        <h2 class="start-kop">Demo</h2>
         <nldd-collection
           class="start-keuzes"
           item-min-width="230px"
@@ -24,12 +25,12 @@
           <nldd-card>
             <nldd-container padding="24">
               <nldd-title
-                text="Presentatie"
-                heading-level="2"
+                text="MOZa op Fundament"
+                heading-level="3"
                 size="display-5"
               ></nldd-title>
               <nldd-spacer size="8"></nldd-spacer>
-              <nldd-text text="Het verhaal van het fieldlab, met de live demo op de dia's."></nldd-text>
+              <nldd-text text="De presentatie over MOZa op Fundament, met de live demo op de dia&#39;s."></nldd-text>
             </nldd-container>
             <nldd-container
               slot="footer"
@@ -44,12 +45,19 @@
               ></nldd-button>
             </nldd-container>
           </nldd-card>
+        </nldd-collection>
 
+        <h2 class="start-kop">Functionaliteiten</h2>
+        <nldd-collection
+          class="start-keuzes"
+          item-min-width="230px"
+          gap="24"
+        >
           <nldd-card>
             <nldd-container padding="24">
               <nldd-title
                 text="Scenario btw-aangifte"
-                heading-level="2"
+                heading-level="3"
                 size="display-5"
               ></nldd-title>
               <nldd-spacer size="8"></nldd-spacer>
@@ -68,36 +76,11 @@
               ></nldd-button>
             </nldd-container>
           </nldd-card>
-
-          <nldd-card>
-            <nldd-container padding="24">
-              <nldd-title
-                text="Portaal-mock"
-                heading-level="2"
-                size="display-5"
-              ></nldd-title>
-              <nldd-spacer size="8"></nldd-spacer>
-              <nldd-text text="Berichten bekijken zoals de ondernemer of burger ze ziet."></nldd-text>
-            </nldd-container>
-            <nldd-container
-              slot="footer"
-              padding="24"
-            >
-              <nldd-button
-                appearance="primary"
-                text="Open het portaal"
-                end-icon="arrow-right"
-                single-line
-                href="/portaal.html"
-              ></nldd-button>
-            </nldd-container>
-          </nldd-card>
-
           <nldd-card>
             <nldd-container padding="24">
               <nldd-title
                 text="Werkscherm"
-                heading-level="2"
+                heading-level="3"
                 size="display-5"
               ></nldd-title>
               <nldd-spacer size="8"></nldd-spacer>
@@ -113,6 +96,83 @@
                 end-icon="arrow-right"
                 single-line
                 href="/werkscherm.html"
+              ></nldd-button>
+            </nldd-container>
+          </nldd-card>
+        </nldd-collection>
+
+        <h2 class="start-kop">Portalen</h2>
+        <nldd-collection
+          class="start-keuzes"
+          item-min-width="230px"
+          gap="24"
+        >
+          <nldd-card>
+            <nldd-container padding="24">
+              <nldd-title
+                text="MOZa portaal"
+                heading-level="3"
+                size="display-5"
+              ></nldd-title>
+              <nldd-spacer size="8"></nldd-spacer>
+              <nldd-text text="De Berichtenbox van MijnOverheid Zakelijk: berichten lezen als ondernemer."></nldd-text>
+            </nldd-container>
+            <nldd-container
+              slot="footer"
+              padding="24"
+            >
+              <nldd-button
+                appearance="primary"
+                text="Open het MOZa portaal"
+                end-icon="arrow-right"
+                single-line
+                href="/moza-portaal/index.html"
+              ></nldd-button>
+            </nldd-container>
+          </nldd-card>
+          <nldd-card>
+            <nldd-container padding="24">
+              <nldd-title
+                text="BLD portaal gebruikers"
+                heading-level="3"
+                size="display-5"
+              ></nldd-title>
+              <nldd-spacer size="8"></nldd-spacer>
+              <nldd-text text="Btw-aangifte doen als ondernemer. Roept onder water de procesapplicatie aan."></nldd-text>
+            </nldd-container>
+            <nldd-container
+              slot="footer"
+              padding="24"
+            >
+              <nldd-button
+                appearance="primary"
+                text="Open het BLD portaal"
+                end-icon="arrow-right"
+                single-line
+                href="/procesapplicatie/index.html"
+              ></nldd-button>
+            </nldd-container>
+          </nldd-card>
+          <nldd-card>
+            <nldd-container padding="24">
+              <nldd-title
+                text="Ambtenaar portaal"
+                heading-level="3"
+                size="display-5"
+              ></nldd-title>
+              <nldd-spacer size="8"></nldd-spacer>
+              <nldd-text text="De werklijst btw-aangiften behandelen. Roept onder water de procesapplicatie aan."></nldd-text>
+            </nldd-container>
+            <nldd-container
+              slot="footer"
+              padding="24"
+            >
+              <nldd-button
+                appearance="primary"
+                text="Open het ambtenaar portaal"
+                end-icon="arrow-right"
+                single-line
+                href="/procesapplicatie/werklijst.html"
               ></nldd-button>
             </nldd-container>
           </nldd-card>

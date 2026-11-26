@@ -7,7 +7,7 @@
 #   Secret   ZAD_API_KEY         API-sleutel van ZAD Operations Manager
 #   Variable ZAD_PROJECT_ID      project in ZAD, bijvoorbeeld het MOZa-project
 #   Variable ZAD_DEPLOYMENT      naam van de deployment (standaard: dev)
-#   Variable ZAD_COMPONENT       naam van de component (standaard: fundament-dienstverlener)
+#   Variable ZAD_COMPONENT       naam van de component (standaard: moza-dienstverlener)
 #
 # Instellen op de component in ZAD Operations Manager (omgevingsvariabelen):
 #   WACHTWOORD (verplicht op ZAD) en eventueel GEBRUIKER (standaard: fieldlab): inlog voor de app.
@@ -28,7 +28,7 @@ concurrency:
 env:
   REGISTRY: ghcr.io
   # GHCR vereist kleine letters.
-  IMAGE_NAME: minbzk/fundament-dienstverlener
+  IMAGE_NAME: minbzk/moza-dienstverlener
 
 jobs:
   build:
@@ -75,7 +75,7 @@ jobs:
           api-key: ${{ secrets.ZAD_API_KEY }}
           project-id: ${{ vars.ZAD_PROJECT_ID }}
           deployment-name: ${{ vars.ZAD_DEPLOYMENT || 'dev' }}
-          component: ${{ vars.ZAD_COMPONENT || 'fundament-dienstverlener' }}
+          component: ${{ vars.ZAD_COMPONENT || 'moza-dienstverlener' }}
           # Op digest uitrollen, zodat ZAD altijd het net gebouwde image ophaalt.
           image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}@${{ needs.build.outputs.digest }}
           wait-for-ready: 'true'

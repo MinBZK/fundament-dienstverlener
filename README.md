@@ -1,4 +1,4 @@
-# Fundament Dienstverlener
+# MOZa Dienstverlener
 
 *Powered by AI*
 
@@ -73,17 +73,17 @@ Adressen op het fieldlab (cluster-c): magazijn A (RVO) `https://berichtenmagazij
 
 ## Uitrollen op ZAD
 
-Bij elke wijziging op `main` bouwt GitHub Actions (`.github/workflows/deploy.yml`) een container-image (`ghcr.io/minbzk/fundament-dienstverlener`) en rolt het uit naar ZAD met [`RijksICTGilde/zad-actions`](https://github.com/RijksICTGilde/zad-actions), zoals bij moza-mock. Bij een pull request controleert `.github/workflows/controle.yml` de app en bouwt het image zonder het te publiceren.
+Bij elke wijziging op `main` bouwt GitHub Actions (`.github/workflows/deploy.yml`) een container-image (`ghcr.io/minbzk/moza-dienstverlener`) en rolt het uit naar ZAD met [`RijksICTGilde/zad-actions`](https://github.com/RijksICTGilde/zad-actions), zoals bij moza-mock. Bij een pull request controleert `.github/workflows/controle.yml` de app en bouwt het image zonder het te publiceren.
 
 Het uitrollen gebeurt pas als ZAD is ingericht. Daarvoor is nodig:
 
 1. In ZAD Operations Manager: een project, een deployment en een component voor deze app. De container luistert op poort 8080.
-2. In deze repository (Settings → Secrets and variables → Actions): het secret `ZAD_API_KEY` en de variabele `ZAD_PROJECT_ID`. Optioneel `ZAD_DEPLOYMENT` (standaard `dev`) en `ZAD_COMPONENT` (standaard `fundament-dienstverlener`).
+2. In deze repository (Settings → Secrets and variables → Actions): het secret `ZAD_API_KEY` en de variabele `ZAD_PROJECT_ID`. Optioneel `ZAD_DEPLOYMENT` (standaard `dev`) en `ZAD_COMPONENT` (standaard `moza-dienstverlener`).
 3. Op de component in ZAD de omgevingsvariabelen: in elk geval `WACHTWOORD` (zonder inlog kan iedereen met het adres berichten plaatsen en notificaties laten versturen), de adressen van de diensten (`MAGAZIJN_URL`, `BLD_MAGAZIJN_URL`, `NMC_URL`) en `TERUGMELDADRES` met het eigen adres op ZAD, zodat de NMC statusmeldingen kan sturen.
 
 Instellingen die je op de pagina Instellingen bewaart, gaan op ZAD verloren bij een nieuwe uitrol; de omgevingsvariabelen zijn daar leidend.
 
-Zelf een image bouwen en draaien: `docker build -t fundament-dienstverlener .` en `docker run -p 8080:8080 -e WACHTWOORD=... fundament-dienstverlener`.
+Zelf een image bouwen en draaien: `docker build -t moza-dienstverlener .` en `docker run -p 8080:8080 -e WACHTWOORD=... moza-dienstverlener`.
 
 ## PDF's
 

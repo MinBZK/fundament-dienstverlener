@@ -1,5 +1,5 @@
 {
-  "name": "fundament-dienstverlener",
+  "name": "moza-dienstverlener",
   "version": "0.1.0",
   "private": true,
   "description": "Presentatie en werkende demo van het Fieldlab Soevereine basis: een nagebootste dienstverlener die berichten plaatst in berichtenmagazijnen op Fundament en notificaties stuurt via de NMC.",

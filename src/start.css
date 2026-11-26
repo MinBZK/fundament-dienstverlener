@@ -41,7 +41,7 @@ body {
 }
 
 .start-lead {
-  margin: 24px 0 56px;
+  margin: 24px 0 48px;
   font-size: clamp(1.15rem, 2vw, 1.5rem);
   max-width: 40em;
 }
@@ -57,3 +57,16 @@ body {
 .start-voet a {
   color: inherit;
 }
+
+/* Takken van de boom: demo, functionaliteiten en portalen. */
+.start-kop {
+  margin: 0 0 24px;
+  font-family: var(--primitives-font-family-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+}
+
+.start-keuzes {
+  margin-bottom: 48px;
+}
+

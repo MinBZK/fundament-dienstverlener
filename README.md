@@ -19,11 +19,14 @@ Open daarna http://127.0.0.1:3000. Je komt op de startpagina. Voor een gebouwde 
 
 | Adres | Wat |
 | --- | --- |
-| `/` | Startpagina in de MOZa-stijl, met vier keuzes |
+| `/` | Startpagina in de MOZa-stijl: uitleg (mock-dienstverlener voor testdoeleinden), met de takken Demo, Functionaliteiten en Portalen |
 | `/presentatie/index.html` | De presentatie over het fieldlab |
 | `/scenario.html` | Scenario btw-aangifte: aangifte → automatische verwerking → fieldlab-beschikking (PDF) → plaatsen in het magazijn van de Belastingdienst; los daarvan een notificatie |
 | `/portaal.html` | Portaal-mock: berichten bekijken zoals de ontvanger (`?magazijn=bld` voor het magazijn van de Belastingdienst) |
 | `/werkscherm.html` | Werkscherm: losse berichten plaatsen en notificaties sturen, met logboek |
+| `/moza-portaal/index.html` | MOZa portaal: de Berichtenbox van MijnOverheid Zakelijk |
+| `/procesapplicatie/index.html` | BLD portaal gebruikers: btw-aangifte doen als ondernemer (roept onder water de procesapplicatie aan) |
+| `/procesapplicatie/werklijst.html` | Ambtenaar portaal: werklijst btw-aangiften (roept onder water de procesapplicatie aan) |
 | `/instellingen.html` | Adressen van magazijn en NMC, zonder of met FSC |
 
 De kaarten "Live demo" in de presentatie:
